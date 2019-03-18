@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+   <title>Gestionar Activitats</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet"     
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+   <h1>Llista de Activitats</h1>
+   <table>
+     <thead>
+       <tr>
+         <th>IdActivity</th>
+         <th>ActDate</th>
+         <th>ActivityName</th>
+         <th>Price</th>
+         <th>MaxPeople</th>
+         <th>MinPeople</th>
+         <th>Vacancies</th>
+         <th></th>
+         <th></th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr th:each="activity: ${activities}">
+         <td th:text="${activity.idActivity}"></td>
+         <td th:text="${activity.actDate}"></td>
+         <td th:text="${activity.activityName}"></td>
+         <td th:text="${activity.price}"></td>
+         <td th:text="${activity.maxPeople}"></td>
+         <td th:text="${activity.minPeople}"></td>
+         <td th:text="${activity.vacancies}"></td>
+         <td><a th:href="@{/activity/update/{idActivity}(idActivity=${activity.idActivity})}">Edita</a> 
+         </td>
+         <td><a th:href="@{/activity/delete/{idActivity}(idActivity=${activity.idActivity})}">Esborra</a>
+         </td>
+       </tr>
+     </tbody>
+   </table>
+   <a href="add.html">Afegeix prova</a>
+</body>
+</html>
