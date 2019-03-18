@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Gestionar Clients</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet"     
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+   <h1>Llista de Clients</h1>
+   <table class="table table-striped">
+     <thead>
+       <tr>
+       	<th>DNI</th>
+         <th>Nom</th>
+         <th>Sexe</th>
+   		 <th>Email</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr th:each="customer: ${customers}"> 
+         <td th:text="${customer.nid}"></td>
+         <td th:text="${customer.name}"></td>
+         <td th:text="${customer.gender}"></td>
+         <td th:text="${customer.email}"></td>
+         <td><button type="button" class="btn btn-warning" ><a th:href="@{/customer/update/{name}(name=${customer.name})}"><font color="black">Edita</font></a></button>
+         </td>
+         <td><button type="button" class="btn btn-danger"><a th:href="@{/customer/delete/{name}(name=${customer.name})}"><font color="white">Esborra</font></a></button>
+         </td>
+       </tr>
+     </tbody>
+   </table>
+   <button type="button" class="btn btn-success"><a href="add.html"><font color="white">Afegeix client</font></a></button>
+</body>
+</html>
