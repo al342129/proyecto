@@ -45,7 +45,35 @@ public class CustomerController {
 		 customerDao.addCustomer(customer);
 		 return "redirect:list";
 	 }
+	
+	@RequestMapping(value="/update/{nid}", method = RequestMethod.GET) 
+	public String editCustomer(Model model, @PathVariable String nid) { 
+		model.addAttribute("customer", customerDao.getCustomer(nid));
+		return "customer/update"; 
+	}
+
+	@RequestMapping(value="/update/{nid}", method = RequestMethod.POST) 
+	public String processUpdateSubmit(@PathVariable String nid, 
+	                        @ModelAttribute("customer") Customer customer, 
+	                        BindingResult bindingResult) {
+		 if (bindingResult.hasErrors()) 
+			 return "customer/update";
+		 customerDao.updateCustomer(customer);
+		 return "redirect:../list"; 
+	}
+
+	@RequestMapping(value="/delete/{nid}")
+	public String processDelete(@PathVariable String nid) {
+	       customerDao.deleteCustomer(nid);
+	       return "redirect:../list"; 
+	}
+
+	
 }
+
+
+
+
 
 
 

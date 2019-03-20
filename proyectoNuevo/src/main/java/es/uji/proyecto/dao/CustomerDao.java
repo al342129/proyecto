@@ -30,8 +30,8 @@ public class CustomerDao {
 	   }
 
 	   /* Esborra el usuari de la base de dades */
-	   public void deleteCustomer(Customer customer) {
-	       jdbcTemplate.update("DELETE FROM Customer WHERE nom=?", customer.getNid());
+	   public void deleteCustomer(String customerNid) {
+	       jdbcTemplate.update("DELETE FROM Customer WHERE nid=?", customerNid);
 	   }
 
 	   /* Actualitza els atributs del usuari
@@ -41,11 +41,11 @@ public class CustomerDao {
 	   }
 
 	   /* Obté el usuari amb el nom donat. Torna null si no existeix. */
-	   public Customer getCustomer(Customer customerName) {
+	   public Customer getCustomer(String customerNid) {
 	       try {
 	           return jdbcTemplate.queryForObject("SELECT * FROM Customer WHERE nid = ?",
 		      		     new CustomerRowMapper(),
-		      		     customerName);
+		      		     customerNid);
 		       }
 	       catch(EmptyResultDataAccessException e) {
 	           return null;
