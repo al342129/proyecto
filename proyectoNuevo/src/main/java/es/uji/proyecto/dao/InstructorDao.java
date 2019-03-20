@@ -8,8 +8,6 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-
-import es.uji.proyecto.model.Activity;
 import es.uji.proyecto.model.Instructor;
 
 public class InstructorDao {

@@ -7,7 +7,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import es.uji.proyecto.dao.CustomerDao;
 import es.uji.proyecto.model.Customer;
 
@@ -21,8 +20,8 @@ public class CustomerController {
 		
 	
 	@RequestMapping("/list")
-	public String listProves(Model model) {
-		model.addAttribute("proves", customerDao.getCustomers());
+	public String listCustomers(Model model) {
+		model.addAttribute("customers", customerDao.getCustomers());
 		return "customer/list";
 	}
 	
@@ -31,6 +30,7 @@ public class CustomerController {
 		model.addAttribute("customer", new Customer());
 		return "customer/add";
 	}
+	
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST) 
 	public String processAddSubmit(@ModelAttribute("customer") Customer customer,
