@@ -26,7 +26,7 @@ public class ReservationDao {
 
     /* Afegeix la reserva a la base de dades */
     public void addReservation(Reservation reservation) {
-        jdbcTemplate.update("INSERT INTO Reservarion VALUES(?, ?, ?, ?, ?)",
+        jdbcTemplate.update("INSERT INTO Reservation VALUES(?, ?, ?, ?, ?)",
                 reservation.getBookingDate(), reservation.getBookingNumber(), reservation.getNumberOfPeople(),
                 reservation.getState(),reservation.getTransactionNumber());
     }
@@ -38,7 +38,7 @@ public class ReservationDao {
 
     /* Actualitza els atributs de la reserva
        (excepte el bookingNumber, que és la clau primària) */
-    public void updateNadador(Reservation reservation) {
+    public void updateReservation(Reservation reservation) {
         jdbcTemplate.update("UPDATE reservation SET bookingDate=?, numberOfPeople=?, state=?, transactionNumber=? where bookingDate=?",
                 reservation.getBookingDate(), reservation.getNumberOfPeople(),
                 reservation.getState(),reservation.getTransactionNumber(), reservation.getBookingNumber());
