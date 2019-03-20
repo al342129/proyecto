@@ -23,13 +23,14 @@
          <td th:text="${customer.name}"></td>
          <td th:text="${customer.gender}"></td>
          <td th:text="${customer.email}"></td>
-         <td><button type="button" class="btn btn-warning" ><a th:href="@{/customer/update/{name}(name=${customer.name})}"><font color="black">Edita</font></a></button>
+         <td><button type="button" class="btn btn-warning" ><a th:href="@{/customer/update/{nid}(nid=${customer.nid})}"><font color="black">Edita</font></a></button>
          </td>
-         <td><button type="button" class="btn btn-danger"><a th:href="@{/customer/delete/{name}(name=${customer.name})}"><font color="white">Esborra</font></a></button>
+         <td><button type="button" class="btn btn-danger"><a th:href="@{/customer/delete/{nid}(nid=${customer.nid})}"><font color="white">Esborra</font></a></button>
          </td>
        </tr>
      </tbody>
    </table>
-   <button type="button" class="btn btn-success"><a href="add.html"><font color="white">Afegeix client</font></a></button>
+   <button type="button" class="btn btn-success"><a href="add"><font color="white">Afegeix client</font></a></button>
 </body>
 </html>
+

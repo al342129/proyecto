@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import es.uji.proyecto.dao.CustomerDao;
@@ -22,9 +23,12 @@ public class CustomerController {
 	
 	@RequestMapping("/list")
 	public String listCustomers(Model model) {
-		model.addAttribute("customer", customerDao.getCustomers());
+		model.addAttribute("customers", customerDao.getCustomers());
+		
 		return "customer/list";
 	}
+	
+	
 	
 	@RequestMapping(value="/add") 
 	public String addCustomer(Model model) {
@@ -42,3 +46,10 @@ public class CustomerController {
 		 return "redirect:list";
 	 }
 }
+
+
+
+
+
+
+

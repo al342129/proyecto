@@ -2,12 +2,10 @@ package es.uji.proyecto.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import org.springframework.jdbc.core.RowMapper;
-
 import es.uji.proyecto.model.Customer;
 
-public class CustomerRowMapper implements RowMapper<Customer>{
+public final class CustomerRowMapper implements RowMapper<Customer>{
 
 	
 	public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {
