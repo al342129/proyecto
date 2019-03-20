@@ -8,9 +8,12 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import es.uji.proyecto.model.Customer;
 
+
+@Repository // En Spring els DAOs van anotats amb @Repository
 public class CustomerDao {
 
 	private JdbcTemplate jdbcTemplate;
@@ -53,7 +56,7 @@ public class CustomerDao {
 	   /* Obté tots els usuaris. Torna una llista buida si no n'hi ha cap. */
 	   public List<Customer> getCustomers() {
 	       try {
-	           return jdbcTemplate.query("SELECT * FROM Customer", new CustomerRowMapper());
+	           return jdbcTemplate.query("SELECT * FROM customer", new CustomerRowMapper());
 	       }
 	       catch(EmptyResultDataAccessException e) {
 	           return new ArrayList<Customer>();

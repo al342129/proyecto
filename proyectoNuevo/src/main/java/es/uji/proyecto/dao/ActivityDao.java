@@ -8,8 +8,12 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
 import es.uji.proyecto.model.Activity;
 
+
+@Repository // En Spring els DAOs van anotats amb @Repository
 public class ActivityDao {
 
 	private JdbcTemplate jdbcTemplate;
