@@ -56,7 +56,7 @@ public class CustomerDao {
 	   /* Obté tots els usuaris. Torna una llista buida si no n'hi ha cap. */
 	   public List<Customer> getCustomers() {
 	       try {
-	           return jdbcTemplate.query("SELECT * FROM customer", new CustomerRowMapper());
+	           return jdbcTemplate.query("SELECT * FROM Customer", new CustomerRowMapper());
 	       }
 	       catch(EmptyResultDataAccessException e) {
 	           return new ArrayList<Customer>();
