@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Gestionar Monitors</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet"     
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+   <h1>Llista de Monitors</h1>
+   <table class="table table-striped">
+     <thead>
+       <tr>
+       	<th>DNI</th>
+         <th>Nombre</th>
+         <th>Fecha de aceptación</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr th:each="customer: ${customers}"> 
+         <td th:text="${instructor.nid}"></td>
+         <td th:text="${customer.name}"></td>
+         <td th:text="${customer.acceptanceDate}"></td>
+         <td><button type="button" class="btn btn-warning" ><a th:href="@{/customer/update/{nid}(nid=${customer.nid})}"><font color="black">Ver</font></a></button>
+         </td>
+         <td><button type="button" class="btn btn-danger"><a th:href="@{/customer/delete/{nid}(nid=${customer.nid})}"><font color="white">Baja</font></a></button>
+         </td>
+       </tr>
+     </tbody>
+   </table>
+   <button type="button" class="btn btn-success"><a href="add"><font color="white">Afegeix client</font></a></button>
+</body>
+</html>
+

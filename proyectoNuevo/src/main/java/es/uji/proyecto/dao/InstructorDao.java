@@ -56,7 +56,7 @@ public class InstructorDao {
 	   }
 
 	   /* Obté tots els instructors. Torna una llista buida si no n'hi ha cap. */
-	   List<Instructor> getInstructors() {
+	   public List<Instructor> getInstructors() {
 	       try {
 	           return jdbcTemplate.query("SELECT * FROM Instructor", new InstructorRowMapper());
 	       }
