@@ -35,6 +35,10 @@ public class InstructorDao {
 	   void deleteInstructor(Instructor instructor) {
 	       jdbcTemplate.update("DELETE FROM Instructor WHERE nid=?", instructor.getNid());
 	   }
+	   
+	   public void deleteInstructor(String instructor) {
+	       jdbcTemplate.update("DELETE FROM Instructor WHERE nid=?", instructor);
+	   }
 
 	   /* Actualitza els atributs de l'instructor
 	      (excepte el nid, que és la clau primària) */
