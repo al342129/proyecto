@@ -11,24 +11,24 @@
    <table class="table table-striped">
      <thead>
        <tr>
-       	<th>DNI</th>
          <th>Nombre</th>
+         <th>Estado</th>
+<!--           Buscar hacerlo bonito rojo/vere -->
          <th>Fecha de aceptación</th>
        </tr>
      </thead>
      <tbody>
-       <tr th:each="customer: ${customers}"> 
-         <td th:text="${instructor.nid}"></td>
-         <td th:text="${customer.name}"></td>
-         <td th:text="${customer.acceptanceDate}"></td>
-         <td><button type="button" class="btn btn-warning" ><a th:href="@{/customer/update/{nid}(nid=${customer.nid})}"><font color="black">Ver</font></a></button>
-         </td>
-         <td><button type="button" class="btn btn-danger"><a th:href="@{/customer/delete/{nid}(nid=${customer.nid})}"><font color="white">Baja</font></a></button>
-         </td>
+       <tr th:each="instructor: ${instructors}"> 
+         <td th:text="${instructor.name}"></td>
+     	 <td th:text="${instructor.state}"></td>
+     	 <td th:text="${instructor.acceptanceDate}"></td>
+		
+		<td><button type="button" class="btn btn-primary" ><a th:href="@{/instructor/delete/{nid}(nid=${instructor.nid})}"><font color="white">Ver</font></a></button></td>
+    <td><button type="button" class="btn btn-warning" ><a th:href="@{/instructor/delete/{nid}(nid=${instructor.nid})}"><font color="black">Editar</font></a></button></td>
+  	<td><button type="button" class="btn btn-danger"><a th:href="@{/instructor/delete/{nid}(nid=${instructor.nid})}"><font color="white">Baja</font></a></button>
+          </td> 
        </tr>
      </tbody>
    </table>
-   <button type="button" class="btn btn-success"><a href="add"><font color="white">Afegeix client</font></a></button>
 </body>
 </html>
-

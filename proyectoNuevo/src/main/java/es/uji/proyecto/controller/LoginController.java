@@ -18,11 +18,11 @@ import es.uji.proyecto.dao.UserDao;
 import es.uji.proyecto.model.Customer;
 import es.uji.proyecto.model.UserDetails;
 
-public class UserValidator implements Validator{
+class UserValidator implements Validator{
 
 	public boolean supports(Class<?> clazz) {
 		// TODO Auto-generated method stub
-		return UserDetails.class.isAssignableFrom(cls);
+		return UserDetails.class.isAssignableFrom(clazz);
 	}
 
 	public void validate(Object target, Errors errors) {
@@ -64,7 +64,7 @@ public class LoginController{
 		//Debemos crear un metodo getNombre en Customer y en Instructor
 		
 		
-		Customer customer = customerDao.getCustomer(user.getName()); 
+		//Customer customer = customerDao.getCustomer(user.getName()); 
 		
 		
 		
@@ -89,9 +89,3 @@ public class LoginController{
 	}
 }
 
-	
-	
-	
-	
-
-}
