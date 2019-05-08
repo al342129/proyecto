@@ -31,5 +31,11 @@ public class InstructorController {
 		instructorDao.deleteInstructor(nid);
 	       return "redirect:../list"; 
 	}
+	
+	@RequestMapping(value="/show/{nid}")
+	public String showInstructors(@PathVariable String nid, Model model) {
+		model.addAttribute("instructor", instructorDao.getInstructor(nid));
+		return "instructor/show";
+	}
 
 }

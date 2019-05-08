@@ -49,7 +49,7 @@ public class InstructorDao {
 	   }
 
 	   /* Obté l'instructor amb el nid donat. Torna null si no existeix. */
-	   Instructor getInstructor(Instructor instructorNid) {
+	   public Instructor getInstructor(String instructorNid) {
 	       try {
 	           return jdbcTemplate.queryForObject("SELECT * FROM Instructor WHERE nid = ?",
 		      		     new InstructorRowMapper(), instructorNid);
@@ -58,6 +58,9 @@ public class InstructorDao {
 	           return null;
 	       }
 	   }
+	   
+	   
+	   
 
 	   /* Obté tots els instructors. Torna una llista buida si no n'hi ha cap. */
 	   public List<Instructor> getInstructors() {

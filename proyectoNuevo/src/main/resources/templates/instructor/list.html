@@ -6,6 +6,7 @@
    <link rel="stylesheet"     
     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
 </head>
+
 <body>
    <h1>Llista de Monitors</h1>
    <table class="table table-striped">
@@ -23,12 +24,15 @@
      	 <td th:text="${instructor.state}"></td>
      	 <td th:text="${instructor.acceptanceDate}"></td>
 		
-		<td><button type="button" class="btn btn-primary" ><a th:href="@{/instructor/delete/{nid}(nid=${instructor.nid})}"><font color="white">Ver</font></a></button></td>
+		<td><button type="button" class="btn btn-primary" ><a th:href="@{/instructor/show/{nid}(nid=${instructor.nid})}"><font color="white">Ver</font></a></button></td>
     <td><button type="button" class="btn btn-warning" ><a th:href="@{/instructor/delete/{nid}(nid=${instructor.nid})}"><font color="black">Editar</font></a></button></td>
-  	<td><button type="button" class="btn btn-danger"><a th:href="@{/instructor/delete/{nid}(nid=${instructor.nid})}"><font color="white">Baja</font></a></button>
-          </td> 
-       </tr>
+  	<td><button type="button" class="btn btn-danger" ><a th:href="@{/instructor/delete/{nid}(nid=${instructor.nid})}"><font color="white">Baja</font></button> 
+    </td>
+       </tr>       
      </tbody>
    </table>
+
 </body>
+
+
 </html>

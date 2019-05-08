@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Informació de monitors</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet"     
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+
+<body>
+
+   <h1>Informació del monitor</h1>
+   <img th:src="@{/fotos/{profileImage}(profileImage=${instructor.profileImage})}">
+   
+   <table class="table table-striped">
+     <thead>
+       <tr>
+         <th>Nombre</th>
+         <th>Estado</th>
+<!--           Buscar hacerlo bonito rojo/vere -->
+         <th>Fecha de aceptación</th>
+       </tr>
+     </thead>
+     
+     <tbody>
+       <tr>
+       	<td></td> 
+         <td th:text="${instructor.name}"></td>
+     	 <td th:text="${instructor.state}"></td>
+     	 <td th:text="${instructor.acceptanceDate}"></td>
+		
+		<td><button type="button" class="btn btn-primary" ><a th:href="@{/instructor/delete/{nid}(nid=${instructor.nid})}"><font color="white">Ver</font></a></button></td>
+    <td><button type="button" class="btn btn-warning" ><a th:href="@{/instructor/delete/{nid}(nid=${instructor.nid})}"><font color="black">Editar</font></a></button></td>
+  	<td><button type="button" class="btn btn-danger" ><a th:href="@{/instructor/delete/{nid}(nid=${instructor.nid})}"><font color="white">Baja</font></button> 
+    </td>
+       </tr>       
+     </tbody>
+   </table>
+
+</body>
+
+
+</html>
