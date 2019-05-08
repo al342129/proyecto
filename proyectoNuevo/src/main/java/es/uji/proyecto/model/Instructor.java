@@ -1,12 +1,14 @@
 package es.uji.proyecto.model;
 
+import java.sql.Date;
+
 public class Instructor {
 	
 	private String name;
 	private String state;
 	private String nid;
 	private String profileImage;
-	private String acceptanceDate;
+	private Date acceptanceDate;
 	
 	
 	public String getName() {
@@ -27,10 +29,10 @@ public class Instructor {
 	public void setNid(String nid) {
 		this.nid = nid;
 	}
-	public String getAcceptanceDate() {
+	public Date getAcceptanceDate() {
 		return acceptanceDate;
 	}
-	public void setAcceptanceDate(String acceptanceDate) {
+	public void setAcceptanceDate(Date acceptanceDate) {
 		this.acceptanceDate = acceptanceDate;
 	}
 	

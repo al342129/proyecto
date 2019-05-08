@@ -43,9 +43,9 @@ public class InstructorDao {
 	   /* Actualitza els atributs de l'instructor
 	      (excepte el nid, que és la clau primària) */
 	   //habria que actualizar el acceptancedate?
-	   void updateInstructor(Instructor instructor) {
-	       jdbcTemplate.update("UPDATE Instructor SET name=?,state=?, acceptanceDate=? WHERE nid=?",
-	    		   instructor.getName(), instructor.getState(),instructor.getAcceptanceDate(), instructor.getNid());
+	   public void updateInstructor(Instructor instructor) {
+	       jdbcTemplate.update("UPDATE Instructor SET name=?,state=? WHERE nid=?",
+	    		   instructor.getName(), instructor.getState(), instructor.getNid());
 	   }
 
 	   /* Obté l'instructor amb el nid donat. Torna null si no existeix. */

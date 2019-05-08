@@ -19,7 +19,7 @@ public class InstructorRequestController {
 		
 	
 	
-	@RequestMapping("/list")
+	/*@RequestMapping("/list")
 	public String listInstructorRequests(Model model) {
 		model.addAttribute("instructorRequests", instructorRequestDao.getInstructorRequests());
 		
@@ -31,6 +31,6 @@ public class InstructorRequestController {
 	public String processDelete(@PathVariable String nid) {
 		instructorRequestDao.deleteInstructorRequest(nid);
 	       return "redirect:../list"; 
-	}
+	}*/
 
 }

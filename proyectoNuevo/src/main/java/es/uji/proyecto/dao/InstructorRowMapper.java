@@ -15,7 +15,7 @@ public final class InstructorRowMapper implements RowMapper<Instructor> {
        instructor.setState(rs.getString("state"));
        instructor.setNid(rs.getString("nid"));
        instructor.setProfileImage(rs.getString("profileImage"));
-       instructor.setAcceptanceDate(rs.getString("acceptanceDate"));
+       instructor.setAcceptanceDate(rs.getDate("acceptanceDate"));
        return instructor;
    }
 }

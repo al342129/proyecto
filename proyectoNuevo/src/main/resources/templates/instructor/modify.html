@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+   <title>Modificar un nadador</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet"       
+     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+     
+</head>
+<body>
+    <h2>Modifica instructor</h2>
+    <form action="#" th:action="@{/instructor/modify/{nid}(nid=${instructor.nid})}"
+                     th:object="${instructor}" method="post">
+      <table>
+        <tr>
+            <td><label>DNI</label></td>
+            <td><input type="text" th:field="*{nid}" readonly="readonly"/></td>
+        </tr>
+        
+        <tr>
+            <td><label>Nombre</label></td>
+            <td><input type="text" th:field="*{name}" /></td>
+        </tr>
+        
+        <tr>
+            <td><label>Estado</label></td>
+            <td><input type="text" th:field="*{state}" /></td>
+        </tr>
+        
+       
+        <tr>
+            <td colspan="2"><input type="submit" value="Modifica nadador" /></td>
+        </tr>
+      </table>
+    </form>
+</body>
+</html>
+        

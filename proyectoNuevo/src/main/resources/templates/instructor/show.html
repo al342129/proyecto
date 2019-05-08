@@ -10,29 +10,25 @@
 <body>
 
    <h1>Informació del monitor</h1>
-   <img th:src="@{/fotos/{profileImage}(profileImage=${instructor.profileImage})}">
-   
-   <table class="table table-striped">
-     <thead>
-       <tr>
-         <th>Nombre</th>
-         <th>Estado</th>
-<!--           Buscar hacerlo bonito rojo/vere -->
-         <th>Fecha de aceptación</th>
-       </tr>
-     </thead>
+   <center><img th:src="@{/fotos/{profileImage}(profileImage=${instructor.profileImage})}" align="middle">
+   </center>
+   <table style="width:100%" border=1>
+     <thead align="center">
+    <tr>
+      <th colspan=2>Información personal</th>
+    </tr>
+  </thead>
      
-     <tbody>
+     <tbody >
        <tr>
-       	<td></td> 
-         <td th:text="${instructor.name}"></td>
-     	 <td th:text="${instructor.state}"></td>
-     	 <td th:text="${instructor.acceptanceDate}"></td>
-		
-		<td><button type="button" class="btn btn-primary" ><a th:href="@{/instructor/delete/{nid}(nid=${instructor.nid})}"><font color="white">Ver</font></a></button></td>
-    <td><button type="button" class="btn btn-warning" ><a th:href="@{/instructor/delete/{nid}(nid=${instructor.nid})}"><font color="black">Editar</font></a></button></td>
-  	<td><button type="button" class="btn btn-danger" ><a th:href="@{/instructor/delete/{nid}(nid=${instructor.nid})}"><font color="white">Baja</font></button> 
-    </td>
+       	<td width=50% align="right">DNI:</td>
+        <td th:text="${instructor.nid}" width=50% align="left"></td>
+       </tr> 
+       
+       <tr>
+       	<td width=50% align="right">Nombre:</td>
+        <td th:text="${instructor.name}" width=50% align="left"></td>
+
        </tr>       
      </tbody>
    </table>
