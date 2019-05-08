@@ -5,6 +5,7 @@ public class Instructor {
 	private String name;
 	private String state;
 	private String nid;
+	private String profileImage;
 	private String acceptanceDate;
 	
 	
@@ -33,12 +34,19 @@ public class Instructor {
 		this.acceptanceDate = acceptanceDate;
 	}
 	
+	public String getProfileImage() {
+		return profileImage;
+	}
+	public void setProfileImage(String profileImage) {
+		this.profileImage = profileImage;
+	}
 	
 	@Override
 	public String toString() {
 		return "Instructor [name=" + name + ", state=" + state + ", nid=" + nid + ", acceptanceDate=" + acceptanceDate
 				+ "]";
 	}
+	
 	
 	
 }
