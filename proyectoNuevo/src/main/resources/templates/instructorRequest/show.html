@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Informacion de la peticion</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet"     
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+
+<body>
+
+   <h1>Informació de la peticio</h1>
+   
+   <table class="table table-striped">
+     <thead>
+       <tr>
+         <th>Nombre</th>
+         <th>DNI</th>
+         <th>Estado</th>
+         <th>Fecha de petición</th>
+         <th>Actividad</th>
+       </tr>
+     </thead>
+     
+     <tbody>
+       <tr>
+       	
+         <td th:text="${instructorRequest.name}"></td>
+         <td th:text="${instructorRequest.nid}"></td>
+     	 <td th:text="${instructorRequest.state}"></td>
+     	 <td th:text="${instructorRequest.requestDate}"></td>
+     	 <td th:text="${instructorRequest.skill}"></td>
+		
+
+   <td><button type="button" class="btn btn-warning" ><a th:href="@{/instructorRquest/update/{nid}(nid=${instructorRequest.nid})}"><font color="black">Aceptar</font></a></button></td>
+  	<td><button type="button" class="btn btn-danger" ><a th:href="@{/instructorRequest/delete/{nid}(nid=${instructorRequest.nid})}"><font color="white">Rechazar</font></button> 
+    </td>
+       </tr>       
+     </tbody>
+   </table>
+
+</body>
+
+
+</html>

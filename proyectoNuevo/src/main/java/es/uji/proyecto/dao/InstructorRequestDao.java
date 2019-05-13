@@ -53,7 +53,7 @@ public class InstructorRequestDao {
 	   }
 
 	   /* Obté la peticio amb el nid donat. Torna null si no existeix. */
-	   InstructorRequest getInstructorRequest(String instructorRequestNid) {
+	   public InstructorRequest getInstructorRequest(String instructorRequestNid) {
 	       try {
 	           return jdbcTemplate.queryForObject("SELECT * FROM InstructorRequest WHERE nid = ?",
 		      		     new InstructorRequestRowMapper(), instructorRequestNid);

@@ -11,7 +11,7 @@ import es.uji.proyecto.dao.InstructorDao;
 import es.uji.proyecto.dao.InstructorRequestDao;
 
 @Controller
-@RequestMapping("/instructor")
+@RequestMapping("/instructorRequest")
 public class InstructorRequestController {
 	
 	@Autowired
@@ -19,18 +19,26 @@ public class InstructorRequestController {
 		
 	
 	
-	/*@RequestMapping("/list")
+	@RequestMapping("/list")
 	public String listInstructorRequests(Model model) {
 		model.addAttribute("instructorRequests", instructorRequestDao.getInstructorRequests());
 		
-		return "instructorRequests/list";
+		return "instructorRequest/list";
 	}
+	
 	
 	//Codigo en prueba..............................................................
 	@RequestMapping(value="/delete/{nid}")
 	public String processDelete(@PathVariable String nid) {
 		instructorRequestDao.deleteInstructorRequest(nid);
 	       return "redirect:../list"; 
-	}*/
+	}
+	
+	@RequestMapping(value="/show/{nid}")
+	public String showInstructorRequests(@PathVariable String nid, Model model) {
+		model.addAttribute("instructorRequest", instructorRequestDao.getInstructorRequest(nid));
+		return "instructorRequest/show";
+	}
+
 
 }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Gestionar peticions de Monitor</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet"     
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+
+<body>
+   <h1>Llista de Peticions</h1>
+   <table class="table table-striped">
+     <thead>
+       <tr>
+         <th>Nombre</th>
+         <th>Fecha de peticion</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr th:each="instructorRequest: ${instructorRequests}"> 
+         <td th:text="${instructorRequest.name}"></td>
+     	 <td th:text="${instructorRequest.requestDate}"></td>
+		
+    <td><button type="button" class="btn btn-primary" ><a th:href="@{/instructorRequest/show/{nid}(nid=${instructorRequest.nid})}"><font color="white">Ver</font></a></button></td>
+    <td><button type="button" class="btn btn-warning" ><a th:href="@{/instructorRequest/update/{nid}(nid=${instructorRequest.nid})}"><font color="black">Aceptar</font></a></button></td>
+  	<td><button type="button" class="btn btn-danger" ><a th:href="@{/instructorRequest/delete/{nid}(nid=${instructorRequest.nid})}"><font color="white">Rechazar</font></button> 
+    </td>
+       </tr>       
+     </tbody>
+   </table>
+
+</body>
+
+
+</html>
+
+
