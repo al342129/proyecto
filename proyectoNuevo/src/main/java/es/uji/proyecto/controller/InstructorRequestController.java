@@ -5,9 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import es.uji.proyecto.dao.CustomerDao;
-import es.uji.proyecto.dao.InstructorDao;
 import es.uji.proyecto.dao.InstructorRequestDao;
 
 @Controller

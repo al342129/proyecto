@@ -6,39 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
-import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import es.uji.proyecto.dao.CustomerDao;
-import es.uji.proyecto.dao.InstructorDao;
-import es.uji.proyecto.dao.UserDao;
-import es.uji.proyecto.model.Customer;
 import es.uji.proyecto.model.UserDetails;
 
-class UserValidator implements Validator{
 
-	public boolean supports(Class<?> clazz) {
-		// TODO Auto-generated method stub
-		return UserDetails.class.isAssignableFrom(clazz);
-	}
-
-	public void validate(Object target, Errors errors) {
-		// TODO Auto-generated method stub
-		
-		//Comprobamos que usuario y contraseña no esten vacios
-		
-	}
-
-}
 @Controller
 public class LoginController{
 	@Autowired
 	//private UserDao usuario;
-	private CustomerDao customerDao;
-	private InstructorDao instructorDao;
+
 	
 	
 	

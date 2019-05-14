@@ -52,6 +52,8 @@ public class InstructorController {
 	public String processUpdateSubmit(@PathVariable String nid, 
                             @ModelAttribute("nadador") Instructor instructor, 
                             BindingResult bindingResult) {
+		 InstructorValidator instructorValidator = new InstructorValidator(); 
+		 instructorValidator.validate(instructor, bindingResult);
 		 if (bindingResult.hasErrors()) 
 			 return "instructor/modify";
 		 instructorDao.updateInstructor(instructor);

@@ -14,7 +14,7 @@ import es.uji.proyecto.model.Customer;
 
 @Controller
 @RequestMapping("/customer")
-public class CustomerController {
+public class CustomerController{
 
 	@Autowired
 	private CustomerDao customerDao;
@@ -40,6 +40,8 @@ public class CustomerController {
 	@RequestMapping(value="/add", method=RequestMethod.POST) 
 	public String processAddSubmit(@ModelAttribute("customer") Customer customer,
 			BindingResult bindingResult) {
+		 CustomerValidator customerValidator = new CustomerValidator(); 
+		 customerValidator.validate(customer, bindingResult);
 		 if (bindingResult.hasErrors())
 				return "customer/add";
 		 customerDao.addCustomer(customer);
@@ -56,6 +58,8 @@ public class CustomerController {
 	public String processUpdateSubmit(@PathVariable String nid, 
 	                        @ModelAttribute("customer") Customer customer, 
 	                        BindingResult bindingResult) {
+		 CustomerValidator customerValidator = new CustomerValidator(); 
+		 customerValidator.validate(customer, bindingResult);
 		 if (bindingResult.hasErrors()) 
 			 return "customer/update";
 		 customerDao.updateCustomer(customer);
@@ -67,6 +71,14 @@ public class CustomerController {
 	       customerDao.deleteCustomer(nid);
 	       return "redirect:../list"; 
 	}
+
+
+
+	public boolean supports(Class<?> clazz) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 
 	
 }
