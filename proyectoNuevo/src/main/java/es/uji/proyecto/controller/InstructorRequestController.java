@@ -5,6 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import es.uji.proyecto.dao.CustomerDao;
+import es.uji.proyecto.dao.InstructorDao;
 import es.uji.proyecto.dao.InstructorRequestDao;
 
 @Controller
@@ -24,7 +27,7 @@ public class InstructorRequestController {
 	}
 	
 	
-	//Codigo en prueba..............................................................
+	
 	@RequestMapping(value="/delete/{nid}")
 	public String processDelete(@PathVariable String nid) {
 		instructorRequestDao.deleteInstructorRequest(nid);
@@ -35,6 +38,13 @@ public class InstructorRequestController {
 	public String showInstructorRequests(@PathVariable String nid, Model model) {
 		model.addAttribute("instructorRequest", instructorRequestDao.getInstructorRequest(nid));
 		return "instructorRequest/show";
+	}
+	
+	
+	@RequestMapping(value="/accept/{nid}")
+	public String processAccept(@PathVariable String nid) {
+			instructorRequestDao.acceptInstructorRequest(nid);
+	       return "redirect:../../instructor/list"; 
 	}
 
 

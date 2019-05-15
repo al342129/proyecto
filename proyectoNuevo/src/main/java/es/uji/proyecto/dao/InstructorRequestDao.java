@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import es.uji.proyecto.model.Instructor;
 import es.uji.proyecto.model.InstructorRequest;
@@ -73,5 +74,13 @@ public class InstructorRequestDao {
 	       }
 	   }
 	   
+	   public void acceptInstructorRequest(@PathVariable String nid) {
+		   
+		   InstructorRequest nuevoMonitor = getInstructorRequest(nid);
+		   jdbcTemplate.update("DELETE FROM InstructorRequest WHERE nid=?", nid);
+		   jdbcTemplate.update("INSERT INTO Instructor VALUES(?, ?, ?, ?, ?)",nuevoMonitor.getNid(),"Hola",nuevoMonitor.getResolutionDate(),nuevoMonitor.getName()
+				   ,"Disponible");
+		   
+	   }
 
 }
