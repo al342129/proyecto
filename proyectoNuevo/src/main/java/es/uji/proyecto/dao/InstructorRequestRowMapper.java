@@ -15,7 +15,7 @@ public final class InstructorRequestRowMapper implements RowMapper<InstructorReq
        instructorRequest.setState(rs.getString("state"));
        instructorRequest.setNid(rs.getString("nid"));
        instructorRequest.setRequestDate(rs.getString("requestDate"));
-       instructorRequest.setResolutionDate(rs.getString("resolutionDate"));
+       instructorRequest.setResolutionDate(rs.getDate("resolutionDate"));
        
        return instructorRequest;
    }

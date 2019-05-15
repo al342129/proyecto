@@ -7,7 +7,7 @@ public class InstructorRequest {
 	private String name;
 	private String state;
 	private String requestDate; 
-	private String resolutionDate;
+	private Date resolutionDate;
 	public String getNid() {
 		return nid;
 	}
@@ -32,10 +32,10 @@ public class InstructorRequest {
 	public void setRequestDate(String requestDate) {
 		this.requestDate = requestDate;
 	}
-	public String getResolutionDate() {
+	public Date getResolutionDate() {
 		return resolutionDate;
 	}
-	public void setResolutionDate(String resolutionDate) {
+	public void setResolutionDate(Date resolutionDate) {
 		this.resolutionDate = resolutionDate;
 	}
 	@Override
