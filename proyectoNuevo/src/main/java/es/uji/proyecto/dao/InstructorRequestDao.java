@@ -1,5 +1,7 @@
 package es.uji.proyecto.dao;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,6 +79,8 @@ public class InstructorRequestDao {
 	   public void acceptInstructorRequest(@PathVariable String nid) {
 		   
 		   InstructorRequest nuevoMonitor = getInstructorRequest(nid);
+		   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		   LocalDate localdate = LocalDate.now();
 		   jdbcTemplate.update("DELETE FROM InstructorRequest WHERE nid=?", nid);
 		   jdbcTemplate.update("INSERT INTO Instructor VALUES(?, ?, ?, ?, ?)",nuevoMonitor.getNid(),"Hola",nuevoMonitor.getResolutionDate(),nuevoMonitor.getName()
 				   ,"Disponible");

@@ -5,39 +5,79 @@
    <meta charset="UTF-8" />
    <link rel="stylesheet"     
     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+    
+     <style>
+
+ 
+  h1{
+    
+    text-align: center; 
+    background-color: #1E90FF;
+    width: 100%;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+    }
+  
+  body{
+    background-color: #E0FFFF
+  }
+  
+  table{
+    
+    background-color: #87CEFA;
+    border-radius: 20px ;
+    margin-top:20px;
+    margin-bottom: 20px;
+    
+  }
+  td{
+    align: left;
+    margin-left: 20px;
+  }
+  
+  </style>
 </head>
 
 <body>
 
    <h1>Informació de la peticio</h1>
    
-   <table class="table table-striped">
-     <thead>
-       <tr>
-         <th>Nombre</th>
-         <th>DNI</th>
-         <th>Estado</th>
-         <th>Fecha de petición</th>
-         <th>Actividad</th>
-       </tr>
-     </thead>
-     
-     <tbody>
-       <tr>
-       	
-         <td th:text="${instructorRequest.name}"></td>
-         <td th:text="${instructorRequest.nid}"></td>
-     	 <td th:text="${instructorRequest.state}"></td>
-     	 <td th:text="${instructorRequest.requestDate}"></td>
-<!--      	 <td th:text="${instructorRequest.skill}"></td> -->
-		
+   <table style="width:40%" align=center cellpadding="20">
+      <thead align="center">
+      <tr>
+	<th colspan=2 rowspan=2>Información personal</th>
+      </tr>
+    </thead>
+      
+      <tbody >
+	<tr>
+	  <td>Nombre:</td>
+	  <td th:text="${instructorRequest.name}"></td>
+	</tr> 
+	<tr>
+	  <td>DNI:</td>
+	  <td th:text="${instructorRequest.nid}"></td>
+	</tr> 
+	
+	<tr>
+	  <td>Estado:</td>
+	  <td th:text="${instructorRequest.state}"> </td>
 
-   <td><button type="button" class="btn btn-warning" ><a th:href="@{/instructorRquest/update/{nid}(nid=${instructorRequest.nid})}"><font color="black">Aceptar</font></a></button></td>
-  	<td><button type="button" class="btn btn-danger" ><a th:href="@{/instructorRequest/delete/{nid}(nid=${instructorRequest.nid})}"><font color="white">Rechazar</font></button> 
-    </td>
-       </tr>       
-     </tbody>
-   </table>
+	</tr>  
+	<tr>
+	  <td>Fecha Petición:</td>
+	  <td th:text="${instructorRequest.requestDate}"></td>
+	</tr> 
+	 
+	
+	<tr>
+	  <td><button type="button" class="btn btn-warning" ><a th:href="@{/instructorRequest/accept/{nid}(nid=${instructorRequest.nid})}"><font color="black">Aceptar</font></a></button></td>
+	  <td><button type="button" class="btn btn-danger" ><a th:href="@{/instructorRequest/delete/{nid}(nid=${instructorRequest.nid})}"><font color="white">Rechazar</font></button></td>
+	</tr> 
+      </tbody>
+    </table>
 
 </body>
 

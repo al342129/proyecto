@@ -1,5 +1,29 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+ <style>
+
+ 
+  h1{
+  	text-align: center; 
+    background-color: #1E90FF;
+    width: 100%;
+    border-radius: 20px;
+    }
+
+  table{
+    background-color: #87CEFA;
+    border-radius: 20px ;
+    margin-top:20px;
+    margin-bottom: 20px;
+  }
+  title{
+  margin-bottom: 20px
+  }
+  div{
+  backround-color: #87CEFA
+  }
+    
+  </style>
 <head>
    <title>Informació de monitors</title>
    <meta charset="UTF-8" />
@@ -9,31 +33,38 @@
 
 <body>
 
-   <h1>Informació del monitor</h1>
-   <center><img th:src="@{/fotos/{profileImage}(profileImage=${instructor.profileImage})}" align="middle">
-   </center>
-   <table style="width:100%" border=1>
-     <thead align="center">
-    <tr>
-      <th colspan=2>Información personal</th>
-    </tr>
-  </thead>
-     
-     <tbody >
-       <tr>
-       	<td width=50% align="right">DNI:</td>
-        <td th:text="${instructor.nid}" width=50% align="left"></td>
-       </tr> 
-       
-       <tr>
-       	<td width=50% align="right">Nombre:</td>
-        <td th:text="${instructor.name}" width=50% align="left"></td>
+	<div>
+    <h1>Informació del monitor</h1>
+    <center><img th:src="@{/fotos/{profileImage}(profileImage=${instructor.profileImage})}" align="middle">
+    </center>
+    <table style="width:40%" align=center>
+      <thead align="center">
+      <tr>
+	<th colspan=2 rowspan=2>Información personal</th>
+      </tr>
+    </thead>
+      
+      <tbody >
+	<tr>
+	  <td align="center">DNI:</td>
+	  <td th:text="${instructor.nid}" align="center"></td>
+	</tr> 
+	
+	<tr>
+	  <td align="center">Nombre:</td>
+	  <td th:text="${instructor.name}" align="center"></td>
 
-       </tr>       
-     </tbody>
-   </table>
+	</tr>  
+	
+	<tr>
+	  <td align="center">Fecha aceptacion:</td>
+	  <td th:text="${instructor.acceptanceDate}" align="center"></td>
+	</tr>      
+      </tbody>
+    </table>
+    
+	</div>
+  </body>
 
-</body>
 
-
-</html>
+  </html>
