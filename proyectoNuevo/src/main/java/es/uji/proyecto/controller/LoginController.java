@@ -16,30 +16,30 @@ import es.uji.proyecto.dao.UserDao;
 import es.uji.proyecto.model.UserDetails;
 
 
-/*
-class UserValidator implements Validator { 
-	
-	public boolean supports(Class<?> cls) { 
-		return UserDetails.class.isAssignableFrom(cls);
-	}
-	
-	public void validate(Object obj, Errors errors) {
-	  // Exercici: Afegeix codi per comprovar que 
-         // l'usuari i la contrasenya no estiguen buits 
-         // ...
-	}
-	
-}*/
+//
+//class UserValidator implements Validator { 
+//	@Override
+//	public boolean supports(Class<?> cls) { 
+//		return UserDetails.class.isAssignableFrom(cls);
+//	}
+//	@Override 
+//	public void validate(Object obj, Errors errors) {
+//	  // Exercici: Afegeix codi per comprovar que 
+//         // l'usuari i la contrasenya no estiguen buits 
+//         // ...
+//	}
+//}
 
 @Controller
+@RequestMapping("/user")
 public class LoginController {
-	/*@Autowired
+	@Autowired
 	private UserDao userDao;
 
-	/*@RequestMapping("/login")
+	@RequestMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("user", new UserDetails());
-		return "login";
+		return "user/login";
 	}
 
 	@RequestMapping(value="/login", method=RequestMethod.POST)
@@ -70,6 +70,6 @@ public class LoginController {
 		session.invalidate(); 
 		return "redirect:/";
 	}
-	*/
+	
 }
 

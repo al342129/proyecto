@@ -6,7 +6,7 @@ import org.springframework.validation.Validator;
 import es.uji.proyecto.model.UserDetails;
 
 class UserValidator implements Validator{
-
+	
 	public boolean supports(Class<?> clazz) {
 		// TODO Auto-generated method stub
 		return UserDetails.class.isAssignableFrom(clazz);
