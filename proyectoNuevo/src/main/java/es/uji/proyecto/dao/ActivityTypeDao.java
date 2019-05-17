@@ -29,8 +29,8 @@ public class ActivityTypeDao {
 	   }
 
 
-	   public void deleteActivityType(ActivityType activityType) {
-	       jdbcTemplate.update("DELETE FROM ActivityType WHERE typeName=? AND level=?", activityType.getTypeName(), activityType.getLevel());
+	   public void deleteActivityType(String typeName, String level) {
+	       jdbcTemplate.update("DELETE FROM ActivityType WHERE typeName=? AND level=?", typeName, level);
 	   }
 
 	  
@@ -39,11 +39,11 @@ public class ActivityTypeDao {
 	   }
 
 
-	   public ActivityType getActivityType(ActivityType activityType) {
+	   public ActivityType getActivityType(String typeName, String level) {
 	       try {
 	           return jdbcTemplate.queryForObject("SELECT * FROM ActivityType WHERE typeName = ? AND level=?",
 		      		     new ActivityTypeRowMapper(),
-		      		     activityType.getTypeName(), activityType.getLevel());
+		      		     typeName, level);
 		       }
 	       catch(EmptyResultDataAccessException e) {
 	           return null;

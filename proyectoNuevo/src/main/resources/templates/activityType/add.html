@@ -17,11 +17,19 @@
         </tr>
         <tr>
             <td><label>Descripcion</label></td>
-            <td><input type="text" th:field="*{descriptionActType}" /></td>
+<!--   <input type="text" th:field="*{descriptionActType}" />           -->
+            <td><textarea rows="4" cols="50" maxlength="100" th:field="*{descriptionActType}">...</textarea></td>
         </tr>
         <tr>
             <td><label>Nivel</label></td>
-            <td><input type="text" th:field="*{level}" /></td>
+            <td>
+            <select th:field="*{level}">
+    			<option th:value="Básico" th:text="Básico"></option>
+    			<option th:value="Intermedio" th:text="Intermedio"></option>
+    			<option th:value="Avanzado" th:text="Avanzado"></option>
+			</select>
+            
+            </td>
         </tr>
         
        

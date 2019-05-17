@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+   <title>Modificar tipo de actividad</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet"       
+     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+    <h2>Modificar tipo de actividad</h2>
+    <form action="#" th:action="@{/activityType/update/{typeName}/{level}(typeName=${activityType.typeName},level=${activityType.level})}"
+                     th:object="${activityType}" method="post"> 
+      <table>
+        <tr>
+            <td><label>Actividad</label></td>
+            <td><input type="text" th:field="*{typeName}" readonly="readonly" /></td> 
+        </tr>
+        <tr>
+            <td><label>Descripcion</label></td>
+            <td><textarea rows="4" cols="50" maxlength="100" th:field="*{descriptionActType}">...</textarea></td>
+        </tr>
+                <tr>
+            <td><label>Nivel</label></td>
+            <td><input type="text" th:field="*{level}" readonly="readonly"/></td>
+        </tr>
+       
+
+        <tr>
+            <td colspan="2"><input type="submit" value="Modificar" /></td>
+        </tr>
+      </table>
+    </form>
+</body>
+</html>

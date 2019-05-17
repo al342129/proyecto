@@ -20,14 +20,15 @@
      <tbody>
        <tr th:each="activityType: ${activityTypes}"> 
          <td th:text="${activityType.typeName}"></td>
-         <td th:text="${activityType.descriptionActType}"></td>
+         <td width=40% th:text="${activityType.descriptionActType}"></td>
          <td th:text="${activityType.level}"></td>
-<!--          <td><button type="button" class="btn btn-warning" ><a th:href="@{/customer/update/{nid}(nid=${customer.nid})}"><font color="black">Edita</font></a></button> -->
-<!--          </td> -->
-<!--          <td><button type="button" class="btn btn-danger"><a th:href="@{/customer/delete/{nid}(nid=${customer.nid})}"><font color="white">Esborra</font></a></button> -->
-<!--          </td> -->
-       </tr>
-     </tbody>
+         
+		<td><button type="button" class="btn btn-warning" ><a th:href="@{/activityType/update/{typeName}/{level}(typeName=${activityType.typeName},level=${activityType.level})}"><font color="black">Editar</font></a></button>
+			</td>
+ 			<td><button type="button" class="btn btn-danger"><a th:href="@{/activityType/delete/{typeName}/{level}(typeName=${activityType.typeName},level=${activityType.level})}"><font color="white">Borrar</font></a></button> 
+			</td>
+		</tr>
+	</tbody>
    </table>
     <button type="button" class="btn btn-success"><a href="add"><font color="white">Añade nuevo tipo de actividad</font></a></button>
 </body>
