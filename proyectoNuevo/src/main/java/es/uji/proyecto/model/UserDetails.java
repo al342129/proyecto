@@ -3,7 +3,7 @@ package es.uji.proyecto.model;
 public class UserDetails {
 	String username;
 	String password;
-	int acceso;
+	int acceso;	//hay que mirar como hacerlo. Debería tener un valor de 1 a 3 en funcion de si eres monitor, alumno o Manel.
 	
 	
 	

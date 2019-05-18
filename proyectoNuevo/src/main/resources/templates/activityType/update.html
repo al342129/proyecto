@@ -5,12 +5,40 @@
    <meta charset="UTF-8" />
    <link rel="stylesheet"       
      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+    <style>
+	body{
+		background-color: #E0FFFF
+	}
+	
+	h2{
+    
+    text-align: center; 
+    background-color: #1E90FF;
+    width: 100%;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+    }
+     table{
+    
+    background-color: #87CEFA;
+    border-radius: 20px ;
+    margin-top:20px;
+    margin-bottom: 20px;
+    
+  }
+  td{
+    align: left;
+    margin-left: 20px;
+  }
+</style>
 </head>
 <body>
     <h2>Modificar tipo de actividad</h2>
     <form action="#" th:action="@{/activityType/update/{typeName}/{level}(typeName=${activityType.typeName},level=${activityType.level})}"
                      th:object="${activityType}" method="post"> 
-      <table>
+      <table align=center cellpadding="20">
         <tr>
             <td><label>Actividad</label></td>
             <td><input type="text" th:field="*{typeName}" readonly="readonly" /></td> 
@@ -21,7 +49,11 @@
         </tr>
                 <tr>
             <td><label>Nivel</label></td>
-            <td><input type="text" th:field="*{level}" readonly="readonly"/></td>
+            <td><select th:field="*{level}">
+    			<option th:value="Básico" th:text="Básico"></option>
+    			<option th:value="Intermedio" th:text="Intermedio"></option>
+    			<option th:value="Avanzado" th:text="Avanzado"></option>
+			</select></td>
         </tr>
        
 
