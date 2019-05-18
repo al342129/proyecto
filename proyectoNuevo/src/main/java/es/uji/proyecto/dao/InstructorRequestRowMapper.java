@@ -7,6 +7,7 @@ import es.uji.proyecto.model.InstructorRequest;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 public final class InstructorRequestRowMapper implements RowMapper<InstructorRequest> {
    public InstructorRequest mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -14,8 +15,8 @@ public final class InstructorRequestRowMapper implements RowMapper<InstructorReq
        instructorRequest.setName(rs.getString("name"));
        instructorRequest.setState(rs.getString("state"));
        instructorRequest.setNid(rs.getString("nid"));
-       instructorRequest.setRequestDate(rs.getString("requestDate"));
-       instructorRequest.setResolutionDate(rs.getDate("resolutionDate"));
+       instructorRequest.setRequestDate(rs.getObject("requestDate",LocalDate.class));
+       instructorRequest.setInstructorRequestPDF(rs.getString("instructorRequestPDF"));
        
        return instructorRequest;
    }

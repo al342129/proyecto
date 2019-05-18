@@ -1,41 +1,39 @@
-<!-- <!DOCTYPE html> -->
-<!-- <html xmlns:th="http://www.thymeleaf.org">  -->
-<!-- <head> -->
-<!--    <title>Crear peticion de monitor</title> -->
-<!--    <meta charset="UTF-8" /> -->
-<!--    <link rel="stylesheet"        -->
-<!--      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/> -->
-<!-- </head> -->
-<!-- <body> -->
-<!--     <h2>Nueva peticion de monitor</h2> -->
-<!--     <form action="#" th:action="@{/instructorRequest/add}"  -->
-<!--                      th:object="${instructor}" method="post">  -->
-<!--       <table> -->
-<!--         <tr> -->
-<!--             <td><label>DNI</label></td> -->
-<!--             <td><input type="text" th:field="*{nid}" /></td>  -->
-<!--         </tr> -->
-<!--         <tr> -->
-<!--             <td><label>Nombre</label></td> -->
-<!--             <td><input type="text" th:field="*{name}" /></td> -->
-<!--         </tr> -->
-<!--         <tr> -->
-<!--             <td><label>Actividades</label></td> -->
-<!--             <td><input type="text" th:field="*{activities}" /></td> -->
-<!--         </tr> -->
-<!--         <tr> -->
-<!--             <td><label>Adjunto</label></td> -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+   <title>Crear peticion de monitor</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet"       
+     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+    <h2>Nueva peticion de monitor</h2>
+    <form action="#" th:action="@{/instructorRequest/add}" 
+                     th:object="${instructorRequest}" method="post" enctype="multipart/form-data"> 
+      <table>
+        <tr>
+            <td><label>DNI</label></td>
+            <td><input type="text" th:field="*{nid}" /></td> 
+        </tr>
+        <tr>
+            <td><label>Nombre</label></td>
+            <td><input type="text" th:field="*{name}" /></td>
+        </tr>
+        
+        <tr>
+            
 <!--             <td><form method="POST" action="/upload"  -->
 <!--                  th:action="@{/upload}" enctype="multipart/form-data"> -->
-<!--   				 <input type="file" name="file" id="file" /> <br/> -->
+  				 <input type="file" name="file" id="file" /> <br/>
 <!--    				<input type="submit" value="upload" name="upload" id="upload" /> -->
-<!-- 				</form></td> -->
-<!--         </tr> -->
+<!-- 				</form> -->
+				</td>
+        </tr>
        
-<!--         <tr> -->
-<!--             <td colspan="2"><input type="submit" value="Afegeix client" /></td> -->
-<!--         </tr> -->
-<!--       </table> -->
-<!--     </form> -->
-<!-- </body> -->
-<!-- </html> -->
+        <tr>
+            <td colspan="2"><input type="submit" value="Afegeix peticio" /></td>
+        </tr>
+      </table>
+    </form>
+</body>
+</html>

@@ -68,9 +68,12 @@
 	</tr>  
 	<tr>
 	  <td>Fecha Petición:</td>
-	  <td th:text="${instructorRequest.requestDate}"></td>
+	  <td th:text="${#temporals.format(instructorRequest.requestDate,'dd/MM/yyyy')}"></td>
 	</tr> 
-	 
+	<tr>
+	  <td>Archivo adjunto:</td>
+	  <td><a th:href="@{/instructorRequest/adjunto/{nid}(nid=${instructorRequest.nid})}">Ver archivo adjunto</a></td>
+	</tr> 
 	
 	<tr>
 	  <td><button type="button" class="btn btn-warning" ><a th:href="@{/instructorRequest/accept/{nid}(nid=${instructorRequest.nid})}"><font color="black">Aceptar</font></a></button></td>

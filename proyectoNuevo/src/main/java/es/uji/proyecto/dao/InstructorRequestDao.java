@@ -29,10 +29,13 @@ public class InstructorRequestDao {
 	   }
 
 	   /* Afegeix la peticio a la base de dades */
-	   void addInstructorRequest(InstructorRequest instructorRequest) {
-	       jdbcTemplate.update("INSERT INTO InstructorRequest VALUES(?, ?, ?, ?, ?)",
-	    		   instructorRequest.getNid(), instructorRequest.getName(), instructorRequest.getState(), 
-	    		   instructorRequest.getRequestDate(), instructorRequest.getResolutionDate());
+	   public void addInstructorRequest(InstructorRequest instructorRequest) {
+		   LocalDate a = LocalDate.now();
+		   instructorRequest.setRequestDate(a);
+	       jdbcTemplate.update("INSERT INTO InstructorRequest VALUES(?, ?, ?, ?,?)",
+	    		   instructorRequest.getNid(), instructorRequest.getName(), "Pendiente", 
+	    		   instructorRequest.getRequestDate(), "/peticiones/"+instructorRequest.getNid()+".pdf");
+	      
 	   }
 
 	   /* Esborra la peticio de la base de dades */
@@ -51,8 +54,8 @@ public class InstructorRequestDao {
 	      (excepte el nid, que és la clau primària) */
 	   //habria que actualizar el acceptancedate?
 	   void updateInstructorRequest(InstructorRequest instructorRequest) {
-	       jdbcTemplate.update("UPDATE InstructorRequest SET nid=?, name=?, state=?, requestDate=?, resolutionDate=? WHERE nid=?",
-	    		   instructorRequest.getNid(), instructorRequest.getName(),instructorRequest.getState(), instructorRequest.getRequestDate(), instructorRequest.getResolutionDate());
+	       jdbcTemplate.update("UPDATE InstructorRequest SET nid=?, name=?, state=?, requestDate=? WHERE nid=?",
+	    		   instructorRequest.getNid(), instructorRequest.getName(),instructorRequest.getState(), instructorRequest.getRequestDate());
 	   }
 
 	   /* Obté la peticio amb el nid donat. Torna null si no existeix. */
@@ -82,7 +85,7 @@ public class InstructorRequestDao {
 		   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		   LocalDate localdate = LocalDate.now();
 		   jdbcTemplate.update("DELETE FROM InstructorRequest WHERE nid=?", nid);
-		   jdbcTemplate.update("INSERT INTO Instructor VALUES(?, ?, ?, ?, ?)",nuevoMonitor.getNid(),"Hola",nuevoMonitor.getResolutionDate(),nuevoMonitor.getName()
+		   jdbcTemplate.update("INSERT INTO Instructor VALUES(?, ?, ?, ?)",nuevoMonitor.getNid(),"Hola",nuevoMonitor.getName()
 				   ,"Disponible");
 		   
 	   }

@@ -1,0 +1,55 @@
+<!-- <!-- <!DOCTYPE html> -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Informacion de la peticion</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet"     
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+    
+     <style>
+
+ 
+ h1{ 
+    
+     text-align: center;  
+     background-color: #1E90FF; 
+     width: 100%; 
+     border-radius: 20px; 
+     margin-top: 20px; */
+     margin-bottom: 20px; 
+    
+     } 
+  
+   body{ 
+     background-color: #E0FFFF 
+   } 
+  
+   table{ 
+    
+     background-color: #87CEFA; 
+     border-radius: 20px ; 
+     margin-top:20px; 
+     margin-bottom: 20px; 
+    
+   } 
+   td{ 
+     align: left; 
+    margin-left: 20px; 
+   } 
+  
+  </style>
+</head>
+
+<body>
+
+   <h1>Visualización de documentos adjuntos</h1>
+   
+   
+	<embed th:src="@{{PDF}(PDF=${instructorRequest.instructorRequestPDF})}" width="100%" height="600px" type="application/pdf">
+	<center><button type="button" class="btn btn-success" ><a th:href="@{/instructorRequest/show/{nid}(nid=${instructorRequest.nid})}"><font color="white">Volver a la página anterior</font></a></button></center>
+	
+
+</body>
+
+
+</html>

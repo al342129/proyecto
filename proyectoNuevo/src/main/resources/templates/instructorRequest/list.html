@@ -19,7 +19,8 @@
      <tbody>
        <tr th:each="instructorRequest: ${instructorRequests}"> 
          <td th:text="${instructorRequest.name}"></td>
-     	 <td th:text="${instructorRequest.requestDate}"></td>
+         <td th:text="${#temporals.format(instructorRequest.requestDate,'dd/MM/yyyy')}"></td>
+     	 
 		
     <td><button type="button" class="btn btn-primary" ><a th:href="@{/instructorRequest/show/{nid}(nid=${instructorRequest.nid})}"><font color="white">Ver</font></a></button></td>
     <td><button type="button" class="btn btn-warning" ><a th:href="@{/instructorRequest/accept/{nid}(nid=${instructorRequest.nid})}"><font color="black">Aceptar</font></a></button></td>
