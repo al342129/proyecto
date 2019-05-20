@@ -1,15 +1,20 @@
 package es.uji.proyecto.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ActivityType{
 	private String typeName;
 	private String descriptionActType;
 	private String level;
+	private ArrayList<ActivityType> activityTypes;
 
 
 	public ActivityType() {
 		super();	
 	}
 
+	
 	public String getTypeName() {
 		return typeName;
 	}
@@ -32,10 +37,19 @@ public class ActivityType{
 		this.level = level;
 	}
 
+	public String getStructure(){
+		return typeName + "," + level;
+	}
+	
 	@Override
 	public String toString() {
 		return "ActivityType [typeName=" + typeName + ", descriptionActType=" + descriptionActType + ", level=" + level
 				+ "]";
+	}
+
+
+	public ArrayList<ActivityType> getActivityTypes() {
+		return activityTypes;
 	}
 	
 	

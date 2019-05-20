@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,9 +21,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import es.uji.proyecto.dao.ActivityTypeDao;
 import es.uji.proyecto.dao.CustomerDao;
 import es.uji.proyecto.dao.InstructorDao;
 import es.uji.proyecto.dao.InstructorRequestDao;
+import es.uji.proyecto.model.ActivityType;
 import es.uji.proyecto.model.Customer;
 import es.uji.proyecto.model.InstructorRequest;
 
@@ -30,6 +35,10 @@ public class InstructorRequestController {
 	
 	@Autowired
 	private InstructorRequestDao instructorRequestDao;
+	
+
+	@Autowired
+	private ActivityTypeDao actDao;
 		
 	
 	
@@ -72,7 +81,12 @@ public class InstructorRequestController {
 	
 	@RequestMapping(value="/add") 
 	public String addInstructorRequest(Model model) {
+		List<ActivityType> actTypes = actDao.getActivityTypes();
+		   List<String> noms = actTypes.stream()
+		           .map(ActivityType::getStructure)
+		           .collect(Collectors.toList());
 		model.addAttribute("instructorRequest", new InstructorRequest());
+		model.addAttribute("activityTypes", noms);
 		return "instructorRequest/add";
 	}
 	

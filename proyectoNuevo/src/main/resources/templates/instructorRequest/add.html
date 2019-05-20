@@ -34,6 +34,17 @@
     align: left;
     margin-left: 20px;
   }
+  
+  .box {
+        height: 50px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .box>* {
+        flex: 1 1 100px;
+    }
+  
 </style>
 
 </head>
@@ -50,11 +61,35 @@
             <td><label>Nombre</label></td>
             <td><input type="text" th:field="*{name}" /></td>
         </tr>
+        <tr>
+<!-- 			<div th:each="nadador:${activityTypes}" class="box"> -->
+<!-- 			<div><input type="checkbox" th:value="${nadador}"></div> -->
+<!-- 			<div><label th:text="${nadador}"></label></div> -->
+<!-- 			</div> -->
+<!-- 			<form:select path="country" items="${activityTypes}" multiple="true" /> -->
+        	<td><label>Petición</label></td>
+        	<td>
+        	<select id="type">
+        		<option value=""></option> 
+       			<option th:each="activityType : ${activityTypes}"
+               		th:value="${activityType}"
+               		th:text="${activityType}"></option>
+   			</select>
+
+			
+       
+        </td>
+        
+        
+        </tr>
         
         <tr>
             
 <!--             <td><form method="POST" action="/upload"  -->
 <!--                  th:action="@{/upload}" enctype="multipart/form-data"> -->
+				
+				<td><label>Certificado</label></td>
+				<td>
   				 <input type="file" name="file" id="file" /> <br/>
 <!--    				<input type="submit" value="upload" name="upload" id="upload" /> -->
 <!-- 				</form> -->
