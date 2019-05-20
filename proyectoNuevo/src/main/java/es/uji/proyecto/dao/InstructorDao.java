@@ -10,6 +10,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import es.uji.proyecto.model.Activity;
 import es.uji.proyecto.model.Instructor;
 
 
@@ -83,6 +84,21 @@ public class InstructorDao {
 	       }
 	   }
 	   
+	   public int getRowNumber(){
+		   
+		   String sql = "SELECT MAX(idActivity) FROM Activity";
+		   int maximo = jdbcTemplate.queryForObject(sql, Integer.class);
+		   return maximo;
+		   
+	   }
+	   
+	   
+	   public void createActivity(Activity activity) {
+	       jdbcTemplate.update("INSERT INTO Activity VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)",
+	    		   getRowNumber(), activity.getActivityName(), activity.getActDate(),activity.getLocation(),"/activities/"+getRowNumber(), 
+	    		   activity.getDuration(),activity.getDescriptionActivity(), activity.getPrice(), activity.getMaxPeople(), activity.getMinPeople(),
+	    		   activity.getVacancies(), activity.getTypeName(), activity.getLevel());
+	   }
 	   
 
 }
