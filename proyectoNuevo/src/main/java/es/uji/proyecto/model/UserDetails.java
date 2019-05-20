@@ -11,7 +11,7 @@ public class UserDetails {
 		super();
 		this.username = username;
 		this.password = password;
-		this.acceso=acceso;
+		//this.acceso=acceso;
 	}
 	
 	public UserDetails() {
@@ -31,14 +31,14 @@ public class UserDetails {
 		this.password = password;
 	}
 
-	public int getAcceso() {
-		return acceso;
-	}
-
-	public void setAcceso(int acceso) {
-		this.acceso = acceso;
-	}
-	
+//	public int getAcceso() {
+//		return acceso;
+//	}
+//
+//	public void setAcceso(int acceso) {
+//		this.acceso = acceso;
+//	}
+//	
 	
 
 }

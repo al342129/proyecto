@@ -16,19 +16,28 @@ import es.uji.proyecto.dao.UserDao;
 import es.uji.proyecto.model.UserDetails;
 
 
-//
-//class UserValidator implements Validator { 
-//	@Override
-//	public boolean supports(Class<?> cls) { 
-//		return UserDetails.class.isAssignableFrom(cls);
-//	}
-//	@Override 
-//	public void validate(Object obj, Errors errors) {
-//	  // Exercici: Afegeix codi per comprovar que 
-//         // l'usuari i la contrasenya no estiguen buits 
-//         // ...
-//	}
-//}
+
+class UserValidator implements Validator { 
+	@Override
+	public boolean supports(Class<?> cls) { 
+		return UserDetails.class.isAssignableFrom(cls);
+	}
+	@Override 
+	public void validate(Object obj, Errors errors) {
+	  // Exercici: Afegeix codi per comprovar que 
+         // l'usuari i la contrasenya no estiguen buits 
+         // ...
+		UserDetails userDetails = (UserDetails)obj;
+		 if (userDetails.getUsername().trim().equals(""))
+		       errors.rejectValue("username", "obligatori",
+		                          "Cal introduir un valor");
+	
+		if (userDetails.getPassword().trim().equals(""))
+		       errors.rejectValue("password", "obligatori",
+	                   "Cal introduir un valor");
+	}
+}
+
 
 @Controller
 @RequestMapping("/user")
@@ -48,14 +57,14 @@ public class LoginController {
 		UserValidator userValidator = new UserValidator(); 
 		userValidator.validate(user, bindingResult); 
 		if (bindingResult.hasErrors()) {
-			return "login";
+			return "user/login";	//pongo prueba, solo estaba login
 		}
 	       // Comprova que el login siga correcte 
 		// intentant carregar les dades de l'usuari 
 		user = userDao.loadUserByUsername(user.getUsername(),user.getPassword()); 
 		if (user == null) {
 			bindingResult.rejectValue("password", "badpw", "Contrasenya incorrecta"); 
-			return "login";
+			return "user/login";
 		}
 		// Autenticats correctament. 
 		// Guardem les dades de l'usuari autenticat a la sessió

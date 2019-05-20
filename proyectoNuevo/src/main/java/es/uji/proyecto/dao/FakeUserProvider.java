@@ -1,3 +1,4 @@
+
 package es.uji.proyecto.dao;
 
 import java.util.Collection;
@@ -26,7 +27,7 @@ public class FakeUserProvider implements UserDao {
        knownUsers.put("bob", userBob);
   }
 
-  //@Override
+  @Override
   public UserDetails loadUserByUsername(String username, String password) { 
 	  UserDetails user = knownUsers.get(username.trim());
 	  if (user == null)
@@ -42,7 +43,7 @@ public class FakeUserProvider implements UserDao {
 	 }
   }
 
-  //@Override 
+  @Override 
   public Collection<UserDetails> listAllUsers() {
 	 return knownUsers.values();
   }
