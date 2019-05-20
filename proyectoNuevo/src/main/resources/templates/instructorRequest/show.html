@@ -71,7 +71,15 @@
 	  <td th:text="${#temporals.format(instructorRequest.requestDate,'dd/MM/yyyy')}"></td>
 	</tr> 
 	<tr>
-	  <td>Archivo adjunto:</td>
+	
+	<tr>
+	  <td>Petición:</td>
+	  <td th:text="${instructorRequest.activityTypeRequest}"></td>
+	</tr> 
+	<tr>
+	
+	
+	  <td>Certificado:</td>
 	  <td><a th:href="@{/instructorRequest/adjunto/{nid}(nid=${instructorRequest.nid})}">Ver archivo adjunto</a></td>
 	</tr> 
 	

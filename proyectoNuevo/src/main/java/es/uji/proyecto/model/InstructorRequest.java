@@ -10,7 +10,8 @@ public class InstructorRequest {
 	private String name;
 	private String state;
 	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
-	private LocalDate requestDate; 
+	private LocalDate requestDate;
+	private String activityTypeRequest;
 	private String instructorRequestPDF;
 	public String getNid() {
 		return nid;
@@ -48,6 +49,12 @@ public class InstructorRequest {
 	}
 	public void setInstructorRequestPDF(String instructorRequestPDF) {
 		this.instructorRequestPDF = instructorRequestPDF;
+	}
+	public String getActivityTypeRequest() {
+		return activityTypeRequest;
+	}
+	public void setActivityTypeRequest(String activityTypeRequest) {
+		this.activityTypeRequest = activityTypeRequest;
 	}
 	
 	

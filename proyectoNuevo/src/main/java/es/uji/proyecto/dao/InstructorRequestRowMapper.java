@@ -15,6 +15,7 @@ public final class InstructorRequestRowMapper implements RowMapper<InstructorReq
        instructorRequest.setName(rs.getString("name"));
        instructorRequest.setState(rs.getString("state"));
        instructorRequest.setNid(rs.getString("nid"));
+       instructorRequest.setActivityTypeRequest(rs.getString("activityTypeRequest"));
        instructorRequest.setRequestDate(rs.getObject("requestDate",LocalDate.class));
        instructorRequest.setInstructorRequestPDF(rs.getString("instructorRequestPDF"));
        

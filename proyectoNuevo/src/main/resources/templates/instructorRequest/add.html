@@ -69,7 +69,7 @@
 <!-- 			<form:select path="country" items="${activityTypes}" multiple="true" /> -->
         	<td><label>Petición</label></td>
         	<td>
-        	<select id="type">
+        	<select id="activityTypeRequest" th:field="*{activityTypeRequest}">
         		<option value=""></option> 
        			<option th:each="activityType : ${activityTypes}"
                		th:value="${activityType}"
