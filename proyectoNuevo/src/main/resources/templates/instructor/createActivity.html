@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+   <title>Crear actividad</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet"       
+     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+     
+     
+         <style>
+	body{
+		background-color: #E0FFFF
+	}
+	
+	h2{
+    
+    text-align: center; 
+    background-color: #1E90FF;
+    width: 100%;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+    }
+     table{
+    
+    background-color: #87CEFA;
+    border-radius: 20px ;
+    margin-top:20px;
+    margin-bottom: 20px;
+    
+  }
+  td{
+    align: left;
+    margin-left: 20px;
+  }
+  
+  .box {
+        height: 50px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .box>* {
+        flex: 1 1 100px;
+    }
+  
+</style>
+
+</head>
+<body>
+    <h2>Nueva actividad</h2>
+    <form action="#" th:action="@{/instructor/createActivity}" 
+                     th:object="${instructor}" method="post" > 
+      <table align=center cellpadding="20">
+        
+        
+        	<td><label>Tipo de actividad</label></td>
+        	<td>
+        	<select id="activityTypeRequest" >
+        		<option value=""></option> 
+       			<option th:each="activityType : ${activities}"
+               		th:value="${activityType}"
+               		th:text="${activityType}"></option>
+   			</select>
+
+      </table>
+    </form>
+</body>
+</html>

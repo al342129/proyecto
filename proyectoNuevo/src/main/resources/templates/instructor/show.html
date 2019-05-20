@@ -58,7 +58,7 @@
 	
 	<tr>
 	  <td align="center">Fecha aceptacion:</td>
-	  <td th:text="${instructor.acceptanceDate}" align="center"></td>
+	  <td th:text="${#temporals.format(instructor.acceptanceDate,'dd/MM/yyyy')}" align="center"></td>
 	</tr>      
       </tbody>
     </table>

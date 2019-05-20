@@ -1,14 +1,18 @@
 package es.uji.proyecto.model;
 
 import java.sql.Date;
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class Instructor {
-	
+	private String nid;
 	private String name;
 	private String state;
-	private String nid;
 	private String profileImage;
-	private Date acceptanceDate;
+	private String activities;
+	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
+	private LocalDate acceptanceDate;
 	
 	
 	public String getName() {
@@ -29,10 +33,10 @@ public class Instructor {
 	public void setNid(String nid) {
 		this.nid = nid;
 	}
-	public Date getAcceptanceDate() {
+	public LocalDate getAcceptanceDate() {
 		return acceptanceDate;
 	}
-	public void setAcceptanceDate(Date acceptanceDate) {
+	public void setAcceptanceDate(LocalDate acceptanceDate) {
 		this.acceptanceDate = acceptanceDate;
 	}
 	
@@ -47,6 +51,12 @@ public class Instructor {
 	public String toString() {
 		return "Instructor [name=" + name + ", state=" + state + ", nid=" + nid + ", acceptanceDate=" + acceptanceDate
 				+ "]";
+	}
+	public String getActivities() {
+		return activities;
+	}
+	public void setActivities(String activities) {
+		this.activities = activities;
 	}
 	
 	

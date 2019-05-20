@@ -82,11 +82,11 @@ public class InstructorRequestDao {
 	   public void acceptInstructorRequest(@PathVariable String nid) {
 		   
 		   InstructorRequest nuevoMonitor = getInstructorRequest(nid);
-		   DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		   LocalDate localdate = LocalDate.now();
+		   LocalDate a = LocalDate.now();
+		   nuevoMonitor.setRequestDate(a);
 		   jdbcTemplate.update("DELETE FROM InstructorRequest WHERE nid=?", nid);
-		   jdbcTemplate.update("INSERT INTO Instructor VALUES(?, ?, ?, ?)",nuevoMonitor.getNid(),"Hola",nuevoMonitor.getName()
-				   ,"Disponible");
+		   jdbcTemplate.update("INSERT INTO Instructor VALUES(?, ?, ?, ?, ?,?)",nuevoMonitor.getNid(),nuevoMonitor.getName(),"Disponible",
+				   "default.jpg",nuevoMonitor.getActivityTypeRequest()+"/",nuevoMonitor.getRequestDate());
 		   
 	   }
 

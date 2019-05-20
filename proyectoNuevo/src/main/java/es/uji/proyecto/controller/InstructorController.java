@@ -1,5 +1,12 @@
 package es.uji.proyecto.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,11 +15,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import es.uji.proyecto.dao.InstructorDao;
 import es.uji.proyecto.model.Instructor;
+import es.uji.proyecto.model.InstructorRequest;
 
 @Controller
 @RequestMapping("/instructor")
@@ -59,5 +68,27 @@ public class InstructorController {
 		 instructorDao.updateInstructor(instructor);
 		 return "redirect:../list"; 
 	}
+	
+	
+	@RequestMapping(value="/createActivity/{nid}")
+	public String createActivity(@PathVariable String nid, Model model) {
+		String activities = instructorDao.getInstructor(nid).getActivities();
+		List<String> items = Arrays.asList(activities.split("/"));
+		model.addAttribute("activities", items);
+		return "instructor/createActivity";
+	}
+	
+	/*@RequestMapping(value="/createActivity", method=RequestMethod.POST) 
+	public String processAddSubmit(@ModelAttribute("activities") InstructorRequest instructorRequest,
+			@ModelAttribute("activityTypes") String activity,
+			BindingResult bindingResult,@RequestParam("file") MultipartFile file,
+            RedirectAttributes redirectAttributes) {
+		 
+	      
+	      instructorRequestDao.addInstructorRequest(instructorRequest);
+	      return "redirect:list";
+	   }*/
+	
+	
 
 }
