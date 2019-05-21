@@ -69,9 +69,13 @@ public class LoginController {
 		// Autenticats correctament. 
 		// Guardem les dades de l'usuari autenticat a la sessió
 		session.setAttribute("user", user); 
+		
+		
+		//devuelve a la pagina donde se dirigia antes de autenticarse 
+		if(session.getAttribute("nextUrl") != null )
+			return "redirect:" + session.getAttribute("nextUrl");
 			
-		// Torna a la pàgina principal
-		return "redirect:/";
+		return "redirect:";
 	}
 
 	@RequestMapping("/logout") 
