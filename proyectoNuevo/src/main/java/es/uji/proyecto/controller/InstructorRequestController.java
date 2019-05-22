@@ -94,13 +94,14 @@ public class InstructorRequestController {
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST) 
 	public String processAddSubmit(@ModelAttribute("instructorRequest") InstructorRequest instructorRequest,
+			BindingResult bindingResult,
 			@ModelAttribute("activityTypes") String activity,
-			BindingResult bindingResult,@RequestParam("file") MultipartFile file,
+			 @RequestParam("file") MultipartFile file,
             RedirectAttributes redirectAttributes) {
-		 //CustomerValidator customerValidator = new CustomerValidator(); 
-		 //customerValidator.validate(customer, bindingResult);
-		 //if (bindingResult.hasErrors())
-			//	return "customer/add";
+		 InstructorRequestValidator instructorRequestValidator = new InstructorRequestValidator(); 
+		 instructorRequestValidator.validate(instructorRequest, bindingResult);
+		 if (bindingResult.hasErrors())
+				return "instructorRequest/add";
 		
 		
 		
@@ -124,7 +125,7 @@ public class InstructorRequestController {
 	      } catch (IOException e) {
 	          e.printStackTrace();
 	      }
-	      System.out.println(activity);
+
 	      instructorRequestDao.addInstructorRequest(instructorRequest);
 	      return "redirect:list";
 	   }

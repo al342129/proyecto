@@ -55,11 +55,13 @@
       <table align=center cellpadding="20">
         <tr>
             <td><label>DNI</label></td>
-            <td><input type="text" th:field="*{nid}" /></td> 
+            <td><input type="text" th:field="*{nid}" /></td>
+            <td th:if="${#fields.hasErrors('nid')}" th:errors="*{nid}" class="error"/></td> 
         </tr>
         <tr>
             <td><label>Nombre</label></td>
             <td><input type="text" th:field="*{name}" /></td>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"/></td>
         </tr>
         <tr>
 <!-- 			<div th:each="nadador:${activityTypes}" class="box"> -->
@@ -70,15 +72,14 @@
         	<td><label>Petición</label></td>
         	<td>
         	<select id="activityTypeRequest" th:field="*{activityTypeRequest}">
-        		<option value=""></option> 
+
        			<option th:each="activityType : ${activityTypes}"
                		th:value="${activityType}"
                		th:text="${activityType}"></option>
+               		
    			</select>
-
-			
-       
         </td>
+<!--          -->
         
         
         </tr>

@@ -13,6 +13,12 @@ public class InstructorRequest {
 	private LocalDate requestDate;
 	private String activityTypeRequest;
 	private String instructorRequestPDF;
+	
+	
+	public InstructorRequest() {
+		super();	
+	}
+	
 	public String getNid() {
 		return nid;
 	}
