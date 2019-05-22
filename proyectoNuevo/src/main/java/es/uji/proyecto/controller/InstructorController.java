@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import es.uji.proyecto.dao.InstructorDao;
+import es.uji.proyecto.model.Activity;
 import es.uji.proyecto.model.Instructor;
 import es.uji.proyecto.model.InstructorRequest;
 
@@ -69,25 +71,55 @@ public class InstructorController {
 		 return "redirect:../list"; 
 	}
 	
-	
-	@RequestMapping(value="/createActivity/{nid}")
+	@Value("${upload.file.directory}")
+	   private String uploadDirectory;
+	@RequestMapping(value="/createActivity/{nid}", method = RequestMethod.GET)
 	public String createActivity(@PathVariable String nid, Model model) {
 		String activities = instructorDao.getInstructor(nid).getActivities();
 		List<String> items = Arrays.asList(activities.split("/"));
+		Instructor instructor = instructorDao.getInstructor(nid);
+		System.out.println(instructor);
+
+		model.addAttribute("activity", new Activity());
 		model.addAttribute("activities", items);
+		model.addAttribute("instructor", instructor);
 		return "instructor/createActivity";
 	}
 	
-	/*@RequestMapping(value="/createActivity", method=RequestMethod.POST) 
-	public String processAddSubmit(@ModelAttribute("activities") InstructorRequest instructorRequest,
-			@ModelAttribute("activityTypes") String activity,
+	@RequestMapping(value="/createActivity", method=RequestMethod.POST) 
+	public String processAddSubmit(@ModelAttribute("activity") Activity activity,
 			BindingResult bindingResult,@RequestParam("file") MultipartFile file,
             RedirectAttributes redirectAttributes) {
 		 
+		if (file.isEmpty()) {
+	          // Enviar mensaje de error porque no hay fichero seleccionado
+	          redirectAttributes.addFlashAttribute("message", 
+	                                           "Please select a file to upload");
+	          return "redirect:/add";
+	      }
+
+	      try {
+	          // Obtener el fichero y guardarlo
+	          byte[] bytes = file.getBytes();
+	          Path path = Paths.get(uploadDirectory + "images/" 
+	                                        + activity.getNidInstructor()+ file.getOriginalFilename());
+	          Files.write(path, bytes);
+
+	          redirectAttributes.addFlashAttribute("message",
+	                  "You successfully uploaded '" + path + "'");
+
+	      } catch (IOException e) {
+	          e.printStackTrace();
+	      }
 	      
-	      instructorRequestDao.addInstructorRequest(instructorRequest);
-	      return "redirect:list";
-	   }*/
+	      String[] activityType = activity.getTypeName().split(",");
+	      String typeName = activityType[0];
+	      String level = activityType[1];
+	      activity.setTypeName(typeName);
+	      activity.setLevel(level);
+	      instructorDao.createActivity(activity, file.getOriginalFilename());
+	      return "redirect:/list";
+	   }
 	
 	
 

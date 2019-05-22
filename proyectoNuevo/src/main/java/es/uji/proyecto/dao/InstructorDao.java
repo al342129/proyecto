@@ -93,11 +93,13 @@ public class InstructorDao {
 	   }
 	   
 	   
-	   public void createActivity(Activity activity) {
-	       jdbcTemplate.update("INSERT INTO Activity VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)",
-	    		   getRowNumber(), activity.getActivityName(), activity.getActDate(),activity.getLocation(),"/activities/"+getRowNumber(), 
+	   public void createActivity(Activity activity,  String image) {
+		   String identificador = activity.getNidInstructor() + activity.getLocation().substring(0,3);
+	       jdbcTemplate.update("INSERT INTO Activity VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+	    		   identificador, activity.getActivityName(), activity.getActDate(),activity.getLocation(),"/images/"+activity.getNidInstructor()+image, 
 	    		   activity.getDuration(),activity.getDescriptionActivity(), activity.getPrice(), activity.getMaxPeople(), activity.getMinPeople(),
-	    		   activity.getVacancies(), activity.getTypeName(), activity.getLevel());
+	    		   activity.getVacancies(), activity.getTypeName(), activity.getLevel(),activity.getNidInstructor()
+	    		   );
 	   }
 	   
 

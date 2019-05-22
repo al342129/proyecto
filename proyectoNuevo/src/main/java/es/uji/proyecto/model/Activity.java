@@ -21,6 +21,7 @@ public class Activity {
 		private int vacancies;
 		private String typeName;
 		private String level;
+		private String nidInstructor;
 		
 		
 		
@@ -127,6 +128,14 @@ public class Activity {
 
 		public void setLevel(String level) {
 			this.level = level;
+		}
+
+		public String getNidInstructor() {
+			return nidInstructor;
+		}
+
+		public void setNidInstructor(String nidInstructor) {
+			this.nidInstructor = nidInstructor;
 		}
 
 }
