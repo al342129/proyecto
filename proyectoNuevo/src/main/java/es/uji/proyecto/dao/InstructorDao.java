@@ -102,5 +102,16 @@ public class InstructorDao {
 	    		   );
 	   }
 	   
+	   
+	   public List<Activity> getActivities(String instructorNid) {
+	       try {
+	           return jdbcTemplate.query("SELECT * FROM Activity WHERE nidInstructor = ?",
+		      		     new ActivityRowMapper(), instructorNid);
+	       }
+	       catch(EmptyResultDataAccessException e) {
+	           return new ArrayList<Activity>();
+	       }
+	   }
+	   
 
 }

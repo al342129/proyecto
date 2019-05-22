@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Gestionar Actividades</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet"     
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+   
+</head>
+
+<body>
+   <h1>Lista de actividades</h1>
+   <table class="table table-striped">
+     <thead>
+       <tr>
+         <th>Nombre</th>
+         <th>Lugar</th>
+<!--           Buscar hacerlo bonito rojo/vere -->
+         <th>Fecha de la actividad</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr th:each="activity: ${activities}"> 
+         <td th:text="${activity.activityName}"></td>
+     	 <td th:text="${activity.location}"></td>
+     	 <td th:text="${#temporals.format(activity.actDate,'dd/MM/yyyy')}"></td>
+		
+		
+<!-- 		<td><button type="button" class="btn btn-primary" ><a th:href="@{/instructor/createActivity/{nid}(nid=${instructor.nid})}"><font color="white">Crear actividad</font></a></button></td> -->
+<!-- 		<td><button type="button" class="btn btn-primary" ><a th:href="@{/instructor/show/{nid}(nid=${instructor.nid})}"><font color="white">Ver</font></a></button></td> -->
+		<td><button type="button" class="btn btn-warning" ><a th:href="@{/instructor/modifyActivity/{idActivity}(idActivity=${activity.idActivity})}"><font color="black">Editar</font></a></button></td>
+<!--   	<td><button type="button" class="btn btn-danger" ><a th:href="@{/instructor/delete/{nid}(nid=${instructor.nid})}"><font color="white">Baja</font></a></button>  -->
+<!--     </td> -->
+       </tr>       
+     </tbody>
+   </table>
+   
+   
+</body>
+
+
+</html>

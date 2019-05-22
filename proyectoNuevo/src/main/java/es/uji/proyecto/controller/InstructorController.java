@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import es.uji.proyecto.dao.ActivityDao;
 import es.uji.proyecto.dao.InstructorDao;
 import es.uji.proyecto.model.Activity;
 import es.uji.proyecto.model.Instructor;
@@ -31,6 +32,9 @@ public class InstructorController {
 	
 	@Autowired
 	private InstructorDao instructorDao;
+	
+	@Autowired
+	private ActivityDao activityDao;
 		
 	
 	
@@ -120,6 +124,39 @@ public class InstructorController {
 	      instructorDao.createActivity(activity, file.getOriginalFilename());
 	      return "redirect:/list";
 	   }
+	
+	@RequestMapping("/listActivities/{nid}")
+	public String listActivities(@PathVariable String nid,Model model) {
+		model.addAttribute("activities", instructorDao.getActivities(nid));
+		
+		return "instructor/listActivities";
+	}
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value="/modifyActivity/{idActivity}", method = RequestMethod.GET)
+	public String modifyActivity(Model model, @PathVariable String idActivity) {
+		model.addAttribute("activity", activityDao.getActivity(idActivity));
+		return "instructor/modifyActivity"; 
+	}
+	
+	@RequestMapping(value="/modifyActivity/{idActivity}", method = RequestMethod.POST) 
+	public String processUpdateSubmit(@PathVariable String idActivity, 
+                            @ModelAttribute("activity") Activity activity, 
+                            BindingResult bindingResult) {
+		 //InstructorValidator instructorValidator = new InstructorValidator(); 
+		 //instructorValidator.validate(instructor, bindingResult);
+		 //if (bindingResult.hasErrors()) 
+		//	 return "instructor/modify";
+		 activityDao.updateActivity(activity);
+		 return "redirect:../list"; 
+	}
+	
+	
+	
 	
 	
 

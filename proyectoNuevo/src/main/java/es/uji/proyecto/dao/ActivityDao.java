@@ -40,21 +40,21 @@ public class ActivityDao {
 
 	   /* Actualitza els atributs de l'activitat
 	      (excepte el idActivity, que és la clau primària) */
-	   void updateActivity(Activity activity) {
-	       jdbcTemplate.update("UPDATE Customer SET actDate=?,activityName=?, duration=?, descriptionActivity=?, price=?,"
-	       		+ "maxPeople=?, minPeople=?, vacancies=? WHERE idActivity=?",
+	   public void updateActivity(Activity activity) {
+	       jdbcTemplate.update("UPDATE Activity SET actDate=?,activityName=?, duration=?, descriptionActivity=?, price=?,"
+	       		+ " location=?,maxPeople=?, minPeople=?, vacancies=? WHERE idActivity=?",
 	    		   activity.getActDate(), activity.getActivityName(), 
 	    		   activity.getDuration(), activity.getDescriptionActivity(), 
-	    		   activity.getPrice(),activity.getMaxPeople(),activity.getMinPeople(),
+	    		   activity.getPrice(),activity.getLocation(),activity.getMaxPeople(),activity.getMinPeople(),
 	    		   activity.getVacancies() ,activity.getIdActivity());
 	   }
 
 	   /* Obté l'activitat amb el nom donat. Torna null si no existeix. */
-	   Activity getActivity(Activity activityName) {
+	   public Activity getActivity(String idActivity) {
 	       try {
-	           return jdbcTemplate.queryForObject("SELECT * FROM Activity WHERE activityName = ?",
+	           return jdbcTemplate.queryForObject("SELECT * FROM Activity WHERE idActivity = ?",
 		      		     new ActivityRowMapper(),
-		      		     activityName);
+		      		     idActivity);
 		       }
 	       catch(EmptyResultDataAccessException e) {
 	           return null;

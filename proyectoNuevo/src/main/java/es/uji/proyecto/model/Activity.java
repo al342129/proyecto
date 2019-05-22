@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class Activity {
 	
-		private int idActivity;
+		private String idActivity;
 		private String activityName;
 		@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
 		private LocalDate actDate;
@@ -31,12 +31,12 @@ public class Activity {
 			// TODO Auto-generated constructor stub
 		}
 		
-		public int getIdActivity() {
+		public String getIdActivity() {
 			return idActivity;
 		}
 
 
-		public void setIdActivity(int idActivity) {
+		public void setIdActivity(String idActivity) {
 			this.idActivity = idActivity;
 		}
 		

@@ -25,7 +25,7 @@
      	 <td th:text="${instructor.state}"></td>
      	 <td th:text="${#temporals.format(instructor.acceptanceDate,'dd/MM/yyyy')}"></td>
 		
-		
+		<td><button type="button" class="btn btn-primary" ><a th:href="@{/instructor/listActivities/{nid}(nid=${instructor.nid})}"><font color="white">Ver actividades</font></a></button></td>
 		<td><button type="button" class="btn btn-primary" ><a th:href="@{/instructor/createActivity/{nid}(nid=${instructor.nid})}"><font color="white">Crear actividad</font></a></button></td>
 		<td><button type="button" class="btn btn-primary" ><a th:href="@{/instructor/show/{nid}(nid=${instructor.nid})}"><font color="white">Ver</font></a></button></td>
     <td><button type="button" class="btn btn-warning" ><a th:href="@{/instructor/modify/{nid}(nid=${instructor.nid})}"><font color="black">Editar</font></a></button></td>
