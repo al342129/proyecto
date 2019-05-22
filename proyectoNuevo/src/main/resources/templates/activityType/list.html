@@ -3,8 +3,15 @@
 <head>
    <title>Gestionar tipos de actividades</title>
    <meta charset="UTF-8" />
-   <link rel="stylesheet"     
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+   <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/4.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+   
 </head>
 <body>
    <h1>Listado de tipos de actividades</h1>
@@ -25,6 +32,11 @@
          
 		<td><button type="button" class="btn btn-warning" ><a th:href="@{/activityType/update/{typeName}/{level}(typeName=${activityType.typeName},level=${activityType.level})}"><font color="black">Editar</font></a></button>
 			</td>
+			<td>
+		
+			
+
+			
  			<td><button type="button" class="btn btn-danger"><a th:href="@{/activityType/delete/{typeName}/{level}(typeName=${activityType.typeName},level=${activityType.level})}"><font color="white">Borrar</font></a></button> 
 			</td>
 		</tr>

@@ -49,11 +49,7 @@
         </tr>
                 <tr>
             <td><label>Nivel</label></td>
-            <td><select th:field="*{level}">
-    			<option th:value="Básico" th:text="Básico"></option>
-    			<option th:value="Intermedio" th:text="Intermedio"></option>
-    			<option th:value="Avanzado" th:text="Avanzado"></option>
-			</select></td>
+            <td> <input type="text" th:field="*{level}" readonly="readonly" /></td> 
         </tr>
        
 

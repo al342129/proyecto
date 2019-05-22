@@ -1,6 +1,7 @@
 package es.uji.proyecto.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,12 +43,20 @@ public class ActivityTypeController {
 	@RequestMapping(value="/add", method=RequestMethod.POST) 
 	public String processAddSubmit(@ModelAttribute("activityType") ActivityType activityType,
 			BindingResult bindingResult) {
-		 //CustomerValidator customerValidator = new CustomerValidator(); 
-		 //customerValidator.validate(customer, bindingResult);
-		 //if (bindingResult.hasErrors())
-		//		return "customer/add";
-		activityTypeDao.addActivityType(activityType);
-		 return "redirect:list";
+		 ActivityTypeValidator activityTypeValidator = new ActivityTypeValidator(); 
+		 activityTypeValidator.validate(activityType, bindingResult);
+		 if (bindingResult.hasErrors())
+				return "activityType/add";
+		 try{
+			 activityTypeDao.addActivityType(activityType);
+		 }
+		 catch(DuplicateKeyException e) {
+			 throw new ProjectException(  
+		             "Error! Ya existe este tipo de actividad en la base de datos " 
+		            , "ClavePrimariaDuplicada"); 
+		   } 
+		   return "redirect:list";
+
 	 }
 	
 	@RequestMapping(value="/update/{typeName}/{level}", method = RequestMethod.GET) 
@@ -60,10 +69,10 @@ public class ActivityTypeController {
 	public String processUpdateSubmit(@PathVariable String typeName, @PathVariable String level,
 	                        @ModelAttribute("activityType") ActivityType activityType, 
 	                        BindingResult bindingResult) {
-		 //CustomerValidator customerValidator = new CustomerValidator(); 
-		 //customerValidator.validate(customer, bindingResult);
-		 //if (bindingResult.hasErrors()) 
-		//	 return "customer/update";
+		ActivityTypeValidator activityTypeValidator = new ActivityTypeValidator(); 
+		 activityTypeValidator.validate(activityType, bindingResult);
+		 if (bindingResult.hasErrors())
+				return "activityType/update";
 		 activityTypeDao.updateActivityType(activityType);
 		 return "redirect:../../list"; 
 	}
