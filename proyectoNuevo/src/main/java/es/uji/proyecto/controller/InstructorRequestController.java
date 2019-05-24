@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,7 +36,9 @@ public class InstructorRequestController {
 	
 	@Autowired
 	private InstructorRequestDao instructorRequestDao;
-	
+	private void loadReferenceData(ModelMap model) {
+        model.put("noms",activityTypes());
+    }
 
 	@Autowired
 	private ActivityTypeDao actDao;
@@ -79,16 +82,30 @@ public class InstructorRequestController {
 	@Value("${upload.file.directory}")
 	   private String uploadDirectory;
 	
-	@RequestMapping(value="/add") 
-	public String addInstructorRequest(Model model) {
+	
+	@ModelAttribute("activityTypes")
+	public List<String> activityTypes(){
 		List<ActivityType> actTypes = actDao.getActivityTypes();
-		   List<String> noms = actTypes.stream()
+		List<String> noms = actTypes.stream()
 		           .map(ActivityType::getStructure)
 		           .collect(Collectors.toList());
+		return noms;
+	}
+	
+	
+	
+	@RequestMapping(value="/add", method=RequestMethod.GET) 
+	public String addInstructorRequest(@ModelAttribute(name="activityTypes") List<String> activityTypes,Model model) {
+		/*List<ActivityType> actTypes = actDao.getActivityTypes();
+		   List<String> noms = actTypes.stream()
+		           .map(ActivityType::getStructure)
+		           .collect(Collectors.toList());*/
 		model.addAttribute("instructorRequest", new InstructorRequest());
-		model.addAttribute("activityTypes", noms);
+		//model.addAttribute("activityTypes", noms);
 		return "instructorRequest/add";
 	}
+	
+	
 	
 	
 	
@@ -100,8 +117,13 @@ public class InstructorRequestController {
             RedirectAttributes redirectAttributes) {
 		 InstructorRequestValidator instructorRequestValidator = new InstructorRequestValidator(); 
 		 instructorRequestValidator.validate(instructorRequest, bindingResult);
-		 if (bindingResult.hasErrors())
-				return "instructorRequest/add";
+		 if (bindingResult.hasErrors()){
+			 
+			 return "/instructorRequest/add";
+		 }
+			 
+				
+			
 		
 		
 		
@@ -109,7 +131,13 @@ public class InstructorRequestController {
 	          // Enviar mensaje de error porque no hay fichero seleccionado
 	          redirectAttributes.addFlashAttribute("message", 
 	                                           "Please select a file to upload");
-	          return "redirect:/add";
+	          instructorRequestValidator.setFichero(0);
+	          instructorRequestValidator.validate(instructorRequest, bindingResult); 
+	          if (bindingResult.hasErrors()){
+	 			 
+	 			 return "/instructorRequest/add";
+	 		 }
+	 		 
 	      }
 
 	      try {

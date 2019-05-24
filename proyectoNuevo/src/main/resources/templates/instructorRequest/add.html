@@ -79,6 +79,7 @@
                		
    			</select>
         </td>
+       
 <!--          -->
         
         
@@ -92,11 +93,15 @@
 				<td><label>Certificado</label></td>
 				<td>
   				 <input type="file" name="file" id="file" /> <br/>
+  				 
 <!--    				<input type="submit" value="upload" name="upload" id="upload" /> -->
 <!-- 				</form> -->
 				</td>
         </tr>
-       
+        <tr>
+        <td th:field="*{instructorRequestPDF}" /></td>
+        <td th:if="${#fields.hasErrors('instructorRequestPDF')}" th:errors="*{instructorRequestPDF}" class="error"/></td>
+       </tr>
         <tr>
             <td colspan="2"><input type="submit" value="Afegeix peticio" /></td>
         </tr>
