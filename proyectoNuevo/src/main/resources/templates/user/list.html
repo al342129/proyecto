@@ -3,16 +3,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Llista d'usuaris del sistema</title>
+
 <meta charset="UTF-8"/>
 <!-- Afegim una fulla d'estil (Bootstrap) -->
 <link rel="stylesheet"   
     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="/css/natacio.css" 
                                     th:href="@{/css/natacio.css}"/>
+                                    
+<style type="text/css">
+.loggeduser { 
+	color: gray;				
+	text-align: right;
+margin-right: 10pt;
+}
+
+</style>
 </head>
 
 <body>
 	<h1>Llista d'usuaris del sistema</h1>
+	<div th:replace="fragments/logininfo" >...</div>
+	
     <div th:if="${#lists.isEmpty(users)}">
        No hi ha usuaris
     </div>
