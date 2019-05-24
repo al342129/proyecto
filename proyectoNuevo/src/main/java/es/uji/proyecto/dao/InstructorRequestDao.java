@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.sql.DataSource;
 
@@ -79,6 +80,20 @@ public class InstructorRequestDao {
 	       }
 	   }
 	   
+	   
+	   protected String getSaltString() {
+	        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+	        StringBuilder salt = new StringBuilder();
+	        Random rnd = new Random();
+	        while (salt.length() < 11) {
+	            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+	            salt.append(SALTCHARS.charAt(index));
+	        }
+	        String saltStr = salt.toString();
+	        return saltStr;
+
+	    }
+	   
 	   public void acceptInstructorRequest(@PathVariable String nid) {
 		   
 		   InstructorRequest nuevoMonitor = getInstructorRequest(nid);
@@ -87,6 +102,10 @@ public class InstructorRequestDao {
 		   jdbcTemplate.update("DELETE FROM InstructorRequest WHERE nid=?", nid);
 		   jdbcTemplate.update("INSERT INTO Instructor VALUES(?, ?, ?, ?, ?,?)",nuevoMonitor.getNid(),nuevoMonitor.getName(),"Disponible",
 				   "default.jpg",nuevoMonitor.getActivityTypeRequest()+"/",nuevoMonitor.getRequestDate());
+		   
+		   String password = getSaltString();
+		   jdbcTemplate.update("INSERT INTO Users VALUES(?,?,?)", nuevoMonitor.getNid(),password,"Monitor");
+		   
 		   
 	   }
 
