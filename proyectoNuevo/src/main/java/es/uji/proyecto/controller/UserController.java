@@ -19,7 +19,7 @@ public class UserController {
    private UserDao userDao;
 
    @Autowired 
-   public void setSociDao(UserDao userDao) {
+   public void setUserDao(UserDao userDao) {
        this.userDao = userDao;
    }
   

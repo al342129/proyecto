@@ -1,28 +1,28 @@
 package es.uji.proyecto.model;
 
 public class UserDetails {
-	String username;
+	String nid; //es el username 
 	String password;
-	int acceso;	//hay que mirar como hacerlo. Debería tener un valor de 1 a 3 en funcion de si eres monitor, alumno o Manel.
+	String type;	//hay que mirar como hacerlo. Debería tener un valor de 1 a 3 en funcion de si eres monitor, alumno o Manel.
 	
 	
 	
-	public UserDetails(String username, String password, int acceso) {
+	public UserDetails(String nid, String password, int acceso) {
 		super();
-		this.username = username;
+		this.nid = nid;
 		this.password = password;
-		//this.acceso=acceso;
+		this.type=type;
 	}
 	
 	public UserDetails() {
 	}
 	
 	
-	public String getUsername() {
-		return username;
+	public String getNid() {
+		return nid;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+	public void setNid(String nid) {
+		this.nid = nid;
 	}
 	public String getPassword() {
 		return password;
@@ -31,14 +31,14 @@ public class UserDetails {
 		this.password = password;
 	}
 
-//	public int getAcceso() {
-//		return acceso;
-//	}
-//
-//	public void setAcceso(int acceso) {
-//		this.acceso = acceso;
-//	}
-//	
+	public String getUserType() {
+		return type;
+	}
+
+	public void setUserType(String type) {
+		this.type = type;
+	}
+	
 	
 
 }

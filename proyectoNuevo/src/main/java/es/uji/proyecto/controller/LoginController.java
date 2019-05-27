@@ -28,7 +28,7 @@ class UserValidator implements Validator {
          // l'usuari i la contrasenya no estiguen buits 
          // ...
 		UserDetails userDetails = (UserDetails)obj;
-		 if (userDetails.getUsername().trim().equals(""))
+		 if (userDetails.getNid().trim().equals(""))
 		       errors.rejectValue("username", "obligatori",
 		                          "Cal introduir un valor");
 	
@@ -48,7 +48,9 @@ public class LoginController {
 	@RequestMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("user", new UserDetails());
+		System.out.println("Traza 1");
 		return "user/login";
+		
 	}
 
 	@RequestMapping(value="/login", method=RequestMethod.POST)
@@ -57,13 +59,16 @@ public class LoginController {
 		UserValidator userValidator = new UserValidator(); 
 		userValidator.validate(user, bindingResult); 
 		if (bindingResult.hasErrors()) {
-			return "user/login";	//pongo prueba, solo estaba login
+			System.out.println("Traza 2");
+			return "user/login";
+			//pongo prueba, solo estaba login
 		}
 	       // Comprova que el login siga correcte 
 		// intentant carregar les dades de l'usuari 
-		user = userDao.loadUserByUsername(user.getUsername(),user.getPassword()); 
+		user = userDao.loadUserByUsername(user.getNid(),user.getPassword()); 
 		if (user == null) {
 			bindingResult.rejectValue("password", "badpw", "Contrasenya incorrecta"); 
+			System.out.println("Traza 3");
 			return "user/login";
 		}
 		// Autenticats correctament. 
@@ -72,9 +77,11 @@ public class LoginController {
 		
 		
 		//devuelve a la pagina donde se dirigia antes de autenticarse 
-		if(session.getAttribute("nextUrl") != null )
+		if(session.getAttribute("nextUrl") != null ) {
+			System.out.println("Traza 4");
 			return "redirect:" + session.getAttribute("nextUrl");
-			
+		}
+		System.out.println("Traza 5");
 		return "redirect:";
 	}
 
