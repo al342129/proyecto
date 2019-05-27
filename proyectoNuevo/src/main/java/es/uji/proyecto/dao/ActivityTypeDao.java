@@ -35,7 +35,7 @@ public class ActivityTypeDao {
 
 	  
 	   public void updateActivityType(ActivityType activityType) {
-	       jdbcTemplate.update("UPDATE ActivityType SET descriptionActType=? WHERE typeName=? AND level=?",activityType.getDescriptionActType(),activityType.getTypeName(),activityType.getLevel());
+	       jdbcTemplate.update("UPDATE ActivityType SET description=? WHERE typeName=? AND level=?",activityType.getDescriptionActType(),activityType.getTypeName(),activityType.getLevel());
 	   }
 
 

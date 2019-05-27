@@ -19,8 +19,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	      th:object="${user}" method="post">
 		<p>
 		   	<label>Nom d'usuari:</label>
-            <input class="form_control" type="text" th:field="*{username}"/>
-            <div class="error" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></div>
+            <input class="form_control" type="text" th:field="*{nid}"/>
+            <div class="error" th:if="${#fields.hasErrors('nid')}" th:errors="*{nid}"></div>
 		</p>
 		<p>
 		   	<label>Contrasenya:</label>

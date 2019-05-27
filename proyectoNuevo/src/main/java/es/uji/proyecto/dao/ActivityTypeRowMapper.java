@@ -14,7 +14,7 @@ public class ActivityTypeRowMapper implements RowMapper<ActivityType>{
 		// TODO Auto-generated method stub
 		ActivityType activityType = new ActivityType();
 		activityType.setTypeName(rs.getString("typeName"));
-		activityType.setDescriptionActType(rs.getString("descriptionActType"));
+		activityType.setDescriptionActType(rs.getString("description"));
 		activityType.setLevel(rs.getString("level"));
 		
 			return activityType;
