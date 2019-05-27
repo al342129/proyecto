@@ -23,9 +23,9 @@
          <td th:text="${customer.name}"></td>
          <td th:text="${customer.gender}"></td>
          <td th:text="${customer.email}"></td>
-         <td><button type="button" class="btn btn-warning" ><a th:href="@{/customer/update/{nid}(nid=${customer.nid})}"><font color="black">Edita</font></a></button>
+         <td><button type="button" class="btn btn-warning" ><a th:href="@{/customer/update/{nid}(nid=${customer.nid})}"><font color="black">Ver</font></a></button>
          </td>
-         <td><button type="button" class="btn btn-danger"><a th:href="@{/customer/delete/{nid}(nid=${customer.nid})}"><font color="white">Esborra</font></a></button>
+         <td><button type="button" class="btn btn-danger"><a th:href="@{/customer/delete/{nid}(nid=${customer.nid})}"><font color="white">Reservar</font></a></button>
          </td>
        </tr>
      </tbody>

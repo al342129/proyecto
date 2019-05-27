@@ -62,7 +62,7 @@ public class ActivityDao {
 	   }
 
 	   /* Obté totes les activitats. Torna una llista buida si no n'hi ha cap. */
-	   List<Activity> getActivities() {
+	   public List<Activity> getActivities() {
 	       try {
 	           return jdbcTemplate.query("SELECT * FROM Activity", new ActivityRowMapper());
 	       }

@@ -1,43 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"> 
 <head>
-   <title>Gestionar Activitats</title>
+   <title>Gestionar Actividades</title>
    <meta charset="UTF-8" />
    <link rel="stylesheet"     
     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
 </head>
 <body>
    <h1>Llista de Activitats</h1>
-   <table>
+   <table class="table table-striped">
      <thead>
        <tr>
-         <th>IdActivity</th>
-         <th>ActDate</th>
-         <th>ActivityName</th>
-         <th>Price</th>
-         <th>MaxPeople</th>
-         <th>MinPeople</th>
-         <th>Vacancies</th>
+         <th>Fecha</th>
+         <th>Nombre</th>
+         <th>Precio</th>
+         <th>Plazas restantes</th>
          <th></th>
          <th></th>
        </tr>
      </thead>
      <tbody>
        <tr th:each="activity: ${activities}">
-         <td th:text="${activity.idActivity}"></td>
-         <td th:text="${activity.actDate}"></td>
+         <td th:text="${#temporals.format(activity.actDate,'dd/MM/yyyy')}"></td>
          <td th:text="${activity.activityName}"></td>
          <td th:text="${activity.price}"></td>
-         <td th:text="${activity.maxPeople}"></td>
-         <td th:text="${activity.minPeople}"></td>
          <td th:text="${activity.vacancies}"></td>
-         <td><a th:href="@{/activity/update/{idActivity}(idActivity=${activity.idActivity})}">Edita</a> 
+         <td><button type="button" class="btn btn-primary" ><a th:href="@{/activity/show/{idActivity}(idActivity=${activity.idActivity})}"><font color="white">Ver</font></a></button>
          </td>
-         <td><a th:href="@{/activity/delete/{idActivity}(idActivity=${activity.idActivity})}">Esborra</a>
+         <td><button type="button" class="btn btn-success"><a th:href="@{/activity/reserve/{idActivity}(idActivity=${activity.idActivity})}"><font color="white">Reservar</font></a></button>
          </td>
        </tr>
      </tbody>
    </table>
-   <a href="add.html">Afegeix prova</a>
 </body>
 </html>
