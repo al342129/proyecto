@@ -18,7 +18,7 @@ public final class InstructorRequestRowMapper implements RowMapper<InstructorReq
        instructorRequest.setActivityTypeRequest(rs.getString("activityTypeRequest"));
        instructorRequest.setRequestDate(rs.getObject("requestDate",LocalDate.class));
        instructorRequest.setInstructorRequestPDF(rs.getString("instructorRequestPDF"));
-       
+       instructorRequest.setEmail(rs.getString("email"));
        return instructorRequest;
    }
 }

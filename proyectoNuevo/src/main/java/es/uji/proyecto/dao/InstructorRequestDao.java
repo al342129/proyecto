@@ -33,9 +33,9 @@ public class InstructorRequestDao {
 	   public void addInstructorRequest(InstructorRequest instructorRequest) {
 		   LocalDate a = LocalDate.now();
 		   instructorRequest.setRequestDate(a);
-	       jdbcTemplate.update("INSERT INTO InstructorRequest VALUES(?, ?, ?, ?,?,?)",
+	       jdbcTemplate.update("INSERT INTO InstructorRequest VALUES(?, ?, ?, ?,?,?, ?)",
 	    		   instructorRequest.getNid(), instructorRequest.getName(), "Pendiente", 
-	    		   instructorRequest.getRequestDate(),instructorRequest.getActivityTypeRequest(), "/peticiones/"+instructorRequest.getNid()+".pdf");
+	    		   instructorRequest.getRequestDate(), "/peticiones/"+instructorRequest.getNid()+".pdf",instructorRequest.getActivityTypeRequest(), instructorRequest.getEmail());
 	      
 	   }
 

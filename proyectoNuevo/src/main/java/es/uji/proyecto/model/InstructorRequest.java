@@ -13,6 +13,8 @@ public class InstructorRequest {
 	private LocalDate requestDate;
 	private String activityTypeRequest;
 	private String instructorRequestPDF;
+	private String email;
+	
 	
 	
 	public InstructorRequest() {
@@ -61,6 +63,14 @@ public class InstructorRequest {
 	}
 	public void setActivityTypeRequest(String activityTypeRequest) {
 		this.activityTypeRequest = activityTypeRequest;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 	
