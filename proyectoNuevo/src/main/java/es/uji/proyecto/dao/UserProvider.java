@@ -61,12 +61,16 @@ public class UserProvider implements UserDao{
 		      		     new UserRowMapper(),
 		      		     username);
 	           
-	         BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor(); 
-	      	 if (passwordEncryptor.checkPassword(password, user.getPassword())) {
+	         //BasicPasswordEncryptor passwordEncryptor = new BasicPasswordEncryptor(); 
+	      	// if (passwordEncryptor.checkPassword(password, user.getPassword())) {
 	      	 // Es deuria esborrar de manera segura el camp password abans de tornar-lo
-	      		 return user; 
+	           if (password.equals(user.getPassword())) {
+	        	   System.out.println("La contraseña es igual: " + user.getPassword() + ";" + password);
+	      		 	return user; 
 	          } 
 	      	 else {
+	      		System.out.println("La contraseña no es igual: "+ password + ";"+ user.getPassword());
+	      		
 	      		 return null; // bad login!
 	      	 }
 	      	 

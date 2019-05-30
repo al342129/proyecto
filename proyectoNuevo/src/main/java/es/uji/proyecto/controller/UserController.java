@@ -24,11 +24,13 @@ public class UserController {
    }
   
    @RequestMapping("/list") 
-   public String listSocis(HttpSession session, Model model) {
+   public String listUsers(HttpSession session, Model model) {
        if (session.getAttribute("user") == null) 
        { 
           model.addAttribute("user", new UserDetails()); 
+          System.out.println("Traza entra qui");
           session.setAttribute("nextUrl", "/user/list");
+          System.out.println("Probando probando");
           return "redirect:../user/login";
        } 
        model.addAttribute("users", userDao.listAllUsers());

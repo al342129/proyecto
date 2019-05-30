@@ -48,6 +48,7 @@ public class LoginController {
 	@RequestMapping("/login")
 	public String login(Model model) {
 		model.addAttribute("user", new UserDetails());
+		
 		System.out.println("Traza 1");
 		return "user/login";
 		
@@ -56,6 +57,7 @@ public class LoginController {
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String checkLogin(@ModelAttribute("user") UserDetails user,  		
 				BindingResult bindingResult, HttpSession session) {
+		System.out.println("Traza mil");
 		UserValidator userValidator = new UserValidator(); 
 		userValidator.validate(user, bindingResult); 
 		if (bindingResult.hasErrors()) {
@@ -68,7 +70,7 @@ public class LoginController {
 		user = userDao.loadUserByUsername(user.getNid(),user.getPassword()); 
 		if (user == null) {
 			bindingResult.rejectValue("password", "badpw", "Contrasenya incorrecta"); 
-			System.out.println("Traza 3");
+			System.out.println("Traza no");
 			return "user/login";
 		}
 		// Autenticats correctament. 
@@ -79,6 +81,7 @@ public class LoginController {
 		//devuelve a la pagina donde se dirigia antes de autenticarse 
 		if(session.getAttribute("nextUrl") != null ) {
 			System.out.println("Traza 4");
+			System.out.println(session.getAttribute("nextUrl"));
 			return "redirect:" + session.getAttribute("nextUrl");
 		}
 		System.out.println("Traza 5");
