@@ -10,7 +10,7 @@ public class ProjectControllerAdvice {
 	   @ExceptionHandler(value = ProjectException.class)
 	   public ModelAndView handleClubException(ProjectException ex){ 
 
-	       ModelAndView mav = new ModelAndView("error/exceptionError");
+	       ModelAndView mav = new ModelAndView("exception/exceptionError");
 	       mav.addObject("message", ex.getMessage());
 	       mav.addObject("name", ex.getName());
 	       return mav;

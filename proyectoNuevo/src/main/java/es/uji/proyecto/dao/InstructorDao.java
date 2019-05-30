@@ -36,7 +36,7 @@ public class InstructorDao {
 	   void deleteInstructor(Instructor instructor) {
 		   
 	       jdbcTemplate.update("DELETE FROM Instructor WHERE nid=?", instructor.getNid());
-	       
+	       jdbcTemplate.update("DELETE FROM Usuario WHERE nid=?", instructor.getNid());
 	   }
 	   
 	   

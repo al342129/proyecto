@@ -24,9 +24,9 @@
          <td th:text="${instructorRequest.activityTypeRequest}"></td>
      	 
 		
-    <td><button type="button" class="btn btn-primary" ><a th:href="@{/instructorRequest/show/{nid}(nid=${instructorRequest.nid})}"><font color="white">Ver</font></a></button></td>
-    <td><button type="button" class="btn btn-warning" ><a th:href="@{/instructorRequest/accept/{nid}(nid=${instructorRequest.nid})}" ><font color="black">Aceptar</font></a></button></td>
-  	<td><button type="button" class="btn btn-danger" ><a th:href="@{/instructorRequest/delete/{nid}(nid=${instructorRequest.nid})}"><font color="white">Rechazar</font></button> 
+    <td><button type="button" class="btn btn-primary" ><a th:href="@{/instructorRequest/show/{nid}/{activityTypeRequest}(nid=${instructorRequest.nid},activityTypeRequest=${instructorRequest.activityTypeRequest})}"><font color="white">Ver</font></a></button></td>
+    <td><button type="button" class="btn btn-warning" ><a th:href="@{/instructorRequest/accept/{nid}/{activityTypeRequest}(nid=${instructorRequest.nid},activityTypeRequest=${instructorRequest.activityTypeRequest})}"><font color="black">Aceptar</font></a></button></td>
+  	<td><button type="button" class="btn btn-danger" ><a th:href="@{/instructorRequest/delete/{nid}/{activityTypeRequest}(nid=${instructorRequest.nid},activityTypeRequest=${instructorRequest.activityTypeRequest})}"><font color="white">Rechazar</font></button> 
     </td>
        </tr>       
      </tbody>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Alerta de email</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet"     
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+
+<body>
+   <h1>Alerta de email</h1>
+   <p> A continuación se enviaria un correo al monitor con sus datos de acceso a la aplicacion </p>
+   <table class="table table-striped">
+     <thead>
+       <tr>
+         <th>Usuario</th>
+         <th>Password</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr> 
+         <td th:text="${newInstructor.nid}"></td>
+         <td th:text="${newInstructor.password}"></td>
+         
+     	 
+		
+  <td><button type="button" class="btn btn-primary" ><a th:href="@{/instructorRequest/list}"><font color="white">Volver atrás</font></a></button></td> 
+<!--     <td><button type="button" class="btn btn-warning" ><a th:href="@{/instructorRequest/accept/{nid}(nid=${instructorRequest.nid})}"><font color="black">Aceptar</font></a></button></td> -->
+<!--   	<td><button type="button" class="btn btn-danger" ><a th:href="@{/instructorRequest/delete/{nid}/{activityTypeRequest}(nid=${instructorRequest.nid},activityTypeRequest=${instructorRequest.activityTypeRequest})}"><font color="white">Rechazar</font></button>  -->
+<!--     </td> -->
+       </tr>       
+     </tbody>
+   </table>
+
+</body>
+
+
+</html>

@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -43,6 +44,8 @@ public class InstructorRequestController {
 	@Autowired
 	private ActivityTypeDao actDao;
 		
+	@Autowired
+	private InstructorDao instructorDao;
 	
 	
 	@RequestMapping("/list")
@@ -54,30 +57,41 @@ public class InstructorRequestController {
 	
 	
 	
-	@RequestMapping(value="/delete/{nid}")
-	public String processDelete(@PathVariable String nid) {
-		instructorRequestDao.deleteInstructorRequest(nid);
-	       return "redirect:../list"; 
+	@RequestMapping(value="/delete/{nid}/{activityTypeRequest}")
+	public String processDelete(@PathVariable String nid,@PathVariable String activityTypeRequest) {
+		instructorRequestDao.deleteInstructorRequest(nid, activityTypeRequest);
+	       return "redirect:../../list"; 
 	}
 	
-	@RequestMapping(value="/show/{nid}")
-	public String showInstructorRequests(@PathVariable String nid, Model model) {
-		model.addAttribute("instructorRequest", instructorRequestDao.getInstructorRequest(nid));
+	@RequestMapping(value="/show/{nid}/{activityTypeRequest}")
+	public String showInstructorRequests(@PathVariable String nid,@PathVariable String activityTypeRequest, Model model) {
+		System.out.println(instructorRequestDao.getInstructorRequest(nid,activityTypeRequest));
+		model.addAttribute("instructorRequest", instructorRequestDao.getInstructorRequest(nid,activityTypeRequest));
+		
 		return "instructorRequest/show";
 	}
 	
 	
-	@RequestMapping(value="/adjunto/{nid}")
-	public String showPDF(@PathVariable String nid, Model model) {
-		model.addAttribute("instructorRequest", instructorRequestDao.getInstructorRequest(nid));
+	@RequestMapping(value="/adjunto/{nid}/{activityTypeRequest}")
+	public String showPDF(@PathVariable String nid,@PathVariable String activityTypeRequest, Model model) {
+		model.addAttribute("instructorRequest", instructorRequestDao.getInstructorRequest(nid,activityTypeRequest));
 		return "instructorRequest/adjunto";
 	}
 	
 	
-	@RequestMapping(value="/accept/{nid}")
-	public String processAccept(@PathVariable String nid) {
-			instructorRequestDao.acceptInstructorRequest(nid);
-	       return "redirect:../../instructor/list"; 
+	@RequestMapping(value="/accept/{nid}/{activityTypeRequest}")
+	public String processAccept(@PathVariable String nid,@PathVariable String activityTypeRequest,Model model) {
+			try {
+			instructorRequestDao.acceptInstructorRequest(nid,activityTypeRequest);
+	       instructorRequestDao.getNewInstructor(nid);
+	       model.addAttribute("newInstructor", instructorRequestDao.getNewInstructor(nid));
+			} catch (DuplicateKeyException e) {
+				instructorRequestDao.modifyInstructor(instructorDao.getInstructor(nid),activityTypeRequest);
+				throw new ProjectException( 
+			             "El monitor ya se encuentra en el sistema, se actualizará el listado del tipo de actividades de las que puede ser monitor", "ClauPrimariaDuplicada"); 
+			}
+			
+			return "instructorRequest/email"; 
 	}
 	@Value("${upload.file.directory}")
 	   private String uploadDirectory;

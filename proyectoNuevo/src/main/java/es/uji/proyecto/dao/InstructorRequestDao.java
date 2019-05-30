@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import es.uji.proyecto.model.Instructor;
 import es.uji.proyecto.model.InstructorRequest;
+import es.uji.proyecto.model.UserDetails;
 
 
 @Repository // En Spring els DAOs van anotats amb @Repository
@@ -46,8 +47,8 @@ public class InstructorRequestDao {
 	   
 	   /*Esborra per DNI*/
 	   
-	   public void deleteInstructorRequest(String nid) {
-	       jdbcTemplate.update("DELETE FROM InstructorRequest WHERE nid=?", nid);
+	   public void deleteInstructorRequest(String nid, String activityTypeRequest) {
+	       jdbcTemplate.update("DELETE FROM InstructorRequest WHERE nid=? AND activityTypeRequest=?", nid, activityTypeRequest);
 	   }
 	   
 
@@ -60,10 +61,10 @@ public class InstructorRequestDao {
 	   }
 
 	   /* Obté la peticio amb el nid donat. Torna null si no existeix. */
-	   public InstructorRequest getInstructorRequest(String instructorRequestNid) {
+	   public InstructorRequest getInstructorRequest(String instructorRequestNid, String activityTypeRequest) {
 	       try {
-	           return jdbcTemplate.queryForObject("SELECT * FROM InstructorRequest WHERE nid = ?",
-		      		     new InstructorRequestRowMapper(), instructorRequestNid);
+	           return jdbcTemplate.queryForObject("SELECT * FROM InstructorRequest WHERE nid = ? AND activityTypeRequest=?",
+		      		     new InstructorRequestRowMapper(), instructorRequestNid, activityTypeRequest);
 		       }
 	       catch(EmptyResultDataAccessException e) {
 	           return null;
@@ -94,19 +95,47 @@ public class InstructorRequestDao {
 
 	    }
 	   
-	   public void acceptInstructorRequest(@PathVariable String nid) {
+	   public void acceptInstructorRequest(@PathVariable String nid,@PathVariable String activityTypeRequest) {
 		   
-		   InstructorRequest nuevoMonitor = getInstructorRequest(nid);
+		   InstructorRequest nuevoMonitor = getInstructorRequest(nid,activityTypeRequest);
 		   LocalDate a = LocalDate.now();
 		   nuevoMonitor.setRequestDate(a);
-		   jdbcTemplate.update("DELETE FROM InstructorRequest WHERE nid=?", nid);
-		   jdbcTemplate.update("INSERT INTO Instructor VALUES(?, ?, ?, ?, ?,?)",nuevoMonitor.getNid(),nuevoMonitor.getName(),"Disponible",
-				   "default.jpg",nuevoMonitor.getActivityTypeRequest()+"/",nuevoMonitor.getRequestDate());
-		   
 		   String password = getSaltString();
-		   jdbcTemplate.update("INSERT INTO Users VALUES(?,?,?)", nuevoMonitor.getNid(),password,"Monitor");
+		   jdbcTemplate.update("INSERT INTO Usuario VALUES(?,?,?)", nuevoMonitor.getNid(),password,"Instructor");
+		   jdbcTemplate.update("DELETE FROM InstructorRequest WHERE nid=? AND activityTypeRequest=? ", nuevoMonitor.getNid(), activityTypeRequest);
+		   jdbcTemplate.update("INSERT INTO Instructor VALUES(?, ?, ?, ?, ?,?,?)",nuevoMonitor.getNid(),nuevoMonitor.getName(),"Disponible",
+				   "default.jpg",nuevoMonitor.getRequestDate(),nuevoMonitor.getActivityTypeRequest()+"/","Instructor");
 		   
 		   
+		   
+		   
+	   }
+	   
+	   public UserDetails getNewInstructor(String instructorRequestNid) {
+	       try {
+	           return jdbcTemplate.queryForObject("SELECT * FROM Usuario WHERE nid = ? ",
+		      		     new UserRowMapper(), instructorRequestNid);
+		       }
+	       catch(EmptyResultDataAccessException e) {
+	           return null;
+	       }
+	   }
+	   
+	   public void modifyInstructor(Instructor instructor, String activityTypeRequest) {
+	       String activities = instructor.getActivities();
+	       String[] listado = activities.split("/");
+	       for(String activity:listado) {
+	    	   if(activity.equals(activityTypeRequest)) {
+	    		   jdbcTemplate.update("UPDATE Instructor SET activities=? WHERE nid=?",
+	    	    		   activities,  instructor.getNid());
+	    	       jdbcTemplate.update("DELETE FROM InstructorRequest WHERE nid=? AND activityTypeRequest=? ", instructor.getNid(), activityTypeRequest);
+	    	       return;
+	    	   }
+	       }
+	       //instructor.setActivities(activities + activityTypeRequest+"/");
+	       jdbcTemplate.update("UPDATE Instructor SET activities=? WHERE nid=?",
+	    		   activities+ activityTypeRequest+"/",  instructor.getNid());
+	       jdbcTemplate.update("DELETE FROM InstructorRequest WHERE nid=? AND activityTypeRequest=? ", instructor.getNid(), activityTypeRequest);
 	   }
 
 }
