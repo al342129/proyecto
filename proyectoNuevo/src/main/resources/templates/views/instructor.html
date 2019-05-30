@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{fragments/base}">
 <head>
 <title>EI1027</title>
 <meta charset="UTF-8"/>
 <link rel="stylesheet"     
      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+	
 </head>
 <body>
+<div layout:fragment="content">
 	<h1>VISTA INSTRUCTOR </h1>
 	<ul>
 	<li><a href="activity/list">actualitzar el seu perfil per a incloure foto o dades relacionades en la seua activitat.</a></li>
@@ -19,10 +24,11 @@ Crear activitats per a les que estan qualificats i modificar o anul·lar les cre
 	<p> Acceptar les reserves de clients per a una activitat. </p>
 	<p> Consultar la informació detallada de les seues reserves de clients. </p>
 	<p> Consultar reserves per tipus i data i imports cobrats per les activitats confirmades. </p>
-
-	
 	</ul>
-</body>
+	
+	<div th:object="${session}"> 
+	<button type="button" class="btn btn-primary" ><a th:href="@{/instructor/listActivities/{nid}(nid=${user.nid})}"><font color="white">Ver actividades</font></a></button>
+	</body>
 </html>
 
 

@@ -85,13 +85,13 @@ public class LoginController {
 		}
 		System.out.println("Traza 5");
 		if(user.getUserType().equals("customer")) {
-			return "redirect:/views/customer";
+			return "/views/customer";
 		}
 		
 		if(user.getUserType().equals("instructor")) {
-			return "redirect:/views/instructor";
+			return "views/instructor";
 		}
-		else return "redirect:/views/admin";
+		else return "views/admin";
 	}
 
 	@RequestMapping("/logout") 
