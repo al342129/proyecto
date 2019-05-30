@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import es.uji.proyecto.model.Customer;
+import es.uji.proyecto.model.Reservation;
 import es.uji.proyecto.model.UserDetails;
 
 @Repository
@@ -84,9 +85,15 @@ public class UserProvider implements UserDao{
 	}
 
 	@Override
-	public Collection<UserDetails> listAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<UserDetails> listAllUsers() {
+		try {
+            return jdbcTemplate.query("SELECT * from Usuario",
+                    new UserRowMapper());
+        }
+        catch(EmptyResultDataAccessException e) {
+            return new ArrayList<UserDetails>();
+        }
+		
 	}
 
 	 

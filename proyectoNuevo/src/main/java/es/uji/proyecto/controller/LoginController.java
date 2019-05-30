@@ -63,7 +63,6 @@ public class LoginController {
 		if (bindingResult.hasErrors()) {
 			System.out.println("Traza 2");
 			return "user/login";
-			//pongo prueba, solo estaba login
 		}
 	       // Comprova que el login siga correcte 
 		// intentant carregar les dades de l'usuari 
@@ -85,7 +84,14 @@ public class LoginController {
 			return "redirect:" + session.getAttribute("nextUrl");
 		}
 		System.out.println("Traza 5");
-		return "redirect:";
+		if(user.getUserType().equals("customer")) {
+			return "redirect:/views/customer";
+		}
+		
+		if(user.getUserType().equals("instructor")) {
+			return "redirect:/views/instructor";
+		}
+		else return "redirect:/views/admin";
 	}
 
 	@RequestMapping("/logout") 
