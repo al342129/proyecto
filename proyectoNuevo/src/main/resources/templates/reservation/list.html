@@ -27,7 +27,7 @@
          <td th:text="${reservation.transactionNumber}"></td>
          <td><button type="button" class="btn btn-warning" ><a th:href="@{/reservation/update/{bookingNumber}(bookingNumber=${reservation.bookingNumber})}"><font color="black">Edita</font></a></button>
          </td>
-         <td><button type="button" class="btn btn-danger"><a th:href="@{/reservatiom/delete/{name}(bookingNumber=${reservation.bookingNumber})}"><font color="white">Esborra</font></a></button>
+         <td><button type="button" class="btn btn-danger"><a th:href="@{/reservation/delete/{name}(bookingNumber=${reservation.bookingNumber})}"><font color="white">Esborra</font></a></button>
          </td>
        </tr>
      </tbody>
