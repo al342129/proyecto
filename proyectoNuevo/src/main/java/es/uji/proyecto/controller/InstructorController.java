@@ -138,13 +138,13 @@ public class InstructorController {
 	
 	
 	@RequestMapping(value="/modifyActivity/{idActivity}", method = RequestMethod.GET)
-	public String modifyActivity(Model model, @PathVariable String idActivity) {
+	public String modifyActivity(Model model, @PathVariable int idActivity) {
 		model.addAttribute("activity", activityDao.getActivity(idActivity));
 		return "instructor/modifyActivity"; 
 	}
 	
 	@RequestMapping(value="/modifyActivity/{idActivity}", method = RequestMethod.POST) 
-	public String processUpdateSubmit(@PathVariable String idActivity, 
+	public String processUpdateSubmit(@PathVariable int idActivity, 
                             @ModelAttribute("activity") Activity activity, 
                             BindingResult bindingResult) {
 		 //InstructorValidator instructorValidator = new InstructorValidator(); 

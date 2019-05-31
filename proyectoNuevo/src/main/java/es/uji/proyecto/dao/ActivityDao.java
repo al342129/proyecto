@@ -50,7 +50,7 @@ public class ActivityDao {
 	   }
 
 	   /* Obté l'activitat amb el nom donat. Torna null si no existeix. */
-	   public Activity getActivity(String idActivity) {
+	   public Activity getActivity(int idActivity) {
 	       try {
 	           return jdbcTemplate.queryForObject("SELECT * FROM Activity WHERE idActivity = ?",
 		      		     new ActivityRowMapper(),
