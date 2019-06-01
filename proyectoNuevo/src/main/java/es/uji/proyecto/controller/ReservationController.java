@@ -1,6 +1,9 @@
 
 package es.uji.proyecto.controller;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired; 
@@ -43,7 +46,43 @@ public class ReservationController {
        return "user/list";
    }
    
-	@RequestMapping(value="/add/{idActivity}") 
+	
+	
+	
+   
+	
+	
+//	@RequestMapping(value="/add/{idActivity}", method=RequestMethod.POST) 
+//	public String processAddSubmit(@ModelAttribute("reservation") Reservation reservation,
+//			BindingResult bindingResult) {
+//		 	//falta todo el codigo validador
+//		System.out.print("Entro en el add 2 de reserva");
+//			reservationDao.addReservation(reservation);
+//			return "reservation/add";
+//		 
+//	 }
+//	
+//	
+	@RequestMapping(value="/add{idActivity}", method=RequestMethod.POST) 
+	public String processAddSubmit(@ModelAttribute("reservation") Reservation reservation,
+			BindingResult bindingResult) {
+		// CustomerValidator customerValidator = new CustomerValidator(); 
+		 //customerValidator.validate(customer, bindingResult);
+		 //if (bindingResult.hasErrors())
+			//	return "customer/add";
+		System.out.print("Entro en el add post de reserva");
+		String bookingNumber= reservationDao.getSaltString();
+		String transactionNumber=reservationDao.getSaltString();
+		Localdate fecha=LocalDate.now();
+		reservation.setBookingDate(Date.now());
+		reservation.setBookingNumber(bookingNumber);
+		reservation.setTransactionNumber(transactionNumber);
+		reservation.setNumberOfPeople();
+		 reservationDao.addReservation(reservation);
+		 return "redirect:list";
+	 }
+	
+	@RequestMapping(value="/add/{idActivity}", method=RequestMethod.GET) 
 	public String addReservation(HttpSession session , Model model, @PathVariable int idActivity) {
 		
 		 if (session.getAttribute("user") == null) 
@@ -55,22 +94,9 @@ public class ReservationController {
 	          return "/user/login";
 	       } 
 		model.addAttribute("reservation", new Reservation());
-		System.out.print("Entro en el add de reserva");
+		System.out.print("Entro en el add de ests reserva");
 		return "reservation/add";
 	}
-	
-	
-	@RequestMapping(value="/add/{idActivity}", method=RequestMethod.POST) 
-	public String processAddSubmit(@ModelAttribute("reservation") Reservation reservation,
-			BindingResult bindingResult) {
-		 	//falta todo el codigo validador
-		System.out.print("Entro en el add 2 de reserva");
-			reservationDao.addReservation(reservation);
-			return "reservation/add";
-		 
-	 }
-	
-	
    
    
 }

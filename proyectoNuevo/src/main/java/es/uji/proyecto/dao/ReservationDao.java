@@ -12,6 +12,7 @@ import es.uji.proyecto.model.Reservation;
 import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Repository // En Spring els DAOs van anotats amb @Repository
 public class ReservationDao {
@@ -68,5 +69,18 @@ public class ReservationDao {
     //hehco por mi, no se si es necesario hacerlo así ---
     public void deleteReservation(String reservationNumber) {
     	jdbcTemplate.update("DELETE from Reservation where reservationNumber=?", reservationNumber);
+    }
+    
+    public String getSaltString() {
+        String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+        StringBuilder salt = new StringBuilder();
+        Random rnd = new Random();
+        while (salt.length() < 11) {
+            int index = (int) (rnd.nextFloat() * SALTCHARS.length());
+            salt.append(SALTCHARS.charAt(index));
+        }
+        String saltStr = salt.toString();
+        return saltStr;
+
     }
 }
