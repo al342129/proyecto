@@ -63,6 +63,11 @@ public class ReservationController {
 //	 }
 //	
 //	
+   
+   
+   
+   
+   /*//Codigo que falla en el ultimo commit
 	@RequestMapping(value="/add{idActivity}", method=RequestMethod.POST) 
 	public String processAddSubmit(@ModelAttribute("reservation") Reservation reservation,
 			BindingResult bindingResult) {
@@ -96,7 +101,7 @@ public class ReservationController {
 		model.addAttribute("reservation", new Reservation());
 		System.out.print("Entro en el add de ests reserva");
 		return "reservation/add";
-	}
+	}*/
    
    
 }
