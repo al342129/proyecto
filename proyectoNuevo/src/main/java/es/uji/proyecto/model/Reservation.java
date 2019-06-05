@@ -1,9 +1,13 @@
 package es.uji.proyecto.model;
 
 import java.sql.Date;
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class Reservation {
-   private Date bookingDate;
+	@DateTimeFormat(iso=DateTimeFormat.ISO.DATE)
+   private LocalDate bookingDate;
    private String bookingNumber;
    private String state;
    private int numberOfPeople;
@@ -14,10 +18,10 @@ public Reservation() {
 	super();
 }
 
-public Date getBookingDate() {
+public LocalDate getBookingDate() {
 	return bookingDate;
 }
-public void setBookingDate(Date bookingDate) {
+public void setBookingDate(LocalDate bookingDate) {
 	this.bookingDate = bookingDate;
 }
 public String getBookingNumber() {

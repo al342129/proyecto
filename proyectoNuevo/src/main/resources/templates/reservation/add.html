@@ -50,16 +50,28 @@
 </head>
 <body>
     <h2>Nueva Reserva</h2>
-    <form action="#" th:action="@{/reservation/add}" 
+    <form action="#" th:action="@{/reservation/add/{idActivity}(idActivity=${activity.idActivity})}" 
                      th:object="${reservation}" method="post" enctype="multipart/form-data"> 
       <table align=center cellpadding="20">
        
+       
+       	<tr>
+   		<td> <label>Identificador de la actividad:</td>
+	  	<td>
+        	<select id="activityTypeRequest"}>
+        		
+       			<option th:each="element : ${activity}"
+               		th:value="${element.idActivity}"
+               		th:text="${element.idActivity}"></option>
+   			</select>
+   			</td>
+		</tr>    
         <tr>	
    			<td><label>Cantidad de personas: </label></td>
    			<td><input type="number" step="1" th:field="*{numberOfPeople}" /></td>
    		</tr>
         
-        
+       
         
         
  

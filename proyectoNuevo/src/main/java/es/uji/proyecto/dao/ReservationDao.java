@@ -28,8 +28,8 @@ public class ReservationDao {
     /* Afegeix la reserva a la base de dades */
     public void addReservation(Reservation reservation) {
         jdbcTemplate.update("INSERT INTO Reservation VALUES(?, ?, ?, ?, ?)",
-                reservation.getBookingDate(), reservation.getBookingNumber(), reservation.getNumberOfPeople(),
-                reservation.getState(),reservation.getTransactionNumber());
+                reservation.getBookingDate(), reservation.getBookingNumber(), 
+                reservation.getState(),reservation.getNumberOfPeople(), reservation.getTransactionNumber()); //priceperperson, totalprice, nid, idactivity;
     }
 
     /* Esborra la reserva de la base de dades */

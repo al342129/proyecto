@@ -78,6 +78,18 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 
       <!-- Portfolio Grid Items -->
       <div class="row">
+      
+      <div class="col-md-6 col-lg-4">
+          <div class="portfolio-item mx-auto" >
+<!--             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100"> -->
+<!--               <div class="portfolio-item-caption-content text-center text-white"> -->
+<!--                 <i class="fas fa-plus fa-3x"></i> -->
+<!--               </div> -->
+<!--             </div> -->
+            <a th:href="@{/activity/list}"><img class="img-fluid" src="/views.images/5.png" alt=""></a>
+          
+          </div>
+        </div>
 
 <!--         Portfolio Item 1 -->
         <div class="col-md-6 col-lg-4">
@@ -87,7 +99,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                 <i class="fas fa-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="/instructorView.images/1.jpg" alt="">
+            <img class="img-fluid" src="/views.images/1.jpg" alt="">
           </div>
         </div>
 
@@ -99,23 +111,13 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
                 <i class="fas fa-plus fa-3x"></i>
               </div>
             </div>
-            <img class="img-fluid" src="/instructorView.images/2.jpg" alt="">
+            <img class="img-fluid" src="/views.images/2.jpg" alt="">
           </div>
         </div>
 
 
         <!-- Portfolio Item 4 -->
-        <div class="col-md-6 col-lg-4">
-          <div class="portfolio-item mx-auto" >
-<!--             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100"> -->
-<!--               <div class="portfolio-item-caption-content text-center text-white"> -->
-<!--                 <i class="fas fa-plus fa-3x"></i> -->
-<!--               </div> -->
-<!--             </div> -->
-            <a th:href="@{/instructor/listActivities/{nid}(nid=${user.nid})}"><img class="img-fluid" src="/instructorView.images/4.jpg" alt=""></a>
-          
-          </div>
-        </div>
+        
 
 
     </div>

@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import es.uji.proyecto.dao.ActivityDao;
 import es.uji.proyecto.dao.ReservationDao;
 import es.uji.proyecto.dao.UserDao;
+import es.uji.proyecto.model.Activity;
 import es.uji.proyecto.model.ActivityType;
 import es.uji.proyecto.model.Customer;
 import es.uji.proyecto.model.Reservation;
@@ -29,6 +31,10 @@ import es.uji.proyecto.model.UserDetails;
 public class ReservationController {
    private ReservationDao reservationDao;
 
+   
+   @Autowired
+	private ActivityDao activityDao;
+   
    @Autowired 
    public void setReservation(ReservationDao reservationDao) {
        this.reservationDao = reservationDao;
@@ -67,10 +73,30 @@ public class ReservationController {
    
    
    
-   /*//Codigo que falla en el ultimo commit
-	@RequestMapping(value="/add{idActivity}", method=RequestMethod.POST) 
+   //Codigo que falla en el ultimo commit
+	
+	
+	@RequestMapping(value="/add/{idActivity}", method=RequestMethod.GET) 
+	public String addReservation(HttpSession session , Model model, @PathVariable int idActivity) {
+		
+//		 if (session.getAttribute("user") == null) 
+//	       { 
+//			 String newId= String.valueOf(idActivity);
+//	          model.addAttribute("user", new UserDetails()); 
+//	          System.out.print(idActivity);
+//	          session.setAttribute("nextUrl",  "/reservation/add/"+newId);
+//	          return "/user/login";
+//	       } 
+		Activity activity = activityDao.getActivity(idActivity);
+		model.addAttribute("reservation", new Reservation());
+		model.addAttribute("activity", activity);
+		System.out.print("Entro en el add de ests reserva");
+		return "reservation/add";
+	}
+   
+	@RequestMapping(value="/add/{idActivity}", method=RequestMethod.POST) 
 	public String processAddSubmit(@ModelAttribute("reservation") Reservation reservation,
-			BindingResult bindingResult) {
+			BindingResult bindingResult, @PathVariable int idActivity) {
 		// CustomerValidator customerValidator = new CustomerValidator(); 
 		 //customerValidator.validate(customer, bindingResult);
 		 //if (bindingResult.hasErrors())
@@ -78,31 +104,15 @@ public class ReservationController {
 		System.out.print("Entro en el add post de reserva");
 		String bookingNumber= reservationDao.getSaltString();
 		String transactionNumber=reservationDao.getSaltString();
-		Localdate fecha=LocalDate.now();
-		reservation.setBookingDate(Date.now());
+		LocalDate fecha=LocalDate.now();
+		reservation.setBookingDate(LocalDate.now());
 		reservation.setBookingNumber(bookingNumber);
 		reservation.setTransactionNumber(transactionNumber);
-		reservation.setNumberOfPeople();
-		 reservationDao.addReservation(reservation);
+		reservation.setNumberOfPeople(reservation.getNumberOfPeople());
+		reservationDao.addReservation(reservation);
+		System.out.println(reservation.toString());
 		 return "redirect:list";
 	 }
-	
-	@RequestMapping(value="/add/{idActivity}", method=RequestMethod.GET) 
-	public String addReservation(HttpSession session , Model model, @PathVariable int idActivity) {
-		
-		 if (session.getAttribute("user") == null) 
-	       { 
-			 String newId= String.valueOf(idActivity);
-	          model.addAttribute("user", new UserDetails()); 
-	          System.out.print(idActivity);
-	          session.setAttribute("nextUrl",  "/reservation/add/"+newId);
-	          return "/user/login";
-	       } 
-		model.addAttribute("reservation", new Reservation());
-		System.out.print("Entro en el add de ests reserva");
-		return "reservation/add";
-	}*/
-   
    
 }
 

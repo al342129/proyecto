@@ -7,6 +7,8 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,7 @@ import es.uji.proyecto.dao.InstructorDao;
 import es.uji.proyecto.model.Activity;
 import es.uji.proyecto.model.Instructor;
 import es.uji.proyecto.model.InstructorRequest;
+import es.uji.proyecto.model.UserDetails;
 
 @Controller
 @RequestMapping("/instructor")
@@ -126,9 +129,15 @@ public class InstructorController {
 	   }
 	
 	@RequestMapping("/listActivities/{nid}")
-	public String listActivities(@PathVariable String nid,Model model) {
-		model.addAttribute("activities", instructorDao.getActivities(nid));
+	public String listActivities(@PathVariable String nid,Model model,HttpSession session) {
 		
+		model.addAttribute("activities", instructorDao.getActivities(nid));
+		if (session.getAttribute("user") == null) 
+	       { 
+	          model.addAttribute("user", new UserDetails()); 
+	          session.setAttribute("nextUrl", "/instructor/listActivities/"+nid);
+	          return "redirect:/user/login";
+	       } 
 		return "instructor/listActivities";
 	}
 	
