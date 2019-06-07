@@ -96,7 +96,7 @@ public class ReservationController {
    
 	@RequestMapping(value="/add/{idActivity}", method=RequestMethod.POST) 
 	public String processAddSubmit(@ModelAttribute("reservation") Reservation reservation,
-			BindingResult bindingResult, @PathVariable int idActivity) {
+			BindingResult bindingResult, @PathVariable int idActivity, HttpSession session , Model model) {
 		// CustomerValidator customerValidator = new CustomerValidator(); 
 		 //customerValidator.validate(customer, bindingResult);
 		 //if (bindingResult.hasErrors())
@@ -109,7 +109,15 @@ public class ReservationController {
 		reservation.setBookingNumber(bookingNumber);
 		reservation.setTransactionNumber(transactionNumber);
 		reservation.setNumberOfPeople(reservation.getNumberOfPeople());
+		reservation.setState("Pendiente");
+		UserDetails user= (UserDetails) session.getAttribute("user");
+		System.out.println("enseñooooooo: ");
+		System.out.println(user.getNid());
+	
+		System.out.println(reservation.toString());
 		reservationDao.addReservation(reservation);
+		
+		
 		System.out.println(reservation.toString());
 		 return "redirect:list";
 	 }
