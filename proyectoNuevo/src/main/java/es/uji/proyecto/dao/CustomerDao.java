@@ -25,8 +25,13 @@ public class CustomerDao {
 
 	   /* Afegeix el usuari a la base de dades */
 	   public void addCustomer(Customer customer) {
-	       jdbcTemplate.update("INSERT INTO Customer VALUES(?, ?, ?, ?)",
-		       		customer.getNid(), customer.getName(), customer.getGender(), customer.getEmail());
+		   System.out.println(customer.getPassword());
+		   jdbcTemplate.update("INSERT INTO Usuario VALUES(?, ?, ?)", 
+				   	customer.getNid(), customer.getPassword(), "Customer");
+	       jdbcTemplate.update("INSERT INTO Customer VALUES(?, ?, ?, ?, ?)",
+		       		customer.getNid(), customer.getName(), customer.getGender(), customer.getEmail(), customer.getPassword());
+	   
+	       
 	   }
 
 	   /* Esborra el usuari de la base de dades */

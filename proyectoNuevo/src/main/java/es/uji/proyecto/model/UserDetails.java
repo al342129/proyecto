@@ -7,7 +7,7 @@ public class UserDetails {
 	
 	
 	
-	public UserDetails(String nid, String password, int acceso) {
+	public UserDetails(String nid, String password, String type) {
 		super();
 		this.nid = nid;
 		this.password = password;

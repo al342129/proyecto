@@ -45,7 +45,7 @@ public class CustomerController{
 		 if (bindingResult.hasErrors())
 				return "customer/add";
 		 customerDao.addCustomer(customer);
-		 return "redirect:list";
+		 return "redirect:/user/login";
 	 }
 	
 	@RequestMapping(value="/update/{nid}", method = RequestMethod.GET) 

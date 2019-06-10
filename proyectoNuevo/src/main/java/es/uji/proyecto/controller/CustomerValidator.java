@@ -19,6 +19,12 @@ public class CustomerValidator implements Validator {
 	  
 	  public void validate(Object obj, Errors errors) {
 		 Customer customer = (Customer)obj;
+		 
+		 
+		 if (customer.getNid().trim().equals(""))
+		       errors.rejectValue("nid", "obligatorio",
+		                          "Es necesario introducir un valor.");
+		 
 		 // Validación para que el nombre no sea nulo:
 		 if (customer.getName().trim().equals(""))
 		       errors.rejectValue("name", "obligatorio",
@@ -36,7 +42,11 @@ public class CustomerValidator implements Validator {
 		 //Validación para que el email contenga una "@":
 		 if (!customer.getEmail().contains("@"))
 		       errors.rejectValue("email", "obligatorio",
-		                          "Es necesario introducir un email."); 
+		                          "Formato introducido incorrecto. Formato correcto: ejemplo@ejemplo.com"); 
+		 
+		 if(!customer.getPassword().equals(customer.getRepeat()))
+			 errors.rejectValue("repeat", "coincidir",
+					 			"Las contraseñas no coinciden");
 	   
 	   }
 

@@ -13,8 +13,8 @@ public final class UserRowMapper implements RowMapper<UserDetails>{
 		// TODO Auto-generated method stub
 			UserDetails user = new UserDetails();
 			user.setNid(rs.getString("nid"));
-			user.setUserType(rs.getString("type"));
 			user.setPassword(rs.getString("password"));
+			user.setUserType(rs.getString("type"));
 			return user;
 	}
 	

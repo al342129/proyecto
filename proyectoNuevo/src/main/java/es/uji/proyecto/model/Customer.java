@@ -5,7 +5,8 @@ public class Customer {
 	private String name;
 	private String gender;
 	private String email;
-	
+	private String password;
+	private String repeat;
 	
 	public Customer() {
 		super();	
@@ -39,6 +40,26 @@ public class Customer {
 	@Override
 	public String toString() {
 		return "Customer [nid=" + nid + ", name=" + name + ", gender=" + gender + ", email=" + email + "]";
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	public String getRepeat() {
+		return repeat;
+	}
+
+
+	public void setRepeat(String repeat) {
+		this.repeat = repeat;
 	}
 	
 	
