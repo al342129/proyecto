@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Reservas Realizadas</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet"     
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+   <h1>Reservas Realizadas</h1>
+   <table class="table table-striped">
+     <thead>
+       <tr>
+       <th>DNI</th>
+       	<th>Data reserva</th>
+         <th>Numero de reserva</th>
+         <th>Estat</th>
+         <th>Numero de persones</th>
+   		 <th>Numero de transaccio</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr th:each="reservation: ${reservations}"> 
+       	 <td th:text="${reservation.nid}"></td>
+         <td th:text="${reservation.bookingDate}"></td>
+         <td th:text="${reservation.bookingNumber}"></td>
+         <td th:text="${reservation.state}"></td>
+         <td th:text="${reservation.numberOfPeople}"></td>
+         <td th:text="${reservation.transactionNumber}"></td>
+         <td><button type="button" class="btn btn-warning" ><a th:href="@{/reservation/update/{bookingNumber}(bookingNumber=${reservation.bookingNumber})}"><font color="black">Edita</font></a></button>
+         </td>
+         <td><button type="button" class="btn btn-danger"><a th:href="@{/reservation/delete/{name}(bookingNumber=${reservation.bookingNumber})}"><font color="white">Esborra</font></a></button>
+         </td>
+       </tr>
+     </tbody>
+   </table>
+   <button type="button" class="btn btn-success"><a href="add.html"><font color="white">Afegeix reserva</font></a></button>
+</body>
+</html>

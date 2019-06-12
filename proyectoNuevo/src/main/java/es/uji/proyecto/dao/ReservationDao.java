@@ -67,6 +67,17 @@ public class ReservationDao {
             return new ArrayList<Reservation>();
         }
     }
+    
+    public List<Reservation> getReservationsByNid(String nid){
+    	try {
+    		System.out.print("segundo milagro del dia ");
+    		return jdbcTemplate.query("SELECT * from Reservation WHERE nid =?", new ReservationRowMapper(), nid);
+
+    	}
+    	catch(EmptyResultDataAccessException e) {
+    		 return new ArrayList<Reservation>();
+    	}
+    }
     //hehco por mi, no se si es necesario hacerlo así ---
     public void deleteReservation(String reservationNumber) {
     	jdbcTemplate.update("DELETE from Reservation where reservationNumber=?", reservationNumber);

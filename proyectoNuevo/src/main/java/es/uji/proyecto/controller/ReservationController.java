@@ -3,12 +3,15 @@ package es.uji.proyecto.controller;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.stereotype.Controller; 
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,11 +32,13 @@ import es.uji.proyecto.model.UserDetails;
 @Controller 
 @RequestMapping("/reservation") 
 public class ReservationController {
+	
    private ReservationDao reservationDao;
 
    
    @Autowired
 	private ActivityDao activityDao;
+ //Guardar el objeto activityID
    
    @Autowired 
    public void setReservation(ReservationDao reservationDao) {
@@ -48,8 +53,19 @@ public class ReservationController {
           session.setAttribute("nextUrl", "/reservation/list");
           return "redirect:../user/login";
        } 
+       System.out.println("Entro en el list del controller");
        model.addAttribute("reservations", reservationDao.getReservations());
-       return "user/list";
+       return "reservation/list";
+   }
+   
+   @RequestMapping(value="/list/{nid}", method=RequestMethod.GET) 
+   public String listReservationsByNid(HttpSession session, Model model, @PathVariable String nid) {
+	   
+       System.out.println("Si entro aqui es de milagro");
+       model.addAttribute("reservations", reservationDao.getReservationsByNid(nid));
+       System.out.println("Tercer milagro");
+
+       return "customer/listReservations";
    }
    
 	
@@ -90,27 +106,29 @@ public class ReservationController {
 		Activity activity = activityDao.getActivity(idActivity);
 		model.addAttribute("reservation", new Reservation());
 		model.addAttribute("activity", activity);
-		System.out.print("Entro en el add de ests reserva");
+	
 		return "reservation/add";
 	}
    
 	@RequestMapping(value="/add/{idActivity}", method=RequestMethod.POST) 
-	public String processAddSubmit(@ModelAttribute("reservation") Reservation reservation,
+	public String processAddSubmit(@ModelAttribute("activity") Activity activity,@ModelAttribute("reservation") Reservation reservation,
 			BindingResult bindingResult, @PathVariable int idActivity, HttpSession session , Model model) {
-		// CustomerValidator customerValidator = new CustomerValidator(); 
-		 //customerValidator.validate(customer, bindingResult);
-		 //if (bindingResult.hasErrors())
-			//	return "customer/add";
+		ReservationValidator reservationValidator = new ReservationValidator(); 
+		reservation.setBookingNumber(Integer.toString(activityDao.getActivity(idActivity).getVacancies()));
+		 reservationValidator.validate(reservation, bindingResult);
+		 
+		 if (bindingResult.hasErrors())
+				return "reservation/add";
 		System.out.print("Entro en el add post de reserva");
 		String bookingNumber= reservationDao.getSaltString();
 		String transactionNumber=reservationDao.getSaltString();
-		LocalDate fecha=LocalDate.now();
 		reservation.setBookingDate(LocalDate.now());
 		reservation.setBookingNumber(bookingNumber);
 		reservation.setTransactionNumber(transactionNumber);
 		reservation.setNumberOfPeople(reservation.getNumberOfPeople());
 		reservation.setState("Pendiente");
 		UserDetails user= (UserDetails) session.getAttribute("user");
+		reservation.setNid(user.getNid());
 		System.out.println("enseñooooooo: ");
 		System.out.println(user.getNid());
 	
@@ -119,8 +137,9 @@ public class ReservationController {
 		
 		
 		System.out.println(reservation.toString());
-		 return "redirect:list";
+		 return "redirect:../list/"+user.getNid();
 	 }
+	 
    
 }
 

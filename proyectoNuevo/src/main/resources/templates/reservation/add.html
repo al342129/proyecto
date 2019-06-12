@@ -66,9 +66,13 @@
    			</select>
    			</td>
 		</tr>    
+        
+        
         <tr>	
    			<td><label>Cantidad de personas: </label></td>
    			<td><input type="number" step="1" th:field="*{numberOfPeople}" /></td>
+   			<td th:if="${#fields.hasErrors('numberOfPeople')}" th:errors="*{numberOfPeople}" class="error"/></td> 
+   			
    		</tr>
         
        

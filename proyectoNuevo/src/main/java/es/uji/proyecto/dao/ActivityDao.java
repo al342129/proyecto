@@ -52,6 +52,7 @@ public class ActivityDao {
 	   /* Obté l'activitat amb el nom donat. Torna null si no existeix. */
 	   public Activity getActivity(int idActivity) {
 	       try {
+	    	   System.out.print("La actividad es la num: "+idActivity +"\n");
 	           return jdbcTemplate.queryForObject("SELECT * FROM Activity WHERE idActivity = ?",
 		      		     new ActivityRowMapper(),
 		      		     idActivity);
@@ -70,6 +71,8 @@ public class ActivityDao {
 	           return new ArrayList<Activity>();
 	       }
 	   }
+	   
+	   
 
 }
 
