@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"> 
 <head>
-   <title>Modificar un nadador</title>
+   <title>Modificar perfil</title>
    <meta charset="UTF-8" />
    <link rel="stylesheet"       
      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
@@ -38,7 +38,7 @@
 <body>
     <h2>Modifica instructor</h2>
     <form action="#" th:action="@{/instructor/modify/{nid}(nid=${instructor.nid})}"
-                     th:object="${instructor}" method="post">
+                     th:object="${instructor}" method="post" enctype="multipart/form-data">
       <table align=center cellpadding="20">
         <tr>
             <td><label>DNI</label></td>
@@ -46,13 +46,25 @@
         </tr>
         
         <tr>
+            <td><label>Foto</label></td>
+            <td><input type="file" name="file" id="file" /></td>
+        </tr>
+        
+        <tr>
             <td><label>Nombre</label></td>
             <td><input type="text" th:field="*{name}" /></td>
         </tr>
         
+        
         <tr>
-            <td><label>Estado</label></td>
-            <td><input type="text" th:field="*{state}" /></td>
+        <td align="center"><label>Estado </label></td>
+            <td align="center"><select id="state" th:field="*{state}">
+            <option th:value="Disponible"> Disponible </option>
+            <option th:value="Ocupado"> Ocupado </option>
+            </select>
+            </td>
+            
+          
         </tr>
         
        

@@ -37,8 +37,16 @@ public class ActivityController {
 		return "activity/show";
 	}
 	
+	
+	@RequestMapping("/escalada")
+	public String home1(Model model) {
+		model.addAttribute("activities", activityDao.getActivitiesHome1());
+		return "activity/list";
+		
+		
+	
+	   }
 
 	
 }
 	
-

@@ -101,10 +101,10 @@ public class InstructorRequestDao {
 		   LocalDate a = LocalDate.now();
 		   nuevoMonitor.setRequestDate(a);
 		   String password = getSaltString();
-		   jdbcTemplate.update("INSERT INTO Usuario VALUES(?,?,?)", nuevoMonitor.getNid(),password,"Instructor");
+		   jdbcTemplate.update("INSERT INTO Usuario VALUES(?,?,?)", nuevoMonitor.getNid(),password,"instructor");
 		   jdbcTemplate.update("DELETE FROM InstructorRequest WHERE nid=? AND activityTypeRequest=? ", nuevoMonitor.getNid(), activityTypeRequest);
 		   jdbcTemplate.update("INSERT INTO Instructor VALUES(?, ?, ?, ?, ?,?,?)",nuevoMonitor.getNid(),nuevoMonitor.getName(),"Disponible",
-				   "default.jpg",nuevoMonitor.getRequestDate(),nuevoMonitor.getActivityTypeRequest()+"/","Instructor");
+				   "default.jpg",nuevoMonitor.getRequestDate(),nuevoMonitor.getActivityTypeRequest()+"/","instructor");
 		   
 		   
 		   

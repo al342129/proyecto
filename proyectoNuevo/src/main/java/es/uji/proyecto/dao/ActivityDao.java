@@ -72,7 +72,34 @@ public class ActivityDao {
 	       }
 	   }
 	   
+	   public List<Activity> getActivitiesHome1() {
+	       try {
+	           return jdbcTemplate.query("SELECT * FROM Activity WHERE typeName=?", 
+	        		   new ActivityRowMapper(),
+	        		   "escalada");
+	       }
+	       catch(EmptyResultDataAccessException e) {
+	           return new ArrayList<Activity>();
+	       }
+	   }
 	   
+	   public List<Activity> getActivitiesHome2() {
+	       try {
+	           return jdbcTemplate.query("SELECT * FROM Activity", new ActivityRowMapper());
+	       }
+	       catch(EmptyResultDataAccessException e) {
+	           return new ArrayList<Activity>();
+	       }
+	   }
+	   
+	   public List<Activity> getActivitiesHome3() {
+	       try {
+	           return jdbcTemplate.query("SELECT * FROM Activity", new ActivityRowMapper());
+	       }
+	       catch(EmptyResultDataAccessException e) {
+	           return new ArrayList<Activity>();
+	       }
+	   }
 
 }
 

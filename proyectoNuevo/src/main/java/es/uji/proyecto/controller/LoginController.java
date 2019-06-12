@@ -46,7 +46,19 @@ public class LoginController {
 	private UserDao userDao;
 
 	@RequestMapping("/login")
-	public String login(Model model) {
+	public String login(Model model, HttpSession session) {
+//		if(session.getId()!=null) {
+//			UserDetails user= (UserDetails) session.getAttribute("user");
+//			if(user.getUserType().equals("customer")) {
+//				return "/views/customer";
+//			}
+//			
+//			if(user.getUserType().equals("instructor")) {
+//				System.out.println("Traza 76");
+//				return "views/instructor";
+//			}
+//			else return "views/admin";
+//		}
 		model.addAttribute("user", new UserDetails());
 		
 		System.out.println("Traza 1");
@@ -57,6 +69,7 @@ public class LoginController {
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String checkLogin(@ModelAttribute("user") UserDetails user,  		
 				BindingResult bindingResult, HttpSession session) {
+		
 		System.out.println("Traza mil");
 		UserValidator userValidator = new UserValidator(); 
 		userValidator.validate(user, bindingResult); 
@@ -89,6 +102,7 @@ public class LoginController {
 		}
 		
 		if(user.getUserType().equals("instructor")) {
+			System.out.println("Traza 76");
 			return "views/instructor";
 		}
 		else return "views/admin";
@@ -101,4 +115,3 @@ public class LoginController {
 	}
 	
 }
-

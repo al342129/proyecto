@@ -60,6 +60,13 @@ public class InstructorController {
 		return "instructor/show";
 	}
 	
+	
+	@RequestMapping(value="/profile/{nid}")
+	public String profileInstructors(@PathVariable String nid, Model model) {
+		model.addAttribute("instructor", instructorDao.getInstructor(nid));
+		return "instructor/profile";
+	}
+	
 	@RequestMapping(value="/modify/{nid}", method = RequestMethod.GET)
 	public String editInstructor(Model model, @PathVariable String nid) {
 		model.addAttribute("instructor", instructorDao.getInstructor(nid));
@@ -68,15 +75,55 @@ public class InstructorController {
 	
 	@RequestMapping(value="/modify/{nid}", method = RequestMethod.POST) 
 	public String processUpdateSubmit(@PathVariable String nid, 
-                            @ModelAttribute("nadador") Instructor instructor, 
-                            BindingResult bindingResult) {
-		 InstructorValidator instructorValidator = new InstructorValidator(); 
-		 instructorValidator.validate(instructor, bindingResult);
-		 if (bindingResult.hasErrors()) 
-			 return "instructor/modify";
+                            @ModelAttribute("instructor") Instructor instructor, 
+                            BindingResult bindingResult, @RequestParam("file") MultipartFile file,RedirectAttributes redirectAttributes) {
+//		 InstructorValidator instructorValidator = new InstructorValidator(); 
+//		 instructorValidator.validate(instructor, bindingResult);
+//		 if (bindingResult.hasErrors()) 
+//			 return "instructor/modify";
+		 
+		 if (file.isEmpty()) {
+	          // Enviar mensaje de error porque no hay fichero seleccionado
+//	          redirectAttributes.addFlashAttribute("message", 
+//	                                           "Please select a file to upload");
+//	          instructorRequestValidator.setFichero(0);
+//	          instructorRequestValidator.validate(instructorRequest, bindingResult); 
+//	          if (bindingResult.hasErrors()){
+//	 			 
+//	 			 return "/instructorRequest/add";
+//	 		 }
+	 		 
+	      }
+
+	      try {
+	          // Obtener el fichero y guardarlo
+	          byte[] bytes = file.getBytes();
+	          Path path = Paths.get(uploadDirectory + "fotos/" 
+	                                        + instructor.getNid()+file.getOriginalFilename());
+	          Files.write(path, bytes);
+
+	          redirectAttributes.addFlashAttribute("message",
+	                  "You successfully uploaded '" + path + "'");
+
+	      } catch (IOException e) {
+	          e.printStackTrace();
+	      }
+		 
+		 
+		 
+		 
+		 instructor.setProfileImage(instructor.getNid()+file.getOriginalFilename());
 		 instructorDao.updateInstructor(instructor);
-		 return "redirect:../list"; 
+		 return "views/instructor"; 
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@Value("${upload.file.directory}")
 	   private String uploadDirectory;

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+   <title>Gestionar Actividades</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet"     
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+   <h1>Actividades de piragüismo</h1>
+   <table class="table table-striped">
+     <thead>
+       <tr>
+         <th>Fecha</th>
+         <th>Nombre</th>
+         <th>Precio</th>
+         <th>Plazas restantes</th>
+         <th></th>
+         <th></th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr th:each="activity: ${activities}">
+         <td th:text="${#temporals.format(activity.actDate,'dd/MM/yyyy')}"></td>
+         <td th:text="${activity.activityName}"></td>
+         <td th:text="${activity.price}"></td>
+         <td th:text="${activity.vacancies}"></td>
+         <td><button type="button" class="btn btn-primary" ><a th:href="@{/activity/show/{idActivity}(idActivity=${activity.idActivity})}"><font color="white">Ver</font></a></button>
+         </td>
+         <td><button type="button" class="btn btn-success"><a th:href="@{/reservation/add/{idActivity}(idActivity=${activity.idActivity})}"><font color="white">Reservar</font></a></button>
+         </td>
+       </tr>
+     </tbody>
+   </table>
+</body>
+</html>
