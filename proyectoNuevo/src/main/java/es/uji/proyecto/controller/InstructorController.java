@@ -48,11 +48,21 @@ public class InstructorController {
 		return "instructor/list";
 	}
 	
+	@RequestMapping(value="/confirm/{nid}")
+	public String confirmDelete(@PathVariable String nid, Model model) {
+		model.addAttribute("instructor", instructorDao.getInstructor(nid));
+	       return "instructor/confirm"; 
+	}
+	
+	
 	@RequestMapping(value="/delete/{nid}")
 	public String processDelete(@PathVariable String nid) {
 		instructorDao.deleteInstructor(nid);
 	       return "redirect:../list"; 
 	}
+	
+	
+	
 	
 	@RequestMapping(value="/show/{nid}")
 	public String showInstructors(@PathVariable String nid, Model model) {

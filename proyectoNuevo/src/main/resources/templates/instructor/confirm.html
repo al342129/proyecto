@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Alerta de confirmación de borrado</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet"     
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+
+<body>
+   <h1>Alerta de confirmación de borrado</h1>
+   <p> Estas seguro que deseas borrar el siguiente monitor? (Esta acción no se puede deshacer) </p>
+   <table class="table table-striped" width="50%">
+     <thead>
+       <tr>
+         <th>DNI:</th>
+         <th>Nombre: </th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr> 
+         <td th:text="${instructor.nid}"></td>
+         <td th:text="${instructor.name}"></td>
+     </tr>       
+     </tbody>    
+      </table>	 
+		
+  <button type="button" class="btn btn-primary" ><a th:href="@{/instructor/list}"><font color="white">Volver atrás</font></a></button>
+ <button type="button" class="btn btn-danger" ><a th:href="@{/instructor/delete/{nid}(nid=${instructor.nid})}"><font color="white">Confirmar</font></a></button>
+<!--     <td><button type="button" class="btn btn-warning" ><a th:href="@{/instructorRequest/accept/{nid}(nid=${instructorRequest.nid})}"><font color="black">Aceptar</font></a></button></td> -->
+<!--   	<td><button type="button" class="btn btn-danger" ><a th:href="@{/instructorRequest/delete/{nid}/{activityTypeRequest}(nid=${instructorRequest.nid},activityTypeRequest=${instructorRequest.activityTypeRequest})}"><font color="white">Rechazar</font></button>  -->
+<!--     </td> -->
+       
+  
+
+</body>
+
+
+</html>
