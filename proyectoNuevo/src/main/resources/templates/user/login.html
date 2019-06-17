@@ -1,34 +1,168 @@
 
+<!-- <!DOCTYPE html> -->
+<!-- <html xmlns:th="http://www.thymeleaf.org" -->
+<!-- xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" -->
+<!--      layout:decorate="~{fragments/base}"> -->
+
+
+<!-- <head> -->
+<!-- <link rel="stylesheet" type="text/css"  /> -->
+<!-- <title>Login</title> -->
+<!-- <meta charset="UTF-8"/> -->
+<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/> -->
+
+<!-- </head> -->
+<!-- <body> -->
+<!-- <div layout:fragment="content"> -->
+<!-- 	<h2>Accés</h2> -->
+<!-- 	<form action="#" th:action="@{/user/login}" -->
+<!-- 	      th:object="${user}" method="post"> -->
+<!-- 		<p> -->
+<!-- 		   	<label>Nom d'usuari:</label> -->
+<!--             <input class="form_control" type="text" th:field="*{nid}"/> -->
+<!--             <div class="error" th:if="${#fields.hasErrors('nid')}" th:errors="*{nid}"></div> -->
+<!-- 		</p> -->
+<!-- 		<p> -->
+<!-- 		   	<label>Contrasenya:</label> -->
+<!--             <input class="form_control" type="password" th:field="*{password}"/> -->
+<!--             <div class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div> -->
+<!-- 		</p>		 -->
+<!-- 		<input type="submit" value="Accedir" /> -->
+<!-- 	</form> -->
+<!--  </div> -->
+<!-- </body> -->
+<!-- </html> -->
+
+
+
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-     layout:decorate="~{fragments/base}">
+<html xmlns:th="http://www.thymeleaf.org"> 
+<style>
 
 
+
+  table{ 
+   background-color: #1ABC9C; 
+   border-radius: 20px ; 
+   margin-top:5%; 
+   margin-bottom: 10% 
+  
+  } 
+  
+
+  
+  title{
+  margin-bottom: 20px
+  }
+  input, select {
+            width: 200px;
+            padding: 0;
+            margin: 0;
+            height: 25px;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+   }
+         
+ 
+    
+  </style>
 <head>
-<link rel="stylesheet" type="text/css"  />
-<title>Login</title>
-<meta charset="UTF-8"/>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+   <title>Login</title>
+   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
+  <!-- Theme CSS -->
+  <link href="/instructorView.css/freelancer.min.css" rel="stylesheet">
+   <meta charset="UTF-8" />
+   
 </head>
-<body>
-<div layout:fragment="content">
-	<h2>Accés</h2>
-	<form action="#" th:action="@{/user/login}"
-	      th:object="${user}" method="post">
-		<p>
-		   	<label>Nom d'usuari:</label>
-            <input class="form_control" type="text" th:field="*{nid}"/>
-            <div class="error" th:if="${#fields.hasErrors('nid')}" th:errors="*{nid}"></div>
-		</p>
-		<p>
-		   	<label>Contrasenya:</label>
-            <input class="form_control" type="password" th:field="*{password}"/>
-            <div class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
-		</p>		
-		<input type="submit" value="Accedir" />
-	</form>
- </div>
+
+
+<body id="page-top">
+<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="/">Toopots</a>
+     
+      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/customer/add">Registro</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login">Iniciar sesion</a>
+          </li>
+     
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+	<br><br><br><br>
+	
+	<!-- Portfolio Section -->
+  <section class="page-section portfolio" id="portfolio">
+    <div class="container">
+
+ <br> <br>
+      <!-- Portfolio Section Heading -->
+      <br><br>
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Iniciar Sesión</h2>
+	
+      </div>
+      </section>
+      
+
+
+    <form action="#" autocomplete="off" th:action="@{/user/login}"
+                     th:object="${user}" method="post"> 
+                     <input autocomplete="off" name="hidden" type="text" style="display:none;">
+     
+     
+      <table style="width:40%" align=center >
+      
+      
+      <thead align="center">
+     
+    </thead>
+    
+      <tbody >
+   
+        <tr>
+            <td class="lead text-white" align="center"><label><br>Nombre de usuario: </label></td>
+            <td class="lead text-white" align="center"><br><input type="text" th:field="*{nid}" /></td> 
+        </tr>
+        <tr>
+            <td class="lead text-white" align="center"><label>Contraseña: </label></td>
+            <td  class="lead text-white" align="center"><input type="text" th:field="*{password}" /></td>
+            <td th:if="${#fields.hasErrors('password')}" th:errors="password" class="error"/></td> 
+        </tr>
+        
+        
+        
+
+  
+     <br>
+          <td align="center" colspan="2" ><button type="submit" value="Acceder" class="btn btn-xl btn-outline-light"  >
+         <font color="white">Iniciar Sesión</font></a></button><br><br>
+         </td>
+         
+         
+      
+   
+      
+      
+        </tbody>
+       
+      </table>
+     
+    </form>
+
 </body>
 </html>

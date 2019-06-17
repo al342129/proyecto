@@ -1,37 +1,110 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"> 
+<style>
+
+
+  table{
+    background-color: #1ABC9C;
+    border-radius: 20px ;
+    margin-top:5%;
+    margin-bottom: 20px;
+  }
+  
+  title{
+  margin-bottom: 20px
+  }
+  
+  input, select {
+            width: 200px;
+            padding: 0;
+            margin: 0;
+            height: 25px;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+   }
+  </style>
+  
+  
 <head>
-   <title>Gestionar Reserves</title>
+   <title>Gestión de Actividades</title>
+   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Theme CSS -->
+  <link href="/instructorView.css/freelancer.min.css" rel="stylesheet">
    <meta charset="UTF-8" />
-   <link rel="stylesheet"     
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+   
 </head>
-<body>
-   <h1>Llista de Reserves</h1>
-   <table class="table table-striped">
+<body id="page-top">
+<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="/">Toopots</a>
+     
+      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/customer/add">Registro</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login">Iniciar sesion</a>
+          </li>
+     
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+	<br><br><br><br>
+	
+	
+	<!-- Portfolio Section -->
+  <section class="page-section portfolio" id="portfolio">
+    <div class="container">
+
+ <br> <br>
+      <!-- Portfolio Section Heading -->
+      <br><br>
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Actividades</h2>
+	
+      </div>
+      </section>
+      
+      
+     <table class="table table-striped">
      <thead>
        <tr>
-       	<th>Data reserva</th>
-         <th>Numero de reserva</th>
-         <th>Estat</th>
-         <th>Numero de gent</th>
-   		 <th>Numero de transaccio</th>
+         <th class="lead text-center text-white">Fecha</th>
+         <th class="lead  text-center text-white">Nombre</th>
+         <th class="lead text-center text-white">Precio</th>
+         <th class="lead text-center text-white">Plazas restantes</th>
+         <th></th>
+         <th></th>
        </tr>
      </thead>
      <tbody>
-       <tr th:each="reservation: ${reservations}"> 
-         <td th:text="${reservation.bookingDate}"></td>
-         <td th:text="${reservation.bookingNumber}"></td>
-         <td th:text="${reservation.state}"></td>
-         <td th:text="${reservation.numberOfPeople}"></td>
-         <td th:text="${reservation.transactionNumber}"></td>
-         <td><button type="button" class="btn btn-warning" ><a th:href="@{/reservation/update/{bookingNumber}(bookingNumber=${reservation.bookingNumber})}"><font color="black">Edita</font></a></button>
+       <tr th:each="activity: ${activities}">
+         <td class="lead text-center text-white" th:text="${#temporals.format(activity.actDate,'dd/MM/yyyy')}"></td>
+         <td  class="lead text-center text-white" th:text="${activity.activityName}"></td>
+         <td class="lead text-white" th:text="${activity.price}"></td>
+         <td class="lead text-center text-white" th:text="${activity.vacancies}"></td>
+         <td><button type="button" class="btn btn-xl btn-outline-light" ><a th:href="@{/activity/show/{idActivity}(idActivity=${activity.idActivity})}"><font color="white">Ver</font></a></button>
          </td>
-         <td><button type="button" class="btn btn-danger"><a th:href="@{/reservation/delete/{name}(bookingNumber=${reservation.bookingNumber})}"><font color="white">Esborra</font></a></button>
+         
+   
+         
+         <td><button type="button" class="btn btn-xl btn-outline-light">
+         <a th:href="@{/reservation/add/{idActivity}(idActivity=${activity.idActivity})}">
+         <font color="white">Reservar</font></a></button>
          </td>
        </tr>
      </tbody>
-   </table>
-   <button type="button" class="btn btn-success"><a href="add.html"><font color="white">Afegeix reserva</font></a></button>
+
 </body>
 </html>
