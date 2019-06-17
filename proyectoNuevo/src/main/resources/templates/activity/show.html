@@ -201,55 +201,104 @@
       
      
      
-    <table class="lead text-center text-white" style="width:40%" align=center>
+    <table class="table table-striped" style="width:40%" align=center>
     
-      <thead align="center">
-      <tr>
-	<th class="lead text-center text-white" colspan=2 rowspan=2>Actividad</th>
-      </tr>
-    </thead>
+      
      
      
-     <td align="center">Precio:</td> -->
-<!-- 	  <td th:text="${activity.price}" align="center"></td> -->
+     
   
      
      <tbody>
+    	
         <tr>
-            <td class="lead text-white" align="center"><label><br>Nombre de la actividad: </label></td>
-            <td class="lead text-white" align="center" th:field="*{activity.activityName}" /></td> 
+            <td class="lead text-white text-center" ><label><br>Nombre de la actividad: </label></td>
+            <td class="lead text-white text-center"  th:text="*{activity.activityName}" /></td> 
         </tr>
         <tr>
-            <td class="lead text-white" align="center"><label><br>Id: </label></td>
-            <td class="lead text-white" align="center" th:field="*{activity.idActivity}" /></td> 
+            <td class="lead text-white text-center" ><label><br>Id: </label></td>
+            <td class="lead text-white text-center"  th:text="*{activity.idActivity}" /></td> 
         </tr> 
          <tr>
-            <td class="lead text-white" align="center"><label><br>Tipo: </label></td>
-            <td class="lead text-white" align="center"><br><input type="text" th:field="*{activity.typeName}" /></td> 
+            <td class="lead text-white text-center" ><label><br>Tipo: </label></td>
+            <td class="lead text-white text-center" th:text="*{activity.typeName}" /></td> 
         </tr> 
         <tr>
-            <td class="lead text-white" align="center"><label><br>Nivel: </label></td>
-            <td class="lead text-white" align="center"><br><input type="text" th:field="*{activity.level}" /></td> 
+            <td class="lead text-white text-center" ><label><br>Nivel: </label></td>
+            <td class="lead text-white text-center" th:text="*{activity.level}"/></td> 
         </tr> 
         <tr>
-            <td class="lead text-white" align="center"><label><br>Precio: </label></td>
-            <td class="lead text-white" align="center"><br><input type="text" th:field="*{activity.price}" /></td> 
+            <td class="lead text-white text-center" ><label><br>Precio: </label></td>
+            <td class="lead text-white text-center"  th:text="*{activity.price}" /></td> 
         </tr> 
         <tr>
-            <td class="lead text-white" align="center"><label><br>Máximo número de personas: </label></td>
-            <td class="lead text-white" align="center"><br><input type="text" th:field="*{activity.maxPeople}" /></td> 
+            <td class="lead text-white text-center" ><label><br>Máximo número de personas: </label></td>
+            <td class="lead text-white text-center" th:text="*{activity.maxPeople}" /></td> 
         </tr> 
    		<tr>
-            <td class="lead text-white" align="center"><label><br>Mínimo número de personas: </label></td>
-            <td class="lead text-white" align="center"><br><input type="text" th:field="*{activity.minPeople}" /></td> 
+            <td class="lead text-white text-center" align="center"><label><br>Mínimo número de personas: </label></td>
+            <td class="lead text-white text-center"  th:text="*{activity.minPeople}" /></td> 
         </tr> 
         <tr>
-            <td class="lead text-white" align="center"><label><br>Plazas disponibles: </label></td>
-            <td class="lead text-white" align="center"><br><input type="text" th:field="*{activity.vacancies}" /></td> 
+            <td class="lead text-white text-center" align="center"><label><br>Plazas disponibles: </label></td>
+            <td class="lead text-white text-center"  th:text="*{activity.vacancies}" /></td> 
         </tr> 
        
      </tbody>
 </table>
+
+
+<br><br>
+
+
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <div class="row">
+
+        <!-- Footer Location -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Ubicación</h4>
+          <p class="lead mb-0">Avda. Valencia, 53 
+            <br>12540 Castellón, España</p>
+        </div>
+
+        <!-- Footer Social Icons -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Redes Sociales</h4>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-facebook-f"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-twitter"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-linkedin-in"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-dribbble"></i>
+          </a>
+        </div>
+
+        <!-- Footer About Text -->
+        <div class="col-lg-4">
+          <h4 class="text-uppercase mb-4">Información de Contacto</h4>
+          <p class="lead mb-0">+34 654 34 56 76 <br>
+            <a href="http://startbootstrap.com">info@toopots.com</a></p>
+            <a href="instructorRequest/add">Trabaja con nosotros</a></p>
+            
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Copyright Section -->
+  <section class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small>Copyright &copy; GUPARI 2019</small>
+    </div>
+  </section>
 </body>
 </html>
  

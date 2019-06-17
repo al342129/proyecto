@@ -137,25 +137,29 @@
         <tr>
             <td class="lead text-white" align="center"><label><br>Nombre de usuario: </label></td>
             <td class="lead text-white" align="center"><br><input type="text" th:field="*{nid}" /></td> 
+            <td class="error" th:if="${#fields.hasErrors('nid')}" th:errors="*{nid}"></td> 
         </tr>
         <tr>
             <td class="lead text-white" align="center"><label>Contraseña: </label></td>
-            <td  class="lead text-white" align="center"><input type="text" th:field="*{password}" /></td>
-            <td th:if="${#fields.hasErrors('password')}" th:errors="password" class="error"/></td> 
+            <td  class="lead text-white" align="center"><input type="password" th:field="*{password}" /></td>
+            <td class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"/></td> 
         </tr>
         
-        
+
         
 
   
      <br>
-          <td align="center" colspan="2" ><button type="submit" value="Acceder" class="btn btn-xl btn-outline-light"  >
-         <font color="white">Iniciar Sesión</font></a></button><br><br>
+          <td align="center" colspan="2" >
+          	<a><button type="submit" value="Acceder" class="btn btn-xl btn-outline-light">
+         	<font color="white">Iniciar Sesión</font></a></button>
+         	<br><br>
          </td>
          
          
+         
       
-   
+
       
       
         </tbody>
