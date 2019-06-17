@@ -41,11 +41,24 @@ public class ActivityController {
 	@RequestMapping("/escalada")
 	public String home1(Model model) {
 		model.addAttribute("activities", activityDao.getActivitiesHome1());
-		return "activity/list";
+		return "views/home1";
 		
-		
+	}
 	
-	   }
+	
+	@RequestMapping("/rafting")
+	public String home2(Model model) {
+		model.addAttribute("activities", activityDao.getActivitiesHome2());
+		return "views/home2";
+		
+	}
+	
+	@RequestMapping("/piragüismo")
+	public String home3(Model model) {
+		model.addAttribute("activities", activityDao.getActivitiesHome3());
+		return "views/home3";
+		
+	}
 
 	
 }
