@@ -10,7 +10,7 @@ import es.uji.proyecto.model.Reservation;
 
 
 
-public class ReservationValidator implements Validator {
+public class ReservationValidator  implements Validator{
 	
 	
 	  public boolean supports(Class<?> cls) {

@@ -48,6 +48,10 @@ public class ActivityDao {
 	    		   activity.getPrice(),activity.getLocation(),activity.getMaxPeople(),activity.getMinPeople(),
 	    		   activity.getVacancies() ,activity.getIdActivity());
 	   }
+	   public void updateActivityVacancies(int idActivity, int vacancies) {
+	       jdbcTemplate.update("UPDATE Activity SET vacancies=? WHERE idActivity=?",
+	    		  vacancies, idActivity);
+	   }
 
 	   /* Obté l'activitat amb el nom donat. Torna null si no existeix. */
 	   public Activity getActivity(int idActivity) {

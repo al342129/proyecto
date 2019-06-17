@@ -103,23 +103,45 @@ public class ReservationController {
 //	          session.setAttribute("nextUrl",  "/reservation/add/"+newId);
 //	          return "/user/login";
 //	       } 
+		 if (session.getAttribute("user") == null) 
+	       { 
+	          model.addAttribute("user", new UserDetails()); 
+	          session.setAttribute("nextUrl", "/reservation/list");
+	          return "redirect:/user/login";
+	       }
 		Activity activity = activityDao.getActivity(idActivity);
 		model.addAttribute("reservation", new Reservation());
 		model.addAttribute("activity", activity);
+		System.out.println("Enseño la actividad: "+ activity.toString());
+		model.addAttribute("user", session.getAttribute("user"));
+		
 	
 		return "reservation/add";
 	}
    
 	@RequestMapping(value="/add/{idActivity}", method=RequestMethod.POST) 
-	public String processAddSubmit(@ModelAttribute("activity") Activity activity,@ModelAttribute("reservation") Reservation reservation,
+	public String processAddSubmit(@ModelAttribute("activity")  Activity activity,@ModelAttribute("user") UserDetails user, @ModelAttribute("reservation") Reservation reservation,
 			BindingResult bindingResult, @PathVariable int idActivity, HttpSession session , Model model) {
+		 if (session.getAttribute("user") == null) 
+	       { 
+	          model.addAttribute("user", new UserDetails()); 
+	          session.setAttribute("nextUrl", "/reservation/list");
+	          return "redirect:/user/login";
+	       }
 		ReservationValidator reservationValidator = new ReservationValidator(); 
 		reservation.setBookingNumber(Integer.toString(activityDao.getActivity(idActivity).getVacancies()));
+		//String dniUser=user.getNid();
+		System.out.println("Enseño la actividad: ");
+		Activity newAct = activityDao.getActivity(idActivity);
+		//Activity newAct=activity;
+		System.out.println("Cojo dfsfv la actividad: "+newAct.toString());
+		UserDetails dniUser=(UserDetails) session.getAttribute("user");
+		String nid=dniUser.getNid();
 		 reservationValidator.validate(reservation, bindingResult);
 		 
 		 if (bindingResult.hasErrors())
 				return "reservation/add";
-		System.out.print("Entro en el add post de reserva");
+		System.out.print("Entro en el add post de reserva\n");
 		String bookingNumber= reservationDao.getSaltString();
 		String transactionNumber=reservationDao.getSaltString();
 		reservation.setBookingDate(LocalDate.now());
@@ -127,17 +149,14 @@ public class ReservationController {
 		reservation.setTransactionNumber(transactionNumber);
 		reservation.setNumberOfPeople(reservation.getNumberOfPeople());
 		reservation.setState("Pendiente");
-		UserDetails user= (UserDetails) session.getAttribute("user");
-		reservation.setNid(user.getNid());
-		System.out.println("enseñooooooo: ");
-		System.out.println(user.getNid());
-	
-		System.out.println(reservation.toString());
+		reservation.setNid(nid);
 		reservationDao.addReservation(reservation);
-		
-		
-		System.out.println(reservation.toString());
-		 return "redirect:../list/"+user.getNid();
+		int plazasDisponibles= newAct.getVacancies();
+		int plazasFinales= plazasDisponibles - reservation.getNumberOfPeople();
+		newAct.setVacancies(plazasFinales);
+		System.out.println("Esto si que si: "+newAct.toString());
+		activityDao.updateActivityVacancies(idActivity, plazasFinales);
+		 return "redirect:../list/"+nid;
 	 }
 	 
    
