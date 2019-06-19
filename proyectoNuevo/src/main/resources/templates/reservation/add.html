@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"> 
 <head>
    <title>Crear peticion de monitor</title>
@@ -76,12 +76,7 @@
    			<td><input type="number" step="1" th:field="*{numberOfPeople}" /></td>
    			<td th:if="${#fields.hasErrors('numberOfPeople')}" th:errors="*{numberOfPeople}" class="error"/></td> 
    			
-   		</tr>
-        
-       
-        
-        
- 
+   		</tr> 
       
         <tr>
             <td colspan="2"><input type="submit" value="Afegeix reserva" /></td>
@@ -89,4 +84,195 @@
       </table>
     </form>
 </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+
+<style>
+ table{ 
+   background-color: #1ABC9C; 
+   border-radius: 20px ; 
+   margin-top:5%; 
+   margin-bottom: 10% 
+  
+  } 
+  </style>
+  
+<head>
+<link rel="icon" 
+      type="image/png" 
+      href="/views.images/TooPotsGreen.png" />
+      
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Solicitud Monitor</title>
+
+<!--   Custom fonts for this theme -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+<!--   Theme CSS -->
+  <link href="/instructorView.css/freelancer.min.css" rel="stylesheet">
+  
+
+</head>
+
+
+<body id="page-top">
+
+<!--   Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="/">Toopots</a>
+     
+      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+<!--         Menu -->
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="customer/add">Registro</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="user/login">Iniciar sesion</a>
+          </li>
+     
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br><br><br><br>
+ 	<!-- Portfolio Section -->
+  <section class="page-section portfolio" id="portfolio">
+    <div class="container">
+
+ <br> <br>
+      <!-- Portfolio Section Heading -->
+      <br><br>
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Nueva Reserva</h2>
+	
+      </div>
+      </section>
+      
+  
+  
+  
+  <form action="#" autocomplete="off" th:action="@{/reservation/add/{idActivity}(idActivity=${activity.idActivity})}" 
+                     th:object="${reservation}" method="post" enctype="multipart/form-data"> 
+                    
+     
+     
+      <table class="table table-striped" style="width:80%" align=center >
+      
+      
+      
+    
+      <tbody >
+   
+   
+         
+         
+         <tr>
+   		<td class="lead text-white" align="center"> <label>Identificador de la actividad:</td>
+	  	<td class="lead text-white" align="center">
+        	<select id="activityTypeRequest"}>
+        		
+       			<option th:each="element : ${activity}"
+               		th:value="${element.idActivity}"
+               		th:text="${element.idActivity}"></option>
+   			</select>
+   			</td>
+		</tr>    
+    <tr> 
+	  <td class="lead text-white" align="center">Nombre actividad:</td>
+	  <td class="lead text-white" align="center" th:text="${activity.activityName}" ></td>
+	</tr> 
+        
+        <tr>	
+   			<td><label>Cantidad de personas: </label></td>
+   			<td class="lead text-white" align="center"><input type="number" step="1" th:field="*{numberOfPeople}" /></td>
+   			<td class="lead text-white" align="center" th:if="${#fields.hasErrors('numberOfPeople')}" th:errors="*{numberOfPeople}" class="error"/></td> 
+   			
+   		</tr>
+         
+     
+     
+     <br><br>
+		<tr>
+          <td align="center" colspan="2" >
+          	<a><button type="submit" value="Enviar petición" class="btn btn-xl btn-outline-light">
+         	<font color="white">Reservar</font></a></button>
+         	<br><br>
+         </td>
+         </tr>
+  
+      
+
+      
+      
+        </tbody>
+       
+      </table>
+     
+    </form>
+
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
