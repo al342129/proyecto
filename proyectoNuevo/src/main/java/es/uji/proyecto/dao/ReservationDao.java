@@ -49,7 +49,7 @@ public class ReservationDao {
     /* Obté la reserva amb el numero de reserva donat. Torna null si no existeix. */
     public Reservation getReservation(String reservationNumber) {
         try {
-            return jdbcTemplate.queryForObject("SELECT * from Reservarion WHERE reservationNumber=?",
+            return jdbcTemplate.queryForObject("SELECT * from Reservation WHERE bookingNumber=?",
                     new ReservationRowMapper(), reservationNumber);
         }
         catch(EmptyResultDataAccessException e) {

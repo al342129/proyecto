@@ -44,6 +44,19 @@ public class ReservationController {
    public void setReservation(ReservationDao reservationDao) {
        this.reservationDao = reservationDao;
    }
+   
+   @RequestMapping(value="/deleteConfirm/{bookingNumber}")
+	public String confirmDelete(@PathVariable String bookingNumber, Model model) {
+		model.addAttribute("reservation", reservationDao.getReservation(bookingNumber));
+	       return "reservation/deleteConfirm"; 
+	}
+	
+	
+	@RequestMapping(value="/delete/{bookingNumber}")
+	public String processDelete(@PathVariable String bookingNumber) {
+		reservationDao.deleteReservation(bookingNumber);
+	       return "/"; 
+	}
   
    @RequestMapping("/list") 
    public String listReservations(HttpSession session, Model model) {

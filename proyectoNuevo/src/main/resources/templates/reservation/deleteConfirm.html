@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+   <title>Alerta de confirmación de borrado</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet"     
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+
+<body>
+   <h1>Alerta de confirmación de borrado</h1>
+   <p> Estas seguro que deseas borrar la siguiente reserva? </p>
+   <table class="table table-striped" width="50%">
+     <thead>
+       <tr>
+<!--        	<th>DNI:</th> -->
+         <th>Número de transacción:</th>
+         <th>Estado: </th>
+         <th>Número de personas: </th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr> 
+<!--        <td th:text="${reservation.nid}"></td> -->
+         <td th:text="${reservation.transactionNumber}"></td>
+         <td th:text="${reservation.state}"></td>
+         <td th:text="${reservation.numberOfPeople}"></td>
+     </tr>       
+     </tbody>    
+      </table>	 
+		
+  <button type="button" class="btn btn-primary" ><a th:href="@{/reservation/list/{nid}(nid=${reservation.nid})}"><font color="white">Volver atrás</font></a></button>
+ <button type="button" class="btn btn-danger" ><a th:href="@{/reservation/delete/{nid}(nid=${reservation.nid})}"><font color="white">Confirmar</font></a></button>
+<!--     <td><button type="button" class="btn btn-warning" ><a th:href="@{/instructorRequest/accept/{nid}(nid=${instructorRequest.nid})}"><font color="black">Aceptar</font></a></button></td> -->
+<!--   	<td><button type="button" class="btn btn-danger" ><a th:href="@{/instructorRequest/delete/{nid}/{activityTypeRequest}(nid=${instructorRequest.nid},activityTypeRequest=${instructorRequest.activityTypeRequest})}"><font color="white">Rechazar</font></button>  -->
+<!--     </td> -->
+       
+  
+
+</body>
+
+
+</html>

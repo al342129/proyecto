@@ -11,29 +11,25 @@
    <table class="table table-striped">
      <thead>
        <tr>
-       <th>DNI</th>
        	<th>Data reserva</th>
-         <th>Numero de reserva</th>
-         <th>Estat</th>
-         <th>Numero de persones</th>
-   		 <th>Numero de transaccio</th>
+         <th>Estado</th>
+         <th>Numero de personas</th>
+   		 <th>Numero de transaccion</th>
        </tr>
      </thead>
      <tbody>
        <tr th:each="reservation: ${reservations}"> 
-       	 <td th:text="${reservation.nid}"></td>
          <td th:text="${reservation.bookingDate}"></td>
-         <td th:text="${reservation.bookingNumber}"></td>
          <td th:text="${reservation.state}"></td>
          <td th:text="${reservation.numberOfPeople}"></td>
          <td th:text="${reservation.transactionNumber}"></td>
-         <td><button type="button" class="btn btn-warning" ><a th:href="@{/reservation/update/{bookingNumber}(bookingNumber=${reservation.bookingNumber})}"><font color="black">Edita</font></a></button>
+         <td><button type="button" class="btn btn-primary" ><a th:href="@{/reservation/confirm/{bookingNumber}(bookingNumber=${reservation.bookingNumber})}"><font color="white">Confirmar</font></a></button>
+         <td th:if="${#fields.hasErrors('nid')}" th:errors="*{nid}" class="error"/></td> 
          </td>
-         <td><button type="button" class="btn btn-danger"><a th:href="@{/reservation/delete/{name}(bookingNumber=${reservation.bookingNumber})}"><font color="white">Esborra</font></a></button>
+         <td><button type="button" class="btn btn-danger"><a th:href="@{/reservation/deleteConfirm/{bookingNumber}(bookingNumber=${reservation.bookingNumber})}"><font color="white">Esborra</font></a></button>
          </td>
        </tr>
      </tbody>
    </table>
-   <button type="button" class="btn btn-success"><a href="add.html"><font color="white">Afegeix reserva</font></a></button>
-</body>
+   </body>
 </html>
