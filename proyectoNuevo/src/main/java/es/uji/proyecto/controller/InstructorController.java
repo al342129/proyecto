@@ -48,6 +48,13 @@ public class InstructorController {
 		return "instructor/list";
 	}
 	
+	@RequestMapping("/view")
+	public String returnInstructorView(Model model, HttpSession session) {
+		UserDetails user= (UserDetails) session.getAttribute("user");
+		model.addAttribute("user", user);
+		return "views/instructor";
+	}
+	
 	@RequestMapping(value="/confirm/{nid}")
 	public String confirmDelete(@PathVariable String nid, Model model) {
 		model.addAttribute("instructor", instructorDao.getInstructor(nid));

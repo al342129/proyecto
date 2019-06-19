@@ -47,34 +47,38 @@ public class LoginController {
 
 	@RequestMapping("/login")
 	public String login(Model model, HttpSession session) {
-//		if(session.getId()!=null) {
-//			UserDetails user= (UserDetails) session.getAttribute("user");
-//			if(user.getUserType().equals("customer")) {
-//				return "/views/customer";
-//			}
-//			
-//			if(user.getUserType().equals("instructor")) {
-//				System.out.println("Traza 76");
-//				return "views/instructor";
-//			}
-//			else return "views/admin";
-//		}
+		
+		
+				
 		model.addAttribute("user", new UserDetails());
 		
-		System.out.println("Traza 1");
 		return "user/login";
 		
+		
+//		System.out.print("Existe una sesión abierta");
+//		UserDetails user= (UserDetails) session.getAttribute("user");
+//		model.addAttribute("user", user);
+//
+//		if(user.getUserType().equals("customer")) {
+//			return "/views/customer";
+//		}
+//		
+//		if(user.getUserType().equals("instructor")) {
+//			System.out.println("Traza 76");
+//			return "views/instructor";
+//		}
+//		else return "views/admin";
 	}
 
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String checkLogin(@ModelAttribute("user") UserDetails user,  		
 				BindingResult bindingResult, HttpSession session) {
 		
-		System.out.println("Traza mil");
+		System.out.println("Entro en el post de /user/login.\n");
 		UserValidator userValidator = new UserValidator(); 
 		userValidator.validate(user, bindingResult); 
 		if (bindingResult.hasErrors()) {
-			System.out.println("Traza 2");
+			System.out.println("Ha habido errores en la inserción de datos.\n");
 			return "user/login";
 		}
 	       // Comprova que el login siga correcte 
@@ -82,34 +86,42 @@ public class LoginController {
 		user = userDao.loadUserByUsername(user.getNid(),user.getPassword()); 
 		if (user == null) {
 			bindingResult.rejectValue("password", "badpw", "Contrasenya incorrecta"); 
-			System.out.println("Traza no");
+			System.out.println("No hay usuarios con los datos introducidos.\n");
 			return "user/login";
 		}
+		System.out.println("Existe el usuario");
 		// Autenticats correctament. 
 		// Guardem les dades de l'usuari autenticat a la sessió
 		session.setAttribute("user", user); 
 		
 		
 		//devuelve a la pagina donde se dirigia antes de autenticarse 
-		if(session.getAttribute("nextUrl") != null ) {
-			System.out.println("Traza 4");
-			System.out.println(session.getAttribute("nextUrl"));
-			return "redirect:" + session.getAttribute("nextUrl");
-		}
-		System.out.println("Traza 5");
+//		if(session.getAttribute("nextUrl") != null ) {
+//			
+//			System.out.println("Devuelve la ruta a la que se dirigia: "+
+//									session.getAttribute("nextUrl"));
+//			return "redirect:" + session.getAttribute("nextUrl");
+//		}
+		System.out.println("\n No hay ninguna ruta previa.");
 		if(user.getUserType().equals("customer")) {
+			System.out.println("El usuario es un customer, redirijo a su home. \n");
 			return "/views/customer";
 		}
 		
 		if(user.getUserType().equals("instructor")) {
-			System.out.println("Traza 76");
+			System.out.println("El usuario es instructor, redirijo a su home. \n");
 			return "views/instructor";
 		}
-		else return "views/admin";
+		else {
+			System.out.println("El usuario es el admin, redirijo a su home. \n");
+			return "views/admin";
+		}
 	}
 
 	@RequestMapping("/logout") 
 	public String logout(HttpSession session) {
+		session.setAttribute("nextUrl", null);
+		System.out.println("....Cerrando sesion....\n");
 		session.invalidate(); 
 		return "redirect:/";
 	}

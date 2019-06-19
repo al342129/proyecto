@@ -25,8 +25,10 @@ public class UserController {
   
    @RequestMapping("/list") 
    public String listUsers(HttpSession session, Model model) {
+	   System.out.println("Entro en el /user/list \n");
        if (session.getAttribute("user") == null) 
        { 
+    	  System.out.println("Redirijo a /user/login \n");
           model.addAttribute("user", new UserDetails()); 
           session.setAttribute("nextUrl", "/user/list");
           return "redirect:../user/login";

@@ -159,7 +159,13 @@ public class ReservationController {
 		 return "redirect:../list/"+nid;
 	 }
 	 
-   
+	@RequestMapping("/acceptReservation") 
+	   public String acceptReservation(HttpSession session, Model model) {
+	       
+	       
+	       return "instructor/showReservations";
+	   }
+	   
 }
 
 
