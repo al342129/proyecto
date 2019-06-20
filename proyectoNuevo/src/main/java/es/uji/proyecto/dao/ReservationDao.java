@@ -137,4 +137,18 @@ public class ReservationDao {
     }
     
     
+    public List<Reservation> getReservationsPaid(String nid){
+    	try {
+    		return jdbcTemplate.query("SELECT reservation.bookingNumber, reservation.transactionNumber, reservation.bookingDate, reservation.state, reservation.numberOfPeople, reservation.idActivity, reservation.nid FROM Reservation INNER JOIN Activity On activity.idActivity=reservation.idActivity INNER JOIN Instructor ON activity.nidInstructor=? WHERE reservation.state=?",new ReservationRowMapper(), nid, "Pagada");
+
+    	}
+    	catch(EmptyResultDataAccessException e) {
+    		 return new ArrayList<Reservation>();
+    	}
+    }
+    
+    
+    
+    
+    
 }

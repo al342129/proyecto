@@ -216,6 +216,12 @@ public class ReservationController {
 	   }
 	
 	
+	@RequestMapping(value="/listPaid/{nid}", method=RequestMethod.GET) 
+	   public String listReservationsPaid(HttpSession session, Model model, @PathVariable String nid) {
+	       model.addAttribute("reservations", reservationDao.getReservationsPaid(nid));      
+	       return "reservation/paidInstructor";
+	   }
+	
 	   
 }
 

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{fragments/base}">
+<head>
+   <title>Reservas Pagadas</title>
+   <meta charset="UTF-8" />
+   <link rel="stylesheet"     
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+<div layout:fragment="content" align="right">
+   <h1>Reservas Pagadas</h1>
+   <table class="table table-striped">
+     <thead>
+       <tr>
+       	<th>Data reserva</th>
+         <th>Estado</th>
+         <th>Numero de personas</th>
+   		 <th>Numero de transaccion</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr th:each="reservation: ${reservations}"> 
+         <td th:text="${reservation.bookingDate}"></td>
+         <td th:text="${reservation.state}"></td>
+         <td th:text="${reservation.numberOfPeople}"></td>
+         <td th:text="${reservation.transactionNumber}"></td>
+         
+       </tr>
+       
+     </tbody>
+   </table>
+   </div>
+   </body>
+</html>
