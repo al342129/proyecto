@@ -3,14 +3,14 @@
 xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
      layout:decorate="~{fragments/base}">
 <head>
-   <title>Reservas Realizadas</title>
+   <title>Reservas Pagadas</title>
    <meta charset="UTF-8" />
    <link rel="stylesheet"     
     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
 </head>
 <body>
 <div layout:fragment="content" align="right">
-   <h1>Reservas Realizadas</h1>
+   <h1>Reservas Pagadas</h1>
    <table class="table table-striped">
      <thead>
        <tr>
@@ -26,11 +26,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
          <td th:text="${reservation.state}"></td>
          <td th:text="${reservation.numberOfPeople}"></td>
          <td th:text="${reservation.transactionNumber}"></td>
-         <td><button type="button" class="btn btn-primary" ><a th:href="@{/reservation/stateConfirm/{bookingNumber}(bookingNumber=${reservation.bookingNumber})}"><font color="white">Confirmar</font></a></button>
-         <td th:if="${#fields.hasErrors('nid')}" th:errors="*{nid}" class="error"/></td> 
-         </td>
-         <td><button type="button" class="btn btn-danger"><a th:href="@{/reservation/deleteConfirm/{bookingNumber}(bookingNumber=${reservation.bookingNumber})}"><font color="white">Cancelar</font></a></button>
-         </td>
+         
        </tr>
        
      </tbody>

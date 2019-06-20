@@ -45,6 +45,18 @@ public class ReservationController {
        this.reservationDao = reservationDao;
    }
    
+   
+   
+   @RequestMapping(value="/confirm/{bookingNumber}")
+	public String confirm(@PathVariable String bookingNumber, Model model) {
+		model.addAttribute("reservation", reservationDao.getReservation(bookingNumber)) ;
+		if(reservationDao.getReservation(bookingNumber).getState().equals("Pendiente") )
+			return "reservation/ConfirmError";
+		
+		
+		reservationDao.pay(bookingNumber);
+	    return "reservation/ConfirmCorrect"; 
+	}
    @RequestMapping(value="/deleteConfirm/{bookingNumber}")
 	public String confirmDelete(@PathVariable String bookingNumber, Model model) {
 		model.addAttribute("reservation", reservationDao.getReservation(bookingNumber));
@@ -54,8 +66,10 @@ public class ReservationController {
 	
 	@RequestMapping(value="/delete/{bookingNumber}")
 	public String processDelete(@PathVariable String bookingNumber) {
-		reservationDao.deleteReservation(bookingNumber);
-	       return "/"; 
+		Reservation reservationNumber=reservationDao.getReservation(bookingNumber);
+		reservationDao.deleteReservation(reservationNumber);
+		System.out.println("holaaaaaaaa");
+		return "redirect:/user/login";
 	}
   
    @RequestMapping("/list") 
@@ -82,6 +96,14 @@ public class ReservationController {
    }
    
 	
+   
+   @RequestMapping(value="/listConfirmed/{nid}", method=RequestMethod.GET) 
+   public String listConfirmedByNid(HttpSession session, Model model, @PathVariable String nid) {
+	   
+       model.addAttribute("reservations", reservationDao.getPaid(nid));
+
+       return "reservation/confirmList";
+   }
 	
 	
    
@@ -167,7 +189,6 @@ public class ReservationController {
 		int plazasDisponibles= newAct.getVacancies();
 		int plazasFinales= plazasDisponibles - reservation.getNumberOfPeople();
 		newAct.setVacancies(plazasFinales);
-		System.out.println("Esto si que si: "+newAct.toString());
 		activityDao.updateActivityVacancies(idActivity, plazasFinales);
 		 return "redirect:../list/"+nid;
 	 }
@@ -185,6 +206,15 @@ public class ReservationController {
 	       model.addAttribute("reservations", reservationDao.getReservationsPending(nid));      
 	       return "reservation/pendingList";
 	   }
+	
+	
+	@RequestMapping(value="/stateConfirm/{bookingNumber}", method=RequestMethod.GET) 
+	   public String StateConfirm(HttpSession session, Model model, @PathVariable String bookingNumber) {
+	       
+	       reservationDao.stateConfirm(bookingNumber);
+	       return "redirect:/user/login";
+	   }
+	
 	
 	   
 }

@@ -226,7 +226,7 @@ public class InstructorController {
 		 //instructorValidator.validate(instructor, bindingResult);
 		 //if (bindingResult.hasErrors()) 
 		//	 return "instructor/modify";
-		System.out.println(idActivity);
+		System.out.println(activity.toString());
 		 activityDao.updateActivity(activity);
 		 return "redirect:../list"; 
 	}

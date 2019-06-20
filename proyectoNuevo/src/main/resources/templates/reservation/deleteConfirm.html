@@ -30,7 +30,7 @@
       </table>	 
 		
   <button type="button" class="btn btn-primary" ><a th:href="@{/customer/view}"><font color="white">Volver atrás</font></a></button>
- <button type="button" class="btn btn-danger" ><a th:href="@{/reservation/delete/{nid}(nid=${reservation.nid})}"><font color="white">Confirmar</font></a></button>
+ <button type="button" class="btn btn-danger" ><a th:href="@{/reservation/delete/{bookingNumber}(bookingNumber=${reservation.bookingNumber})}"><font color="white">Confirmar</font></a></button>
 <!--     <td><button type="button" class="btn btn-warning" ><a th:href="@{/instructorRequest/accept/{nid}(nid=${instructorRequest.nid})}"><font color="black">Aceptar</font></a></button></td> -->
 <!--   	<td><button type="button" class="btn btn-danger" ><a th:href="@{/instructorRequest/delete/{nid}/{activityTypeRequest}(nid=${instructorRequest.nid},activityTypeRequest=${instructorRequest.activityTypeRequest})}"><font color="white">Rechazar</font></button>  -->
 <!--     </td> -->

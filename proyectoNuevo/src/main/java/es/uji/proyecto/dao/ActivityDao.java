@@ -44,8 +44,7 @@ public class ActivityDao {
 	   /* Actualitza els atributs de l'activitat
 	      (excepte el idActivity, que és la clau primària) */
 	   public void updateActivity(Activity activity) {
-	       jdbcTemplate.update("UPDATE Activity SET actDate=?,activityName=?, duration=?, descriptionActivity=?, price=?,"
-	       		+ " location=?,maxPeople=?, minPeople=?, vacancies=? WHERE idActivity=?",
+	       jdbcTemplate.update("UPDATE Activity SET actDate=?,activityName=?, duration=?, descriptionActivity=?, price=?, location=?,maxPeople=?, minPeople=?, vacancies=? WHERE idActivity=?",
 	    		   activity.getActDate(), activity.getActivityName(), 
 	    		   activity.getDuration(), activity.getDescriptionActivity(), 
 	    		   activity.getPrice(),activity.getLocation(),activity.getMaxPeople(),activity.getMinPeople(),

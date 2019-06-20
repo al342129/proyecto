@@ -35,7 +35,12 @@ public class ReservationDao {
 
     /* Esborra la reserva de la base de dades */
     public void deleteReservation(Reservation reservation) {
+    	int vacancies = reservation.getNumberOfPeople();
+    	int actId= reservation.getIdActivity();
+
+    	jdbcTemplate.update("UPDATE Activity SET vacancies=vacancies+? WHERE idActivity=?", vacancies, actId);
         jdbcTemplate.update("DELETE from Reservation where bookingNumber=?", reservation.getBookingNumber());
+        
     }
 
     /* Actualitza els atributs de la reserva
@@ -78,11 +83,11 @@ public class ReservationDao {
     		 return new ArrayList<Reservation>();
     	}
     }
-    //hehco por mi, no se si es necesario hacerlo así ---
-    public void deleteReservation(String reservationNumber) {
-    	jdbcTemplate.update("DELETE from Reservation where reservationNumber=?", reservationNumber);
-    }
-    
+//    //hehco por mi, no se si es necesario hacerlo así ---
+//    public void deleteReservation(String reservationNumber) {
+//    	jdbcTemplate.update("DELETE from Reservation where bookingNumber=?", reservationNumber);
+//    }
+//    
     public String getSaltString() {
         String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder salt = new StringBuilder();
@@ -100,7 +105,7 @@ public class ReservationDao {
    
     public List<Reservation> getReservationsPending(String nid){
     	try {
-    		return jdbcTemplate.query("SELECT reservation.bookingDate, reservation.state, reservation.numberOfPeople, reservation.idActivity, reservation.nid FROM Reservation INNER JOIN Activity On activity.idActivity=reservation.idActivity INNER JOIN Instructor ON activity.nidInstructor=?",new ReservationRowMapper(), nid);
+    		return jdbcTemplate.query("SELECT reservation.bookingNumber, reservation.transactionNumber, reservation.bookingDate, reservation.state, reservation.numberOfPeople, reservation.idActivity, reservation.nid FROM Reservation INNER JOIN Activity On activity.idActivity=reservation.idActivity INNER JOIN Instructor ON activity.nidInstructor=?",new ReservationRowMapper(), nid);
 
     	}
     	catch(EmptyResultDataAccessException e) {
@@ -108,7 +113,28 @@ public class ReservationDao {
     	}
     }
     
+    public void stateConfirm(String bookingNumber) {
+    	
+    	jdbcTemplate.update("UPDATE Reservation SET state=? WHERE bookingNumber=?", "Aceptada", bookingNumber);
+
+        
+    }
     
+    
+    public void pay(String bookingNumber) {
+    	jdbcTemplate.update("UPDATE Reservation SET state=? WHERE bookingNumber=?", "Pagada", bookingNumber);
+    }
+    
+    
+    public List<Reservation> getPaid(String nid){
+    	try {
+    		return jdbcTemplate.query("SELECT * FROM Reservation WHERE state=? AND nid=?",new ReservationRowMapper(), "Pagada",nid);
+
+    	}
+    	catch(EmptyResultDataAccessException e) {
+    		 return new ArrayList<Reservation>();
+    	}
+    }
     
     
 }

@@ -41,6 +41,7 @@ public class CustomerController{
 	
 	@RequestMapping("/view")
 	public String returnCustomerView(Model model, HttpSession session) {
+		if(session.getAttribute("user")==null) return "redirect:/";
 		UserDetails user= (UserDetails) session.getAttribute("user");
 		model.addAttribute("user", user);
 		return "views/customer";
