@@ -2,6 +2,7 @@ package es.uji.proyecto.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.sql.DataSource;
 
@@ -26,6 +27,8 @@ public class ActivityDao {
 
 	   /* Afegeix l'activitat a la base de dades */
 	   void addActivity(Activity activity) {
+		   
+		   
 	       jdbcTemplate.update("INSERT INTO Activity VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)",
 	    		   activity.getIdActivity(), activity.getActDate(), activity.getActivityName(), 
 	    		   activity.getDuration(), activity.getDescriptionActivity(), 
@@ -108,6 +111,6 @@ public class ActivityDao {
 	           return new ArrayList<Activity>();
 	       }
 	   }
-
+	  
 }
 

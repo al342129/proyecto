@@ -2,6 +2,7 @@ package es.uji.proyecto.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import javax.sql.DataSource;
 
@@ -94,7 +95,7 @@ public class InstructorDao {
 	   
 	   
 	   public void createActivity(Activity activity,  String image) {
-		   String identificador = activity.getNidInstructor() + activity.getLocation().substring(0,3);
+		   int identificador= getSaltInt();
 	       jdbcTemplate.update("INSERT INTO Activity VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
 	    		   identificador, activity.getActivityName(), activity.getActDate(),activity.getLocation(),"/images/"+activity.getNidInstructor()+image, 
 	    		   activity.getDuration(),activity.getDescriptionActivity(), activity.getPrice(), activity.getMaxPeople(), activity.getMinPeople(),
@@ -113,5 +114,10 @@ public class InstructorDao {
 	       }
 	   }
 	   
+	   public int getSaltInt() {
+		  int numero = (int) (Math.random() * 1000000) + 1;
+		  return numero;
+	    }
+
 
 }

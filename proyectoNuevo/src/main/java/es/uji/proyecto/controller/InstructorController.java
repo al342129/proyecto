@@ -189,7 +189,8 @@ public class InstructorController {
 	      activity.setTypeName(typeName);
 	      activity.setLevel(level);
 	      instructorDao.createActivity(activity, file.getOriginalFilename());
-	      return "redirect:/list";
+	      
+	      return "redirect:/instructor/listActivities/"+activity.getNidInstructor();
 	   }
 	
 	@RequestMapping("/listActivities/{nid}")
@@ -225,6 +226,7 @@ public class InstructorController {
 		 //instructorValidator.validate(instructor, bindingResult);
 		 //if (bindingResult.hasErrors()) 
 		//	 return "instructor/modify";
+		System.out.println(idActivity);
 		 activityDao.updateActivity(activity);
 		 return "redirect:../list"; 
 	}
