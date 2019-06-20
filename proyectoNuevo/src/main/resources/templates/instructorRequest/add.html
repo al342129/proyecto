@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
    <title>Crear peticion de monitor</title>
@@ -8,44 +8,44 @@
      
      
          <style>
-body{
-background-color: #E0FFFF
-}
+ body{ 
+ background-color: #E0FFFF 
+ } 
 
-h2{
+ h2{ 
    
-    text-align: center;
-    background-color: #1E90FF;
-    width: 100%;
-    border-radius: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+     text-align: center; 
+    background-color: #1E90FF; 
+     width: 100%; 
+     border-radius: 20px; 
+     margin-top: 20px; 
+     margin-bottom: 20px; 
+  
+     } 
+      table{ 
    
-    }
-     table{
+     background-color: #87CEFA; 
+     border-radius: 20px ; 
+     margin-top:20px; 
+     margin-bottom: 20px; 
    
-    background-color: #87CEFA;
-    border-radius: 20px ;
-    margin-top:20px;
-    margin-bottom: 20px;
-   
-  }
-  td{
-    align: left;
-    margin-left: 20px;
-  }
+   } 
+   td{ 
+   align: left; 
+     margin-left: 20px; 
+   } 
  
-  .box {
-        height: 50px;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-    }
-    .box>* {
-        flex: 1 1 100px;
-    }
+/*    .box {  */
+/*          height: 50px; */ */
+/*          display: flex; */ */
+/*          flex-direction: column; */ */
+/*          flex-wrap: wrap; */ */
+/*     }  */
+/*     .box>* {  */
+/*          flex: 1 1 100px; */ */
+/*    }  */
  
-</style>
+</style> 
 
 </head>
 <body>
@@ -64,11 +64,11 @@ h2{
             <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"/></td>
         </tr>
         <tr>
-<div th:each="nadador:${activityTypes}" class="box">
-<div><input type="checkbox" th:value="${nadador}"></div>
-<div><label th:text="${nadador}"></label></div>
-</div>
-<form:select path="country" items="${activityTypes}" multiple="true" />
+<!-- 		<div th:each="nadador:${activityTypes}" class="box"> -->
+<!-- 			<div><input type="checkbox" th:value="${nadador}"></div> -->
+<!-- 			<div><label th:text="${nadador}"></label></div> -->
+<!-- 		</div> -->
+<!-- <form:select path="country" items="${activityTypes}" multiple="true" /> -->
         <td><label>Petición</label></td>
         <td>
         <select id="activityTypeRequest" th:field="*{activityTypeRequest}">
@@ -98,13 +98,12 @@ h2{
 <td>
   <input type="file" name="file" id="file" /> <br/>
  
-    <input type="submit" value="upload" name="upload" id="upload" />
 </form>
 </td>
         </tr>
         <tr>
         <td th:field="*{instructorRequestPDF}" /></td>
-        <td th:if="${#fields.hasErrors('instructorRequestPDF')}" th:errors="*{instructorRequestPDF}" class="error"/></td>
+<!--         <td th:if="${#fields.hasErrors('instructorRequestPDF')}" th:errors="*{instructorRequestPDF}" class="error"/></td> -->
        </tr>
         <tr>
             <td colspan="2"><input type="submit" value="Afegeix peticio" /></td>
@@ -112,7 +111,7 @@ h2{
       </table>
     </form>
 </body>
-</html> -->
+</html> 
 
 
 
@@ -124,113 +123,113 @@ h2{
 
 
 
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"> 
+<!-- <!DOCTYPE html> -->
+<!-- <html xmlns:th="http://www.thymeleaf.org">  -->
 
-<style>
- table{ 
-   background-color: #1ABC9C; 
-   border-radius: 20px ; 
-   margin-top:5%; 
-   margin-bottom: 10% 
+<!-- <style> -->
+<!-- /*  table{  */ -->
+<!-- /*    background-color: #1ABC9C;  */ -->
+<!-- /*    border-radius: 20px ;  */ -->
+<!-- /*    margin-top:5%;  */ -->
+<!-- /*    margin-bottom: 10%  */ -->
   
-  } 
-  </style>
+<!-- /*   }  */ -->
+<!--   </style> -->
   
-<head>
-<link rel="icon" 
-      type="image/png" 
-      href="/views.images/TooPotsGreen.png" />
+<!-- <head> -->
+<!-- <link rel="icon"  -->
+<!--       type="image/png"  -->
+<!--       href="/views.images/TooPotsGreen.png" /> -->
       
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+<!--   <meta charset="utf-8"> -->
+<!--   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+<!--   <meta name="description" content=""> -->
+<!--   <meta name="author" content=""> -->
 
-  <title>Solicitud Monitor</title>
+<!--   <title>Solicitud Monitor</title> -->
 
-<!--   Custom fonts for this theme -->
-  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+<!-- <!--   Custom fonts for this theme --> 
+<!--   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> -->
+<!--   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"> -->
+<!--   <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css"> -->
 
-<!--   Theme CSS -->
-  <link href="/instructorView.css/freelancer.min.css" rel="stylesheet">
+<!-- <!--   Theme CSS --> 
+<!--   <link href="/instructorView.css/freelancer.min.css" rel="stylesheet"> -->
   
 
-</head>
+<!-- </head> -->
 
 
-<body id="page-top">
+<!-- <body id="page-top"> -->
 
-<!--   Navigation -->
-  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-    <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="/">Toopots</a>
+<!-- <!--   Navigation --> 
+<!--   <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav"> -->
+<!--     <div class="container"> -->
+<!--       <a class="navbar-brand js-scroll-trigger" href="/">Toopots</a> -->
      
-      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-<!--         Menu -->
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="customer/add">Registro</a>
-          </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="user/login">Iniciar sesion</a>
-          </li>
+<!--       <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"> -->
+<!-- <!--         Menu --> 
+<!--         <i class="fas fa-bars"></i> -->
+<!--       </button> -->
+<!--       <div class="collapse navbar-collapse" id="navbarResponsive"> -->
+<!--         <ul class="navbar-nav ml-auto"> -->
+<!--           <li class="nav-item mx-0 mx-lg-1"> -->
+<!--             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="customer/add">Registro</a> -->
+<!--           </li> -->
+<!--           <li class="nav-item mx-0 mx-lg-1"> -->
+<!--             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="user/login">Iniciar sesion</a> -->
+<!--           </li> -->
      
-        </ul>
-      </div>
-    </div>
-  </nav>
+<!--         </ul> -->
+<!--       </div> -->
+<!--     </div> -->
+<!--   </nav> -->
   
   
   
-  <form action="#" autocomplete="off" th:action="@{/instructorRequest/add}" 
-                     th:object="${instructorRequest}" method="post"
-                     enctype="multipart/form-data">
+<!--   <form action="#" autocomplete="off" th:action="@{/instructorRequest/add}"  -->
+<!--                      th:object="${instructorRequest}" method="post" -->
+<!--                      enctype="multipart/form-data"> -->
      
      
-      <table style="width:40%" align=center >
+<!--       <table style="width:40%" align=center > -->
       
       
-      <thead align="center">
-     <h2>Nueva peticion de monitor</h2>
-    </thead>
+<!--       <thead align="center"> -->
+<!--      <h2>Nueva peticion de monitor</h2> -->
+<!--     </thead> -->
     
-      <tbody >
+<!--       <tbody > -->
    
-        <tr>
-            <td class="lead text-white" align="center"><label><br>DNI: </label></td>
-            <td class="lead text-white" align="center"><br><input type="text" th:field="*{nid}" /></td> 
-            <td class="error" th:if="${#fields.hasErrors('nid')}" th:errors="*{nid}"></td> 
-        </tr>
+<!--         <tr> -->
+<!--             <td class="lead text-white" align="center"><label><br>DNI: </label></td> -->
+<!--             <td class="lead text-white" align="center"><br><input type="text" th:field="*{nid}" /></td>  -->
+<!--             <td class="error" th:if="${#fields.hasErrors('nid')}" th:errors="*{nid}"></td>  -->
+<!--         </tr> -->
         
-        <tr>
-            <td class="lead text-white" align="center"><label>Nombre: </label></td>
-            <td  class="lead text-white" align="center"><input type="text" th:field="*{name}" /></td>
-            <td class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/></td> 
-        </tr>
+<!--         <tr> -->
+<!--             <td class="lead text-white" align="center"><label>Nombre: </label></td> -->
+<!--             <td  class="lead text-white" align="center"><input type="text" th:field="*{name}" /></td> -->
+<!--             <td class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/></td>  -->
+<!--         </tr> -->
         
-        <tr>
-         		<td class="lead text-white" align="center"><label>Petición: </label></td>
-            	<td class="lead text-white" align="center"><select id="activityTypeRequest" th:field="*{activityTypeRequest}">
-            		<option th:each="activityType : ${activityTypes}"
-            			th:value="${activityType}"
-            			th:text="${activityType}">
-            		</option>
-           		 </select>
-           		</td>
-      	</tr>
+<!--         <tr> -->
+<!--          		<td class="lead text-white" align="center"><label>Petición: </label></td> -->
+<!--             	<td class="lead text-white" align="center"><select id="activityTypeRequest" th:field="*{activityTypeRequest}"> -->
+<!--             		<option th:each="activityType : ${activityTypes}" -->
+<!--             			th:value="${activityType}" -->
+<!--             			th:text="${activityType}"> -->
+<!--             		</option> -->
+<!--            		 </select> -->
+<!--            		</td> -->
+<!--       	</tr> -->
 
-		<tr>
-            <td class="lead text-white" align="center"><label>Email: </label></td>
-            <td  class="lead text-white" align="center"><input type="text" th:field="*{email}" /></td>
-            <td class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"/></td> 
-        </tr>
+<!-- 		<tr> -->
+<!--             <td class="lead text-white" align="center"><label>Email: </label></td> -->
+<!--             <td  class="lead text-white" align="center"><input type="text" th:field="*{email}" /></td> -->
+<!--             <td class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"/></td>  -->
+<!--         </tr> -->
         
 <!--         <tr> -->
 <!--         	<td><form method="POST" action="/upload"  -->
@@ -244,20 +243,20 @@ h2{
 <!--             <td class="error" th:if="${#fields.hasErrors('file')}" th:errors="*{file}"/></td>  -->
 <!--         </tr> -->
         
-		<tr>
-			<td class="lead text-white" align="center"><label>Certificado: </label></td>
-            <td  class="lead text-white" align="center"><input type="file" th:field="*{instructorRequestPDF}" /></td>
-            <td class="error" th:if="${#fields.hasErrors('instructorRequestPDF')}" th:errors="*{instructorRequestPDF}"/></td> 
-        </tr>
+<!-- <!-- 		<tr> --> 
+<!-- <!-- 			<td class="lead text-white" align="center"><label>Certificado: </label></td> --> 
+<!-- <!--             <td  class="lead text-white" align="center"><input type="file" th:field="*{instructorRequestPDF}" /></td> -->
+<!-- <!--             <td class="error" th:if="${#fields.hasErrors('instructorRequestPDF')}" th:errors="*{instructorRequestPDF}"/></td>  --> 
+<!-- <!--         </tr> --> 
 
-	<br><br>
-		<tr>
-          <td align="center" colspan="2" >
-          	<a><button type="submit" value="Enviar petición" class="btn btn-xl btn-outline-light">
-         	<font color="white">Enviar Petición</font></a></button>
-         	<br><br>
-         </td>
-         </tr>
+<!-- 	<br><br> -->
+<!-- 		<tr> -->
+<!--           <td align="center" colspan="2" > -->
+<!--           	<a><button type="submit" value="Enviar petición" class="btn btn-xl btn-outline-light"> -->
+<!--          	<font color="white">Enviar Petición</font></a></button> -->
+<!--          	<br><br> -->
+<!--          </td> -->
+<!--          </tr> -->
          
          
          
@@ -265,57 +264,13 @@ h2{
 
       
       
-        </tbody>
+<!--         </tbody> -->
        
-      </table>
+<!--       </table> -->
      
-    </form>
+<!--     </form> -->
 
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- </body> -->
+<!-- </html> -->
 
 

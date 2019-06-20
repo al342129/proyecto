@@ -95,4 +95,20 @@ public class ReservationDao {
         return saltStr;
 
     }
+    
+//    select reservation.bookingdate, reservation.state,reservation.numberofpeople, reservation.idactivity, reservation.nid from reservation inner join activity on activity.idactivity = reservation.idactivity inner join instructor on activity.nidinstructor='54321234R';
+   
+    public List<Reservation> getReservationsPending(String nid){
+    	try {
+    		return jdbcTemplate.query("SELECT reservation.bookingDate, reservation.state, reservation.numberOfPeople, reservation.idActivity, reservation.nid FROM Reservation INNER JOIN Activity On activity.idActivity=reservation.idActivity INNER JOIN Instructor ON activity.nidInstructor=?",new ReservationRowMapper(), nid);
+
+    	}
+    	catch(EmptyResultDataAccessException e) {
+    		 return new ArrayList<Reservation>();
+    	}
+    }
+    
+    
+    
+    
 }

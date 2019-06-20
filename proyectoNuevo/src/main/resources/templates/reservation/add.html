@@ -180,26 +180,26 @@
    
          
          
-         <tr>
-   		<td class="lead text-white" align="center"> <label>Identificador de la actividad:</td>
-	  	<td class="lead text-white" align="center">
-        	<select id="activityTypeRequest"}>
+<!--          <tr> -->
+<!--    		<td class="lead text-white" align="center"> <label>Identificador de la actividad:</td> -->
+<!-- 	  	<td class="lead text-white" align="center"> -->
+<!--         	<select id="activityTypeRequest" hidden> -->
         		
-       			<option th:each="element : ${activity}"
-               		th:value="${element.idActivity}"
-               		th:text="${element.idActivity}"></option>
-   			</select>
-   			</td>
-		</tr>    
+<!--        			<option th:each="element : ${activity}" -->
+<!--                		th:value="${element.idActivity}" -->
+<!--                		th:text="${element.idActivity}" hidden></option> -->
+<!--    			</select> -->
+<!--    			</td> -->
+<!-- 		</tr>     -->
     <tr> 
 	  <td class="lead text-white" align="center">Nombre actividad:</td>
 	  <td class="lead text-white" align="center" th:text="${activity.activityName}" ></td>
 	</tr> 
         
         <tr>	
-   			<td><label>Cantidad de personas: </label></td>
-   			<td class="lead text-white" align="center"><input type="number" step="1" th:field="*{numberOfPeople}" /></td>
-   			<td class="lead text-white" align="center" th:if="${#fields.hasErrors('numberOfPeople')}" th:errors="*{numberOfPeople}" class="error"/></td> 
+   			<td class="lead text-white" align="center">Cantidad de personas: </td>
+   			<td class="lead text-white" align="center"><input type="number" value="1" min="1" max="10"  step="1" th:field="*{numberOfPeople}" /></td>
+<!--    			<td class="lead text-white" align="center" th:if="${#fields.hasErrors('numberOfPeople')}" th:errors="*{numberOfPeople}" class="error"/></td>  -->
    			
    		</tr>
          
@@ -221,54 +221,18 @@
         </tbody>
        
       </table>
+      
+      <select id="activityTypeRequest" hidden>
+        		
+       			<option th:each="element : ${activity}"
+               		th:value="${element.idActivity}"
+               		th:text="${element.idActivity}" hidden></option>
+   			</select>
      
     </form>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

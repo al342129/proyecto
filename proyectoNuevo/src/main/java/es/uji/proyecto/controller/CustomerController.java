@@ -1,5 +1,7 @@
 package es.uji.proyecto.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import es.uji.proyecto.dao.CustomerDao;
 import es.uji.proyecto.model.Customer;
+import es.uji.proyecto.model.UserDetails;
 
 
 @Controller
@@ -34,6 +37,13 @@ public class CustomerController{
 	public String addCustomer(Model model) {
 		model.addAttribute("customer", new Customer());
 		return "customer/add";
+	}
+	
+	@RequestMapping("/view")
+	public String returnCustomerView(Model model, HttpSession session) {
+		UserDetails user= (UserDetails) session.getAttribute("user");
+		model.addAttribute("user", user);
+		return "views/customer";
 	}
 	
 	

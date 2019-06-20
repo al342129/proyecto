@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{fragments/base}">
 <head>
    <title>Gestionar Actividades</title>
    <meta charset="UTF-8" />
@@ -9,6 +11,7 @@
 </head>
 
 <body>
+<div layout:fragment="content" align="right">
    <h1>Lista de actividades</h1>
    <table class="table table-striped">
      <thead>
@@ -34,8 +37,8 @@
        </tr>       
      </tbody>
    </table>
-   
-   
+   <button type="button" class="btn btn-primary"><a th:href="@{/instructor/createActivity/{nid}(nid=${user.nid})}"><font color="white">Crear actividad</font></a></button>
+   </div>
 </body>
 
 

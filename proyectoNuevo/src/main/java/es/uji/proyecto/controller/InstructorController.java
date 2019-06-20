@@ -196,6 +196,7 @@ public class InstructorController {
 	public String listActivities(@PathVariable String nid,Model model,HttpSession session) {
 		
 		model.addAttribute("activities", instructorDao.getActivities(nid));
+		model.addAttribute("user", session.getAttribute("user"));
 		if (session.getAttribute("user") == null) 
 	       { 
 	          model.addAttribute("user", new UserDetails()); 

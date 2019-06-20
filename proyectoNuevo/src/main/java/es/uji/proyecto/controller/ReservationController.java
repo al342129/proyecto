@@ -178,6 +178,14 @@ public class ReservationController {
 	       
 	       return "instructor/showReservations";
 	   }
+	
+	
+	@RequestMapping(value="/listPending/{nid}", method=RequestMethod.GET) 
+	   public String listReservationsPending(HttpSession session, Model model, @PathVariable String nid) {
+	       model.addAttribute("reservations", reservationDao.getReservationsPending(nid));      
+	       return "reservation/pendingList";
+	   }
+	
 	   
 }
 
