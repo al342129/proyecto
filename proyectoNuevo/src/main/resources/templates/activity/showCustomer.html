@@ -1,0 +1,299 @@
+<!-- <!DOCTYPE html> -->
+<!-- <html xmlns:th="http://www.thymeleaf.org"> -->
+<!--  <style> -->
+
+ 
+<!-- /* /*   h1{ */ */ -->
+<!-- /* /*   	text-align: center;  */ */ -->
+<!-- /* /*     background-color: #1E90FF; */ */ -->
+<!-- /* /*     width: 100%; */ */ -->
+<!-- /* /*     border-radius: 20px; */ */ -->
+<!-- /* /*     } */ */ -->
+
+<!-- /* /*   table{ */ */ -->
+<!-- /* /*     background-color: #87CEFA; */ */ -->
+<!-- /* /*     border-radius: 20px ; */ */ -->
+<!-- /* /*     margin-top:20px; */ */ -->
+<!-- /* /*     margin-bottom: 20px; */ */ -->
+<!-- /* /*   } */ */ -->
+<!-- /* /*   title{ */ */ -->
+<!-- /* /*   margin-bottom: 20px */ */ -->
+<!-- /* /*   } */ */ -->
+<!-- /* /*   div{ */ */ -->
+<!-- /* /*   backround-color: #87CEFA */ */ -->
+<!-- /* /*   } */ */ -->
+    
+<!--   </style> -->
+<!-- <head> -->
+<!--    <title>Información sobre la actividad</title> -->
+<!--    <meta charset="UTF-8" /> -->
+<!--    <link rel="stylesheet"      -->
+<!--     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/> -->
+<!-- </head> -->
+
+<!-- <body> -->
+
+<!-- 	<div> -->
+<!--     <h1>INFORMACIÓN SOBRE LA ACTIVIDAD</h1> -->
+<!-- <!--     <center><img th:src="@{/fotos/{profileImage}(profileImage=${instructor.profileImage})}" align="middle"> --> -->
+<!-- <!--     </center> --> -->
+    
+    
+<!-- 	<p th:text="${activity.descriptionActivity}" align="center"></p> -->
+
+<!-- 	</tr>   -->
+<!--     <table style="width:40%" align=center> -->
+<!--       <thead align="center"> -->
+<!--       <tr> -->
+<!-- 	<th colspan=2 rowspan=2>Actividad</th> -->
+<!--       </tr> -->
+<!--     </thead> -->
+      
+<!--       <tbody > -->
+<!-- 	<tr> -->
+<!-- 	  <td align="center">Nombre actividad:</td> -->
+<!-- 	  <td th:text="${activity.activityName}" align="center"></td> -->
+<!-- 	</tr>  -->
+	
+<!-- 	<tr> -->
+<!-- 	  <td align="center">Id actividad:</td> -->
+<!-- 	  <td th:text="${activity.idActivity}" align="center"></td> -->
+
+<!-- 	</tr>   -->
+	
+<!-- 	<tr> -->
+<!-- 	  <td align="center">Lugar:</td> -->
+<!-- 	  <td th:text="${activity.location}" align="center"></td> -->
+<!-- 	</tr>       -->
+	
+<!-- 	<tr> -->
+<!-- 	  <td align="center">Fecha:</td> -->
+<!-- 	  <td th:text="${activity.actDate}" align="center"></td> -->
+
+<!-- 	</tr>   -->
+<!-- 	<tr> -->
+<!-- 	  <td align="center">Id actividad:</td> -->
+<!-- 	  <td th:text="${activity.idActivity}" align="center"></td> -->
+
+<!-- 	</tr>   -->
+<!-- 	<tr> -->
+<!-- 	  <td align="center">Tipo Actividad:</td> -->
+<!-- 	  <td th:text="${activity.typeName}" align="center"></td> -->
+
+<!-- 	</tr>   -->
+<!-- 	<tr> -->
+<!-- 	  <td align="center">Nivel:</td> -->
+<!-- 	  <td th:text="${activity.level}" align="center"></td> -->
+
+<!-- 	</tr>   -->
+<!-- 	<tr> -->
+<!-- 	  <td align="center">Precio:</td> -->
+<!-- 	  <td th:text="${activity.price}" align="center"></td> -->
+
+<!-- 	</tr>   -->
+	
+<!-- 	<tr> -->
+<!-- 	  <td align="center">Max personas:</td> -->
+<!-- 	  <td th:text="${activity.maxPeople}" align="center"></td> -->
+
+<!-- 	</tr>   -->
+	
+<!-- 	<tr> -->
+<!-- 	  <td align="center">Min personas:</td> -->
+<!-- 	  <td th:text="${activity.minPeople}" align="center"></td> -->
+
+<!-- 	</tr>   -->
+	
+<!-- 	<tr> -->
+<!-- 	  <td align="center">Plazas disponibles:</td> -->
+<!-- 	  <td th:text="${activity.vacancies}" align="center"></td> -->
+
+<!-- 	</tr>   -->
+<!--       </tbody> -->
+<!--     </table> -->
+    
+<!-- 	</div> -->
+<!--   </body> -->
+
+
+<!--   </html> -->
+  
+  
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<style>
+  table{
+    background-color: #1ABC9C;
+    border-radius: 20px ;
+    margin-top:5%;
+    margin-bottom: 20px;
+  }
+  
+  title{
+  margin-bottom: 20px
+  }
+  
+  input, select {
+            width: 200px;
+            padding: 0;
+            margin: 0;
+            height: 25px;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+   }
+  </style>
+  
+  
+<head>
+   <title>Gestión de Actividades</title>
+     <link rel="icon" 
+      type="image/png" 
+      href="/views.images/TooPotsGreen.png" />
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+ 
+
+  <!-- Theme CSS -->
+  <link href="/instructorView.css/freelancer.min.css" rel="stylesheet">
+   <meta charset="UTF-8" />
+   
+</head>
+
+
+
+<body id="page-top">
+<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="/customer/view">Toopots</a>
+     
+      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        
+      </div>
+    </div>
+  </nav>
+  
+	<br><br><br><br>
+	
+	
+	<!-- Portfolio Section -->
+  <section class="page-section portfolio" id="portfolio">
+    <div class="container">
+
+ <br> <br>
+      <!-- Portfolio Section Heading -->
+      <br><br>
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Información sobre Actividades</h2>
+	
+      </div>
+      </section>
+      
+      
+     
+     
+    <table class="table table-striped" style="width:40%" align=center>
+    
+      
+     
+     
+     
+  
+     
+     <tbody>
+    	
+        <tr>
+            <td class="lead text-white text-center" ><label><br>Nombre de la actividad: </label></td>
+            <td class="lead text-white text-center"  th:text="*{activity.activityName}" /></td> 
+        </tr>
+        <tr>
+            <td class="lead text-white text-center" ><label><br>Id: </label></td>
+            <td class="lead text-white text-center"  th:text="*{activity.idActivity}" /></td> 
+        </tr> 
+         <tr>
+            <td class="lead text-white text-center" ><label><br>Tipo: </label></td>
+            <td class="lead text-white text-center" th:text="*{activity.typeName}" /></td> 
+        </tr> 
+        <tr>
+            <td class="lead text-white text-center" ><label><br>Nivel: </label></td>
+            <td class="lead text-white text-center" th:text="*{activity.level}"/></td> 
+        </tr> 
+        <tr>
+            <td class="lead text-white text-center" ><label><br>Precio: </label></td>
+            <td class="lead text-white text-center"  th:text="*{activity.price}" /></td> 
+        </tr> 
+        <tr>
+            <td class="lead text-white text-center" ><label><br>Máximo número de personas: </label></td>
+            <td class="lead text-white text-center" th:text="*{activity.maxPeople}" /></td> 
+        </tr> 
+   		<tr>
+            <td class="lead text-white text-center" align="center"><label><br>Mínimo número de personas: </label></td>
+            <td class="lead text-white text-center"  th:text="*{activity.minPeople}" /></td> 
+        </tr> 
+        <tr>
+            <td class="lead text-white text-center" align="center"><label><br>Plazas disponibles: </label></td>
+            <td class="lead text-white text-center"  th:text="*{activity.vacancies}" /></td> 
+        </tr> 
+       
+     </tbody>
+</table>
+
+
+<br><br>
+
+
+  <!-- Footer -->
+  <footer class="footer text-center" id="page-top">
+    <div class="container">
+      <div class="row">
+
+        <!-- Footer Location -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Ubicación</h4>
+          <p class="lead mb-0">Avda. Valencia, 53 
+            <br>12540 Castellón, España</p>
+        </div>
+
+        <!-- Footer Social Icons -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Redes Sociales</h4>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-facebook-f"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-twitter"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-linkedin-in"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-dribbble"></i>
+          </a>
+        </div>
+
+        <!-- Footer About Text -->
+        <div class="col-lg-4">
+          <h4 class="text-uppercase mb-4">Información de Contacto</h4>
+          <p class="lead mb-0">+34 654 34 56 76 <br>
+            <a href="http://startbootstrap.com">info@toopots.com</a></p>
+            <a href="instructorRequest/add">Trabaja con nosotros</a></p>
+            
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Copyright Section -->
+  <section class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small>Copyright &copy; GUPARI 2019</small>
+    </div>
+  </section>
+</body>
+</html>

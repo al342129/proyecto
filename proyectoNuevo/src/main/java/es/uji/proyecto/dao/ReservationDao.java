@@ -75,8 +75,8 @@ public class ReservationDao {
     
     public List<Reservation> getReservationsByNid(String nid){
     	try {
-    		System.out.print("segundo milagro del dia ");
-    		return jdbcTemplate.query("SELECT * from Reservation WHERE nid =?", new ReservationRowMapper(), nid);
+    		
+    		return jdbcTemplate.query("SELECT * from Reservation WHERE nid =? AND (state=? OR state=?)", new ReservationRowMapper(), nid, "Pendiente", "Aceptada");
 
     	}
     	catch(EmptyResultDataAccessException e) {

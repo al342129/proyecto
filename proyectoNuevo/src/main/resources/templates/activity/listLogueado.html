@@ -1,57 +1,24 @@
-<!-- <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-     layout:decorate="~{fragments/base}">
-<head>
-   <title>Reservas Pagadas</title>
-   <meta charset="UTF-8" />
-   <link rel="stylesheet"     
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
-</head>
-<body>
-<div layout:fragment="content" align="right">
-   <h1>Reservas Pagadas</h1>
-   <table class="table table-striped">
-     <thead>
-       <tr>
-       	<th>Data reserva</th>
-         <th>Estado</th>
-         <th>Numero de personas</th>
-   		 <th>Numero de transaccion</th>
-       </tr>
-     </thead>
-     <tbody>
-       <tr th:each="reservation: ${reservations}"> 
-         <td th:text="${reservation.bookingDate}"></td>
-         <td th:text="${reservation.state}"></td>
-         <td th:text="${reservation.numberOfPeople}"></td>
-         <td th:text="${reservation.transactionNumber}"></td>
-         
-       </tr>
-       
-     </tbody>
-   </table>
-   </div>
-   </body>
-</html> -->
-
-
-     
-     
-
-     
-     	
-     	
 <!DOCTYPE html>
-
-<html xmlns:th="http://www.thymeleaf.org"
-xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-     layout:decorate="~{fragments/base}">
-      
+<html 	xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     	layout:decorate="~{fragments/base}">
+     	
+<style>
+  
+  input, select {
+            width: 200px;
+            padding: 0;
+            margin: 0;
+            height: 25px;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+   }
+  </style>
   
   
 <head>
-   <title>Reservas Pagadas</title>
+   <title>Gestión de Actividades</title>
    <link rel="icon" 
       type="image/png" 
       href="/views.images/TooPotsGreen.png" />
@@ -63,13 +30,11 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
   <!-- Theme CSS -->
   <link href="/instructorView.css/freelancer.min.css" rel="stylesheet">
    <meta charset="UTF-8" />
-   
 </head>
 
 
 <body id="page-top">
-
-     	<div layout:fragment="content" align="right">	
+<div layout:fragment="content" align="right">	
 <!-- Navigation -->
   <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
@@ -84,9 +49,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       </div>
     </div>
   </nav>
-  
-	<br><br><br><br>
-	
+
 	
 	<!-- Portfolio Section -->
   <section class="page-section portfolio" id="portfolio">
@@ -94,38 +57,46 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 
 
       <!-- Portfolio Section Heading -->
-     
-      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0" 
-          style="margin-bottom: 20px;">                   
-          Reservas Pagadas
-      </h2>
+      <br><br>
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Actividades</h2>
 	
       </div>
       </section>
       
       
-     <table class="table table-striped" style="width:80%; background-color:#1ABC9C; border-radius:20px;
-    margin-top:5%; margin-bottom:20px;" align=center >
+     <table class="table table-striped" style="width:80%;   background-color: #1ABC9C;
+    border-radius: 20px ;
+    margin-top:5%;
+    margin-bottom: 20px;" align=center>
      <thead>
        <tr>
-         <th class="lead text-center text-white">Fecha de la Reserva</th>
-         <th class="lead  text-center text-white">Estado</th>
-         <th class="lead text-center text-white">Número de Personas</th>
-         <th class="lead text-center text-white">Número de Transacción</th>
+         <th class="lead text-center text-white">Fecha</th>
+         <th class="lead  text-center text-white">Nombre</th>
+         <th class="lead text-center text-white">Precio</th>
+         <th class="lead text-center text-white">Plazas restantes</th>
+         <th></th>
+         <th></th>
        </tr>
      </thead>
      <tbody>
-       <tr th:each="reservation: ${reservations}">
-         <td class="lead text-center text-white" th:text="${#temporals.format(reservation.bookingDate,'dd/MM/yyyy')}"></td>
-         <td  class="lead text-center text-white" th:text="${reservation.state}"></td>
-         <td class="lead text-center text-white" th:text="${reservation.numberOfPeople}"></td>
-         <td class="lead text-center text-white" th:text="${reservation.transactionNumber}"></td>      
+       <tr th:each="activity: ${activities}">
+         <td class="lead text-center text-white" th:text="${#temporals.format(activity.actDate,'dd/MM/yyyy')}"></td>
+         <td  class="lead text-center text-white" th:text="${activity.activityName}"></td>
+         <td class="lead text-white" th:text="${activity.price}"></td>
+         <td class="lead text-center text-white" th:text="${activity.vacancies}"></td>
+         <td><button type="button" class="btn btn-xl btn-outline-light" ><a th:href="@{/activity/showCustomer/{idActivity}(idActivity=${activity.idActivity})}"><font color="white">Ver</font></a></button>
+         </td>
+         
+   
+         
+         <td><button type="button" class="btn btn-xl btn-outline-light">
+         <a th:href="@{/reservation/add/{idActivity}(idActivity=${activity.idActivity})}">
+         <font color="white">Reservar</font></a></button>
+         </td>
        </tr>
      </tbody>
      </table>
-     
 <br><br>
-
   <!-- Footer -->
   <footer class="footer text-center">
     <div class="container">
@@ -175,7 +146,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     </div>
   </section>
 
-</div>  
+ </div>
 </body>
 
 </html>

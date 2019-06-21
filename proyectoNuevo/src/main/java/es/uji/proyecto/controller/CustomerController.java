@@ -90,7 +90,11 @@ public class CustomerController{
 		return false;
 	}
 
-
+	@RequestMapping(value="/show/{nid}")
+	public String showActivity(@PathVariable String nid, Model model) {
+		model.addAttribute("customer", customerDao.getCustomer(nid));
+		return "customer/show";
+	}
 	
 }
 

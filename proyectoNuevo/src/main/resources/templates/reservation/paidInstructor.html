@@ -40,22 +40,18 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 <div layout:fragment="content" align="right">
 <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="/customer/view">Toopots</a>
+      <a class="navbar-brand js-scroll-trigger" href="/instructor/view">Toopots</a>
      
       <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/customer/add">Registro</a>
-          </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login">Iniciar sesion</a>
-          </li>
-     
-        </ul>
+<!--         <ul class="navbar-nav ml-auto"> -->
+<!--           <li class="nav-item mx-0 mx-lg-1"> -->
+<!--             <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" th:href="@{/instructor/profile/{nid}(nid=${user.nid})}">Perfil</a> -->
+<!--           </li> -->
+<!--         </ul> -->
       </div>
     </div>
   </nav>
@@ -72,10 +68,10 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
    <table style="background-color:#1ABC9C;width:80%;border-radius: 20px;margin-top:5%;margin-bottom:100px;" class="table table-striped" align=center >
      <thead>
        <tr>
-       	<th class="lead text-center text-white">Data reserva</th>
+       	<th class="lead text-center text-white">Fecha reserva</th>
          <th class="lead text-center text-white">Estado</th>
-         <th class="lead text-center text-white">Numero de personas</th>
-   		 <th class="lead text-center text-white">Numero de transaccion</th>
+         <th class="lead text-center text-white">Número de personas</th>
+   		 <th class="lead text-center text-white">Número de transacción</th>
        </tr>
      </thead>
      <tbody>

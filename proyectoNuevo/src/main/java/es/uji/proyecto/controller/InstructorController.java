@@ -55,6 +55,13 @@ public class InstructorController {
 		return "views/instructor";
 	}
 	
+	@RequestMapping("/viewAdmin")
+	public String returnViewAdmin(Model model, HttpSession session) {
+		UserDetails user= (UserDetails) session.getAttribute("user");
+		model.addAttribute("user", user);
+		return "views/admin";
+	}
+	
 	@RequestMapping(value="/confirm/{nid}")
 	public String confirmDelete(@PathVariable String nid, Model model) {
 		model.addAttribute("instructor", instructorDao.getInstructor(nid));
