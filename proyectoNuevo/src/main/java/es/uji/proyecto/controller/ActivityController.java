@@ -31,6 +31,16 @@ public class ActivityController {
 	
 	   }
 	
+	@RequestMapping("/listAdmin")
+	public String listAdmin(Model model) {
+		model.addAttribute("activities", activityDao.getActivities());
+		System.out.print("Entro en el listar actividades");
+		return "activity/listAdmin";
+		
+		
+	
+	   }
+	
 	@RequestMapping(value="/show/{idActivity}")
 	public String showActivity(@PathVariable int idActivity, Model model) {
 		model.addAttribute("activity", activityDao.getActivity(idActivity));

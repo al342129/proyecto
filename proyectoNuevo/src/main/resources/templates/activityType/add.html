@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"> 
 <head>
    <title>Crear un nuevo tipo de actividad</title>
@@ -46,7 +46,7 @@
         </tr>
         <tr>
             <td><label>Descripcion</label></td>
-<!--   <input type="text" th:field="*{descriptionActType}" />           -->
+  <input type="text" th:field="*{descriptionActType}" />          
             <td><textarea rows="4" cols="50" maxlength="100" th:field="*{descriptionActType}">...</textarea></td>
         </tr>
         <tr>
@@ -67,5 +67,232 @@
         </tr>
       </table>
     </form>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html 	xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     	layout:decorate="~{fragments/base}">
+     	
+
+<style>
+ table{ 
+   background-color: #1ABC9C; 
+   border-radius: 20px ; 
+   margin-top:5%; 
+   margin-bottom: 10% 
+  
+  } 
+  </style>
+  
+<head>
+<link rel="icon" 
+      type="image/png" 
+      href="/views.images/TooPotsGreen.png" />
+      
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Nuevo Tipo de Actividad</title>
+
+<!--   Custom fonts for this theme -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+<!--   Theme CSS -->
+  <link href="/instructorView.css/freelancer.min.css" rel="stylesheet">
+  
+
+</head>
+
+
+<body id="page-top">
+<div layout:fragment="content" align="right">	
+
+<!--   Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="/">Toopots</a>
+     
+      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+<!--         Menu -->
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="customer/add">Registro</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="user/login">Iniciar sesion</a>
+          </li>
+     
+        </ul>
+      </div>
+    </div>
+  </nav>
+ 
+ 	<!-- Portfolio Section -->
+  <section class="page-section portfolio" id="portfolio">
+    <div class="container">
+
+ <br> <br>
+      <!-- Portfolio Section Heading -->
+      <br><br>
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Nuevo Tipo de Actividad</h2>
+	
+      </div>
+      </section>
+      
+  
+  <form action="#" th:action="@{/activityType/add}" 
+                     th:object="${activityType}" method="post" > 
+  
+                    
+     
+     
+      <table class="table table-striped" style="width:80%;background-color: #1ABC9C; 
+   border-radius: 20px ; 
+   margin-top:5%; 
+   margin-bottom: 10%;" 
+   			 align=center >
+      
+      
+      
+    
+      <tbody >
+   
+<!-- 
+          <tr>
+            <td class="lead text-white" align="center">Nombre del nuevo tipo:</td>
+            <td><input type="text" class="lead text-white" align="center"  th:field="*{typeName}"/></td>
+            <td th:if="${#fields.hasErrors('typeName')}"  align="center"  th:errors="*{typeName}" class="error"/></td>
+        </tr>
+        <tr>
+            <td class="lead text-white" align="center">Descripción:</td>
+  			<td><input type="text" class="lead text-white" align="center"  th:field="*{descriptionActType}"/></td>         
+            <td><textarea rows="4" cols="50" maxlength="100" th:field="*{descriptionActType}">...</textarea></td>
+        </tr>
+        <tr>
+            <td class="lead text-white" align="center">Nivel:</td>
+            <td>
+            <select th:field="*{level}">
+    			<option th:value="Básico" th:text="Básico"></option>
+    			<option th:value="Intermedio" th:text="Intermedio"></option>
+    			<option th:value="Avanzado" th:text="Avanzado"></option>
+			</select>
+            
+            </td>
+        </tr>
+         -->
+
+
+
+     <tr>
+            <td class="lead text-white"><label>Nombre</label></td>
+            <td><input type="text" th:field="*{typeName}" /></td>
+            <td th:if="${#fields.hasErrors('typeName')}" th:errors="*{typeName}" class="error"/></td>
+        </tr>
+        <tr>
+            <td class="lead text-white"><label>Descripción</label></td>
+<!--   <input type="text" th:field="*{descriptionActType}" />           -->
+            <td><textarea rows="4" cols="50" maxlength="100" th:field="*{descriptionActType}">...</textarea></td>
+        </tr>
+        <tr>
+            <td class="lead text-white"><label>Nivel</label></td>
+            <td>
+            <select th:field="*{level}">
+    			<option th:value="Básico" th:text="Básico"></option>
+    			<option th:value="Intermedio" th:text="Intermedio"></option>
+    			<option th:value="Avanzado" th:text="Avanzado"></option>
+			</select>
+            
+            </td>
+        </tr>
+        
+<!--         <tr> -->
+<!--             <td colspan="2"><input type="submit" value="Añade tipo de actividad" /></td> -->
+<!--         </tr>  -->
+      
+      <tr>
+     <td align="center" colspan="2" >
+          	<a><button type="submit" value="Añadir" class="btn btn-xl btn-outline-light">
+         	<font color="white">Añadir</font></a></button>
+         	<br><br>
+         </td>
+         </tr>
+      
+        </tbody>
+       
+      </table>
+      
+   
+    </form>
+ 
+<br><br>
+  <!-- Footer -->
+  <footer class="footer text-center">
+    <div class="container">
+      <div class="row">
+
+        <!-- Footer Location -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Ubicación</h4>
+          <p class="lead mb-0">Avda. Valencia, 53 
+            <br>12540 Castellón, España</p>
+        </div>
+
+        <!-- Footer Social Icons -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Redes Sociales</h4>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-facebook-f"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-twitter"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-linkedin-in"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-dribbble"></i>
+          </a>
+        </div>
+
+        <!-- Footer About Text -->
+        <div class="col-lg-4">
+          <h4 class="text-uppercase mb-4">Información de Contacto</h4>
+          <p class="lead mb-0">+34 654 34 56 76 <br>
+            <a href="http://startbootstrap.com">info@toopots.com</a></p>
+            <a href="/instructorRequest/add">Trabaja con nosotros</a></p>
+            
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Copyright Section -->
+  <section class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small>Copyright &copy; GUPARI 2019</small>
+    </div>
+  </section>
+    
+    
+    
+    
+    
+    
+    
+    
+	</div>
 </body>
 </html>
