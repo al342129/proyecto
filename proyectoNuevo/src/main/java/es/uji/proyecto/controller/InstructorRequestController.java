@@ -55,7 +55,12 @@ public class InstructorRequestController {
 		return "instructorRequest/list";
 	}
 	
-	
+	@RequestMapping("/enviado")
+	public String peticionEnviada(Model model) {
+		
+		
+		return "instructorRequest/enviado";
+	}
 	
 	@RequestMapping(value="/delete/{nid}/{activityTypeRequest}")
 	public String processDelete(@PathVariable String nid,@PathVariable String activityTypeRequest) {
@@ -133,7 +138,7 @@ public class InstructorRequestController {
 		 instructorRequestValidator.validate(instructorRequest, bindingResult);
 		 if (bindingResult.hasErrors()){
 			 
-			 return "/instructorRequest/add";
+			 return "instructorRequest/add";
 		 }
 			 
 				
@@ -169,7 +174,7 @@ public class InstructorRequestController {
 	      }
 
 	      instructorRequestDao.addInstructorRequest(instructorRequest);
-	      return "redirect:list";
+	      return "instructorRequest/enviado";
 	   }
 
 }

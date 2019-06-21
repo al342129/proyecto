@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<style>
+
+
+  table{
+    background-color: #1ABC9C;
+    border-radius: 20px ;
+    margin-top:5%;
+    margin-bottom: 20px;
+  }
+  
+  title{
+  margin-bottom: 20px
+  }
+  
+  input, select {
+            width: 200px;
+            padding: 0;
+            margin: 0;
+            height: 25px;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+   }
+  </style>
+  
+  
+<head>
+   <title>Confirmacion</title>
+   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Theme CSS -->
+  <link href="/instructorView.css/freelancer.min.css" rel="stylesheet">
+   <meta charset="UTF-8" />
+   
+</head>
+<body id="page-top">
+<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="/">Toopots</a>
+     
+      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/customer/add">Registro</a>
+          </li>
+          <li class="nav-item mx-0 mx-lg-1">
+            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login">Iniciar sesion</a>
+          </li>
+     
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+	<br><br><br><br>
+	
+	
+	<!-- Portfolio Section -->
+  <section class="page-section portfolio" id="portfolio">
+    <div class="container">
+
+ <br> <br>
+      <!-- Portfolio Section Heading -->
+      <br><br>
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Su solicitud ha sido enviada
+      satisfactoriamente. Se le proporcionaran sus datos de inicio de sesión mediante correo electrónico si ha sido aceptado.
+      
+      </h2>
+	<a href="/" class="btn btn-primary" th:align="left">Volver atrás</a>
+      </div>
+      </section>
+     
+
+</body>
+</html>
