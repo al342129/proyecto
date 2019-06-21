@@ -105,7 +105,7 @@ public class ReservationDao {
    
     public List<Reservation> getReservationsPending(String nid){
     	try {
-    		return jdbcTemplate.query("SELECT reservation.bookingNumber, reservation.transactionNumber, reservation.bookingDate, reservation.state, reservation.numberOfPeople, reservation.idActivity, reservation.nid FROM Reservation INNER JOIN Activity On activity.idActivity=reservation.idActivity INNER JOIN Instructor ON activity.nidInstructor=?",new ReservationRowMapper(), nid);
+    		return jdbcTemplate.query("SELECT DISTINCT reservation.bookingNumber, reservation.transactionNumber, reservation.bookingDate, reservation.state, reservation.numberOfPeople, reservation.idActivity, reservation.nid FROM Reservation INNER JOIN Activity On activity.idActivity=reservation.idActivity INNER JOIN Instructor ON activity.nidInstructor=?",new ReservationRowMapper(), nid);
 
     	}
     	catch(EmptyResultDataAccessException e) {
@@ -139,7 +139,7 @@ public class ReservationDao {
     
     public List<Reservation> getReservationsPaid(String nid){
     	try {
-    		return jdbcTemplate.query("SELECT reservation.bookingNumber, reservation.transactionNumber, reservation.bookingDate, reservation.state, reservation.numberOfPeople, reservation.idActivity, reservation.nid FROM Reservation INNER JOIN Activity On activity.idActivity=reservation.idActivity INNER JOIN Instructor ON activity.nidInstructor=? WHERE reservation.state=?",new ReservationRowMapper(), nid, "Pagada");
+    		return jdbcTemplate.query("SELECT DISTINCT reservation.bookingNumber, reservation.transactionNumber, reservation.bookingDate, reservation.state, reservation.numberOfPeople, reservation.idActivity, reservation.nid FROM Reservation INNER JOIN Activity On activity.idActivity=reservation.idActivity INNER JOIN Instructor ON activity.nidInstructor=? WHERE reservation.state=?",new ReservationRowMapper(), nid, "Pagada");
 
     	}
     	catch(EmptyResultDataAccessException e) {
