@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"> 
 <head>
    <title>Crear actividad</title>
@@ -137,4 +137,277 @@
       </table>
     </form>
 </body>
+</html> -->
+
+<!DOCTYPE html>
+<html 	xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     	layout:decorate="~{fragments/base}">
+     
+
+<head>
+   <title>Crear Actividad</title>
+   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+  <!-- Theme CSS -->
+  <link href="/instructorView.css/freelancer.min.css" rel="stylesheet">
+   <meta charset="UTF-8" />
+   
+   <style>
+	
+     table{
+    
+    background-color: #87CEFA;
+    border-radius: 20px ;
+    margin-top:20px;
+    margin-bottom: 20px;
+    
+  }
+  td{
+    align: left;
+    margin-left: 20px;
+  }
+  
+  .box {
+        height: 50px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .box>* {
+        flex: 1 1 100px;
+    }
+  
+</style>
+   
+   </head>
+<body id="page-top">
+<div layout:fragment="content" align="right">	
+<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="/instructor/view">Toopots</a>
+     
+      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+   
+      </div>
+    </div>
+  </nav>
+  
+
+	
+	<!-- Portfolio Section -->
+  <section class="page-section portfolio" id="portfolio">
+    <div class="container">
+
+ <br> <br>
+      <!-- Portfolio Section Heading -->
+     
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Crear Actividad</h2>
+	
+      </div>
+      </section>
+      <br>
+      <br>
+
+      
+      
+            
+<form action="#" th:action="@{/instructor/createActivity/}"
+                     th:object="${activity}" method="post" enctype="multipart/form-data"> 
+      <table align="center" class="table table-striped" cellpadding="30" style="width:80%; background-color: #1ABC9C;border-radius:20px ;margin-top:20px;margin-bottom:20px;" >
+      <tr>
+   		<td class="lead text-white text-center"> <label>DNI:</td>
+	  	<td class="lead text-white text-center">
+        	<select id="activityTypeRequest" th:field=*{nidInstructor}>
+        		
+       			<option th:each="element : ${instructor}"
+               		th:value="${element.nid}"
+               		th:text="${element.nid}"></option>
+   			</select>
+   			</td>
+		</tr>    
+      
+        
+        <tr>
+        	<td class="lead text-white text-center"><label>Tipo de actividad</label></td>
+        	<td class="lead text-white text-center">
+        	<select id="activityTypeRequest" th:field=*{typeName}>
+<!--         		<option value=""></option>  -->
+       			<option th:each="activityType : ${activities}"
+               		th:value="${activityType}"
+               		th:text="${activityType}"></option>
+   			</select>
+   			</td>
+   			</tr>
+   			
+   			<td class="lead text-white text-center"><label>Nombre de la actividad</label></td>
+   			<td class="lead text-white text-center"><input type="text" th:field="*{activityName}" /></td>
+   		</tr>
+   		
+   		<tr>	
+   			<td class="lead text-white text-center"><label>Fecha de realizacion</label></td>
+   			<td class="lead text-white text-center"><input type="date" th:field="*{actDate}" /></td>
+   		</tr>
+   		
+   		<tr>	
+   			<td class="lead text-white text-center"><label>Lugar</label></td>
+   			<td class="lead text-white text-center"><input type="text" th:field="*{location}" /></td>
+   		</tr>
+   		
+   		 <tr>
+				<td class="lead text-white text-center"><label>Imagen</label></td>
+				<td class="lead text-white text-center">
+  				 <input type="file" name="file" id="file" /> <br/>
+				</td>
+        </tr>
+   		
+   		<tr>	
+   			<td class="lead text-white text-center"><label>Duración</label></td>
+   			<td class="lead text-white text-center"><input type="number"  min="0.30" max="6"step="0.01" th:field="*{duration}" /></td>
+   		</tr>
+   		
+   		<tr>	
+   			<td class="lead text-white text-center"><label>Descripcion</label></td>
+   			<td class="lead text-white text-center"><input type="text" th:field="*{descriptionActivity}" /></td>
+   		</tr>
+   		
+   		<tr>	
+   			<td class="lead text-white text-center"><label>Precio</label></td>
+   			<td class="lead text-white text-center"><input type="number" min="1" max="60"  step="1" th:field="*{price}" /></td>
+   		</tr>
+   		
+   		<tr>	
+   			<td class="lead text-white text-center"><label>Número máximo de personas</label></td>
+   			<td class="lead text-white text-center"><input type="number"  min="1" max="10" th:field="*{maxPeople}" /></td>
+   		</tr>
+   		
+   		<tr>	
+   			<td class="lead text-white text-center"><label>Número mínimo de personas</label></td>
+   			<td class="lead text-white text-center"><input type="number"  min="1" max="10" th:field="*{minPeople}" /></td>
+   		</tr>
+   		
+   		<tr>	
+   			<td class="lead text-white text-center"><label>Plazas disponibles</label></td>
+   			<td class="lead text-white text-center"><input type="number" min="1" max="10" th:field="*{vacancies}" /></td>
+   		</tr>
+  
+        
+        <tr>
+          <td align="center" colspan="2" >
+          	<a><button type="submit" value="Añadir actividad" class="btn btn-xl btn-outline-light">
+         	<font color="white">Añadir actividad</font></a></button>
+         	<br><br>
+         </td>
+</tr>
+   		
+
+      </table>
+    </form>
+    
+    <!-- Footer -->
+  <footer class="footer text-center" id="page-top">
+    <div class="container">
+      <div class="row">
+
+        <!-- Footer Location -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Ubicación</h4>
+          <p class="lead mb-0">Avda. Valencia, 53 
+            <br>12540 Castellón, España</p>
+        </div>
+
+        <!-- Footer Social Icons -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Redes Sociales</h4>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-facebook-f"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-twitter"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-linkedin-in"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-dribbble"></i>
+          </a>
+        </div>
+
+        <!-- Footer About Text -->
+        <div class="col-lg-4">
+          <h4 class="text-uppercase mb-4">Información de Contacto</h4>
+          <p class="lead mb-0">+34 654 34 56 76 <br>
+            <a href="http://startbootstrap.com">info@toopots.com</a></p>
+            <a href="instructorRequest/add">Trabaja con nosotros</a></p>
+            
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Copyright Section -->
+  <section class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small>Copyright &copy; GUPARI 2019</small>
+    </div>
+  </section>
+      
+</div>
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

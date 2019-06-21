@@ -63,6 +63,12 @@ public class ActivityController {
 		return "activity/showCustomer";
 	}
 	
+	@RequestMapping(value="/showAdmin/{idActivity}")
+	public String showActiv(@PathVariable int idActivity, Model model) {
+		model.addAttribute("activity", activityDao.getActivity(idActivity));
+		return "activity/showAdmin";
+	}
+	
 	
 	@RequestMapping("/escalada")
 	public String home1(Model model) {

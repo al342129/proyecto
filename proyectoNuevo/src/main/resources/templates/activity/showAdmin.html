@@ -1,124 +1,3 @@
-<!-- <!DOCTYPE html> -->
-<!-- <html xmlns:th="http://www.thymeleaf.org"> -->
-<!--  <style> -->
-
- 
-<!-- /* /*   h1{ */ */ -->
-<!-- /* /*   	text-align: center;  */ */ -->
-<!-- /* /*     background-color: #1E90FF; */ */ -->
-<!-- /* /*     width: 100%; */ */ -->
-<!-- /* /*     border-radius: 20px; */ */ -->
-<!-- /* /*     } */ */ -->
-
-<!-- /* /*   table{ */ */ -->
-<!-- /* /*     background-color: #87CEFA; */ */ -->
-<!-- /* /*     border-radius: 20px ; */ */ -->
-<!-- /* /*     margin-top:20px; */ */ -->
-<!-- /* /*     margin-bottom: 20px; */ */ -->
-<!-- /* /*   } */ */ -->
-<!-- /* /*   title{ */ */ -->
-<!-- /* /*   margin-bottom: 20px */ */ -->
-<!-- /* /*   } */ */ -->
-<!-- /* /*   div{ */ */ -->
-<!-- /* /*   backround-color: #87CEFA */ */ -->
-<!-- /* /*   } */ */ -->
-    
-<!--   </style> -->
-<!-- <head> -->
-<!--    <title>Información sobre la actividad</title> -->
-<!--    <meta charset="UTF-8" /> -->
-<!--    <link rel="stylesheet"      -->
-<!--     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/> -->
-<!-- </head> -->
-
-<!-- <body> -->
-
-<!-- 	<div> -->
-<!--     <h1>INFORMACIÓN SOBRE LA ACTIVIDAD</h1> -->
-<!-- <!--     <center><img th:src="@{/fotos/{profileImage}(profileImage=${instructor.profileImage})}" align="middle"> --> -->
-<!-- <!--     </center> --> -->
-    
-    
-<!-- 	<p th:text="${activity.descriptionActivity}" align="center"></p> -->
-
-<!-- 	</tr>   -->
-<!--     <table style="width:40%" align=center> -->
-<!--       <thead align="center"> -->
-<!--       <tr> -->
-<!-- 	<th colspan=2 rowspan=2>Actividad</th> -->
-<!--       </tr> -->
-<!--     </thead> -->
-      
-<!--       <tbody > -->
-<!-- 	<tr> -->
-<!-- 	  <td align="center">Nombre actividad:</td> -->
-<!-- 	  <td th:text="${activity.activityName}" align="center"></td> -->
-<!-- 	</tr>  -->
-	
-<!-- 	<tr> -->
-<!-- 	  <td align="center">Id actividad:</td> -->
-<!-- 	  <td th:text="${activity.idActivity}" align="center"></td> -->
-
-<!-- 	</tr>   -->
-	
-<!-- 	<tr> -->
-<!-- 	  <td align="center">Lugar:</td> -->
-<!-- 	  <td th:text="${activity.location}" align="center"></td> -->
-<!-- 	</tr>       -->
-	
-<!-- 	<tr> -->
-<!-- 	  <td align="center">Fecha:</td> -->
-<!-- 	  <td th:text="${activity.actDate}" align="center"></td> -->
-
-<!-- 	</tr>   -->
-<!-- 	<tr> -->
-<!-- 	  <td align="center">Id actividad:</td> -->
-<!-- 	  <td th:text="${activity.idActivity}" align="center"></td> -->
-
-<!-- 	</tr>   -->
-<!-- 	<tr> -->
-<!-- 	  <td align="center">Tipo Actividad:</td> -->
-<!-- 	  <td th:text="${activity.typeName}" align="center"></td> -->
-
-<!-- 	</tr>   -->
-<!-- 	<tr> -->
-<!-- 	  <td align="center">Nivel:</td> -->
-<!-- 	  <td th:text="${activity.level}" align="center"></td> -->
-
-<!-- 	</tr>   -->
-<!-- 	<tr> -->
-<!-- 	  <td align="center">Precio:</td> -->
-<!-- 	  <td th:text="${activity.price}" align="center"></td> -->
-
-<!-- 	</tr>   -->
-	
-<!-- 	<tr> -->
-<!-- 	  <td align="center">Max personas:</td> -->
-<!-- 	  <td th:text="${activity.maxPeople}" align="center"></td> -->
-
-<!-- 	</tr>   -->
-	
-<!-- 	<tr> -->
-<!-- 	  <td align="center">Min personas:</td> -->
-<!-- 	  <td th:text="${activity.minPeople}" align="center"></td> -->
-
-<!-- 	</tr>   -->
-	
-<!-- 	<tr> -->
-<!-- 	  <td align="center">Plazas disponibles:</td> -->
-<!-- 	  <td th:text="${activity.vacancies}" align="center"></td> -->
-
-<!-- 	</tr>   -->
-<!--       </tbody> -->
-<!--     </table> -->
-    
-<!-- 	</div> -->
-<!--   </body> -->
-
-
-<!--   </html> -->
-  
-  
 <!DOCTYPE html>
 <html 	xmlns:th="http://www.thymeleaf.org"
 		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
@@ -170,7 +49,7 @@
 <!-- Navigation -->
   <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="/customer/view">Toopots</a>
+      <a class="navbar-brand js-scroll-trigger" href="/instructor/viewAdmin">Toopots</a>
      
       <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
@@ -182,14 +61,14 @@
     </div>
   </nav>
   
-
+	
 	
 	
 	<!-- Portfolio Section -->
   <section class="page-section portfolio" id="portfolio">
     <div class="container">
 
-
+ 
       <!-- Portfolio Section Heading -->
       <br><br>
       <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Información sobre Actividades</h2>

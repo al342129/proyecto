@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
  <style>
 
@@ -68,3 +68,173 @@
 
 
   </html>
+ -->
+ 
+   
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{fragments/base}">
+<style>
+  table{
+    background-color: #1ABC9C;
+    border-radius: 20px ;
+    margin-top:5%;
+    margin-bottom: 20px;
+  }
+  
+  title{
+  margin-bottom: 20px
+  }
+  
+  input, select {
+            width: 200px;
+            padding: 0;
+            margin: 0;
+            height: 25px;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+   }
+  </style>
+  
+  
+<head>
+   <title>Gestión de Monitores</title>
+     <link rel="icon" 
+      type="image/png" 
+      href="/views.images/TooPotsGreen.png" />
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+ 
+
+  <!-- Theme CSS -->
+  <link href="/instructorView.css/freelancer.min.css" rel="stylesheet">
+   <meta charset="UTF-8" />
+   
+</head>
+
+
+
+<body id="page-top">
+<div layout:fragment="content" align="right">
+<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="/instructor/viewAdmin">Toopots</a>
+     
+      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        
+      </div>
+    </div>
+  </nav>
+  
+	
+	
+	<!-- Portfolio Section -->
+  <section class="page-section portfolio" id="portfolio">
+    <div class="container">
+
+ 
+      <!-- Portfolio Section Heading -->
+      <br><br>
+      <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Información sobre Monitores</h2>
+	           <center><img th:src="@{/fotos/{profileImage}(profileImage=${instructor.profileImage})}" align="middle"></center>
+	
+      </div>
+      </section>
+      
+      
+     
+     
+    <table class="table table-striped" style="width:40%;background-color: #1ABC9C;
+    border-radius: 20px ;
+    margin-top:5%;
+    margin-bottom: 20px;" align=center>
+    
+      
+     
+     
+     
+  
+     
+     <tbody>
+    	
+        <tr>
+            <td class="lead text-white text-center" ><label><br>DNI: </label></td>
+            <td class="lead text-white text-center"  th:text="*{instructor.nid}" /></td> 
+        </tr>
+        <tr>
+            <td class="lead text-white text-center" ><label><br>Nombre: </label></td>
+            <td class="lead text-white text-center"  th:text="*{instructor.name}" /></td> 
+        </tr> 
+      
+        
+        <tr>
+	  <td class="lead text-white text-center" align="center">Fecha aceptacion:</td>
+	  <td class="lead text-white text-center" th:text="${#temporals.format(instructor.acceptanceDate,'dd/MM/yyyy')}" align="center"></td>
+	</tr> 
+       
+     </tbody>
+</table>
+
+
+<br><br>
+
+
+  <!-- Footer -->
+  <footer class="footer text-center" id="page-top">
+    <div class="container">
+      <div class="row">
+
+        <!-- Footer Location -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Ubicación</h4>
+          <p class="lead mb-0">Avda. Valencia, 53 
+            <br>12540 Castellón, España</p>
+        </div>
+
+        <!-- Footer Social Icons -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Redes Sociales</h4>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-facebook-f"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-twitter"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-linkedin-in"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-dribbble"></i>
+          </a>
+        </div>
+
+        <!-- Footer About Text -->
+        <div class="col-lg-4">
+          <h4 class="text-uppercase mb-4">Información de Contacto</h4>
+          <p class="lead mb-0">+34 654 34 56 76 <br>
+            <a href="http://startbootstrap.com">info@toopots.com</a></p>
+            <a href="/instructorRequest/add">Trabaja con nosotros</a></p>
+            
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Copyright Section -->
+  <section class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small>Copyright &copy; GUPARI 2019</small>
+    </div>
+  </section>
+  </div>
+</body>
+</html>
