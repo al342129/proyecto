@@ -31,6 +31,16 @@ public class ActivityController {
 	
 	   }
 	
+	@RequestMapping("/listLogueado")
+	public String listLogueado(Model model) {
+		model.addAttribute("activities", activityDao.getActivities());
+		System.out.print("Entro en el listar actividades");
+		return "activity/listLogueado";
+		
+		
+	
+	   }
+	
 	@RequestMapping("/listAdmin")
 	public String listAdmin(Model model) {
 		model.addAttribute("activities", activityDao.getActivities());
@@ -45,6 +55,12 @@ public class ActivityController {
 	public String showActivity(@PathVariable int idActivity, Model model) {
 		model.addAttribute("activity", activityDao.getActivity(idActivity));
 		return "activity/show";
+	}
+	
+	@RequestMapping(value="/showCustomer/{idActivity}")
+	public String showActivityLog(@PathVariable int idActivity, Model model) {
+		model.addAttribute("activity", activityDao.getActivity(idActivity));
+		return "activity/showCustomer";
 	}
 	
 	
