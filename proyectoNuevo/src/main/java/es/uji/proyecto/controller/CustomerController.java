@@ -3,6 +3,7 @@ package es.uji.proyecto.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -55,7 +56,15 @@ public class CustomerController{
 		 customerValidator.validate(customer, bindingResult);
 		 if (bindingResult.hasErrors())
 				return "customer/add";
-		 customerDao.addCustomer(customer);
+		 try{
+			 customerDao.addCustomer(customer);
+		 }
+		catch(DuplicateKeyException e) {
+			throw new ProjectException( 
+		             "El DNI introducido ya se encuentra en el sistema", "ClauPrimariaDuplicada"); 
+		}
+		
+		
 		 return "redirect:/user/login";
 	 }
 	

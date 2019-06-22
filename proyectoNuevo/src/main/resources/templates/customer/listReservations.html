@@ -122,7 +122,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       	<td><button type="button" class="btn btn-success" ><a th:href="@{/reservation/confirm/{bookingNumber}(bookingNumber=${reservation.bookingNumber})}"><font color="white">Confirmar</font></a></button>
          <td th:if="${#fields.hasErrors('nid')}" th:errors="*{nid}" class="error"/></td> 
          </td>
-         <td><button type="button" class="btn btn-danger"><a th:href="@{/reservation/deleteConfirm/{bookingNumber}(bookingNumber=${reservation.bookingNumber})}"><font color="white">Esborra</font></a></button>
+         <td><button type="button" class="btn btn-danger"><a th:href="@{/reservation/deleteConfirm/{bookingNumber}(bookingNumber=${reservation.bookingNumber})}"><font color="white">Eliminar</font></a></button>
          </td>
        </tr>
      </tbody>

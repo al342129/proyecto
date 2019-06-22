@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"> 
+<html 	xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     	layout:decorate="~{fragments/base}">
 <style>
 
 
@@ -38,45 +40,84 @@
    
 </head>
 <body id="page-top">
+<div layout:fragment="content" align="right">	
 <!-- Navigation -->
   <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="/">Toopots</a>
+      <a class="navbar-brand js-scroll-trigger" href="/customer/view">Toopots</a>
      
       <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/customer/add">Registro</a>
-          </li>
-          <li class="nav-item mx-0 mx-lg-1">
-            <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/user/login">Iniciar sesion</a>
-          </li>
-     
-        </ul>
+        
       </div>
     </div>
   </nav>
   
-	<br><br><br><br>
 	
 	
 	<!-- Portfolio Section -->
   <section class="page-section portfolio" id="portfolio">
     <div class="container">
 
- <br> <br>
       <!-- Portfolio Section Heading -->
       <br><br>
       <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Error! No puedes confirmar 
       la reserva hasta que el monitor no ponga su estado en "Aceptada"</h2>
-	<a href="/customer/view" class="btn btn-primary" th:align="left">Volver atrás</a>
+      <br><br>
+	<center><a href="/customer/view" class="btn btn-primary" th:align="left">Volver atrás</a></center>
       </div>
       </section>
-     
+     <br><br><br><br>
+<footer class="footer text-center" >
+    <div class="container">
+      <div class="row">
 
+        <!-- Footer Location -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Ubicación</h4>
+          <p class="lead mb-0">Avda. Valencia, 53 
+            <br>12540 Castellón, España</p>
+        </div>
+
+        <!-- Footer Social Icons -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Redes Sociales</h4>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-facebook-f"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-twitter"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-linkedin-in"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-dribbble"></i>
+          </a>
+        </div>
+
+        <!-- Footer About Text -->
+        <div class="col-lg-4">
+          <h4 class="text-uppercase mb-4">Información de Contacto</h4>
+          <p class="lead mb-0">+34 654 34 56 76 <br>
+            <a href="http://startbootstrap.com">info@toopots.com</a></p>
+            <a href="/instructorRequest/add">Trabaja con nosotros</a></p>
+            
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Copyright Section -->
+  <section class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small>Copyright &copy; GUPARI 2019</small>
+    </div>
+  </section>
+</div>
 </body>
 </html>

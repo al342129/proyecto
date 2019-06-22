@@ -1,15 +1,35 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+     layout:decorate="~{fragments/base}">
 <head>
    <title>Alerta de confirmación de borrado</title>
    <meta charset="UTF-8" />
    <link rel="stylesheet"     
     href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+    <link href="/instructorView.css/freelancer.min.css" rel="stylesheet">
 </head>
 
 <body>
-   <h1>Alerta de confirmación de borrado</h1>
-   <p> Estas seguro que deseas borrar la siguiente reserva? </p>
+
+    	<div layout:fragment="content" align="right">	
+<!-- Navigation -->
+  <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand js-scroll-trigger" href="/customer/view">Toopots</a>
+     
+      <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        
+      </div>
+    </div>
+  </nav>
+  <br><br><br>
+   <center><h1>Alerta de confirmación de borrado</h1>
+   <p> Estas seguro que deseas borrar la siguiente reserva? </p></center>
    <table class="table table-striped" width="50%">
      <thead>
        <tr>
@@ -29,15 +49,62 @@
      </tbody>    
       </table>	 
 		
-  <button type="button" class="btn btn-primary" ><a th:href="@{/customer/view}"><font color="white">Volver atrás</font></a></button>
+  <center><button type="button" class="btn btn-primary" ><a th:href="@{/customer/view}"><font color="white">Volver atrás</font></a></button>
  <button type="button" class="btn btn-danger" ><a th:href="@{/reservation/delete/{bookingNumber}(bookingNumber=${reservation.bookingNumber})}"><font color="white">Confirmar</font></a></button>
 <!--     <td><button type="button" class="btn btn-warning" ><a th:href="@{/instructorRequest/accept/{nid}(nid=${instructorRequest.nid})}"><font color="black">Aceptar</font></a></button></td> -->
 <!--   	<td><button type="button" class="btn btn-danger" ><a th:href="@{/instructorRequest/delete/{nid}/{activityTypeRequest}(nid=${instructorRequest.nid},activityTypeRequest=${instructorRequest.activityTypeRequest})}"><font color="white">Rechazar</font></button>  -->
 <!--     </td> -->
-       
-  
+     </center>
+     <br><br>  
+ <footer class="footer text-center">
+    <div class="container">
+      <div class="row">
 
+        <!-- Footer Location -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Ubicación</h4>
+          <p class="lead mb-0">Avda. Valencia, 53 
+            <br>12540 Castellón, España</p>
+        </div>
+
+        <!-- Footer Social Icons -->
+        <div class="col-lg-4 mb-5 mb-lg-0">
+          <h4 class="text-uppercase mb-4">Redes Sociales</h4>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-facebook-f"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-twitter"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-linkedin-in"></i>
+          </a>
+          <a class="btn btn-outline-light btn-social mx-1" href="#">
+            <i class="fab fa-fw fa-dribbble"></i>
+          </a>
+        </div>
+
+        <!-- Footer About Text -->
+        <div class="col-lg-4">
+          <h4 class="text-uppercase mb-4">Información de Contacto</h4>
+          <p class="lead mb-0">+34 654 34 56 76 <br>
+            <a href="http://startbootstrap.com">info@toopots.com</a></p>
+            <a href="/instructorRequest/add">Trabaja con nosotros</a></p>
+            
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Copyright Section -->
+  <section class="copyright py-4 text-center text-white">
+    <div class="container">
+      <small>Copyright &copy; GUPARI 2019</small>
+    </div>
+  </section>
+
+</div>  
 </body>
-
 
 </html>
