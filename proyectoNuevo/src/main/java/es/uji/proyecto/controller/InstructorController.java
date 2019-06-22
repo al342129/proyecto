@@ -138,7 +138,7 @@ public class InstructorController {
 		 
 		 instructor.setProfileImage(instructor.getNid()+file.getOriginalFilename());
 		 instructorDao.updateInstructor(instructor);
-		 return "views/instructor"; 
+		 return "instructor/profile"; 
 	}
 	
 	
