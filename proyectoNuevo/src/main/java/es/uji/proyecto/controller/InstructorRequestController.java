@@ -173,7 +173,16 @@ public class InstructorRequestController {
 	          e.printStackTrace();
 	      }
 
-	      instructorRequestDao.addInstructorRequest(instructorRequest);
+	      
+	      try{
+	    	  instructorRequestDao.addInstructorRequest(instructorRequest);
+			 }
+			catch(DuplicateKeyException e) {
+				throw new ProjectException( 
+			             "Ya existe una petición de monitor de ese DNI para ese tipo de actividad.", "ClauPrimariaDuplicada"); 
+			}
+			
+	      
 	      return "instructorRequest/enviado";
 	   }
 
