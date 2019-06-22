@@ -42,7 +42,11 @@ public class CustomerValidator implements Validator {
 		 //Validación para que el email contenga una "@":
 		 if (!customer.getEmail().contains("@"))
 		       errors.rejectValue("email", "obligatorio",
-		                          "Formato introducido incorrecto. Formato correcto: ejemplo@ejemplo.com"); 
+		                          "Formato correcto: ejemplo@ejemplo.com"); 
+		 
+		 if(customer.getPassword().trim().equals("") || customer.getRepeat().trim().equals(""))
+			 errors.rejectValue("password", "obligatorio",
+					 			"Es necesario introducir la contraseña y repetirla");
 		 
 		 if(!customer.getPassword().equals(customer.getRepeat()))
 			 errors.rejectValue("repeat", "coincidir",

@@ -104,6 +104,7 @@
         <tr>
             <td class="lead text-white" align="center"><label><br>DNI: </label></td>
             <td class="lead text-white" align="center"><br><input type="text" th:field="*{nid}" /></td> 
+        	<td th:if="${#fields.hasErrors('nid')}" th:errors="*{nid}" class="error"/></td>
         </tr>
         <tr>
             <td class="lead text-white" align="center"><label>Nombre: </label></td>
@@ -129,7 +130,7 @@
         <tr>
             <td class="lead text-white" align="center"><label>Contraseña: </label></td>
             <td align="center"><input type="password" autocomplete="off" th:field="*{password}" /></td>
-             
+             <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error"/></td>
         </tr>
         
         <tr>
