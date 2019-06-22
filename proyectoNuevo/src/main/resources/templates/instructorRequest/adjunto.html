@@ -179,7 +179,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	
       </div>
       </section>
-<div>      
+<div>
+<br><br>      
 <embed th:src="@{{PDF}(PDF=${instructorRequest.instructorRequestPDF})}" width="100%" height="600px" type="application/pdf">
 <!-- 	<center><button type="button" class="btn btn-success" ><a th:href="@{/instructorRequest/show/{nid}/{activityTypeRequest}(nid=${instructorRequest.nid},activityTypeRequest=${instructorRequest.activityTypeRequest})}"><font color="white">Volver a la página anterior</font></a></button></center> -->
 </div>

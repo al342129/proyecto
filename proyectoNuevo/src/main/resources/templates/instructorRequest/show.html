@@ -180,8 +180,8 @@
 	</tr> 
 	
 	<tr>
-	  <td><button type="button" class="btn btn-success" ><a th:href="@{/instructorRequest/accept/{nid}(nid=${instructorRequest.nid})}"><font color="black">Aceptar</font></a></button></td>
-	  <td><button type="button" class="btn btn-danger" ><a th:href="@{/instructorRequest/delete/{nid}(nid=${instructorRequest.nid})}"><font color="white">Rechazar</font></button></td>
+	  <td><button type="button" class="btn btn-success" ><a th:href="@{/instructorRequest/accept/{nid}/{activityTypeRequest}(nid=${instructorRequest.nid},activityTypeRequest=${instructorRequest.activityTypeRequest})}"><font color="black">Aceptar</font></a></button></td>
+	  <td><button type="button" class="btn btn-danger" ><a th:href="@{/instructorRequest/delete/{nid}/{activityTypeRequest}(nid=${instructorRequest.nid},activityTypeRequest=${instructorRequest.activityTypeRequest})}"><font color="white">Rechazar</font></button></td>
 	</tr> 
       </tbody>
     </table>
